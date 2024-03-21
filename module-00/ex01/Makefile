@@ -2,9 +2,12 @@
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror
 
-NAME = megaphone
+NAME = awesome_phonebook
 
-SRCS = megaphone.cpp
+SRCS = awesome_phonebook.cpp \
+	Contact.cpp \
+	PhoneBook.cpp \
+
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
