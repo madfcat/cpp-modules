@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 17:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/22 17:51:46 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/23 01:04:53 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ SRCS = awesome_phonebook.cpp \
 	Contact.cpp \
 	PhoneBook.cpp \
 
-HEADERS = awesome_phonebook.h \
-	Contact.hpp \
+HEADERS = Contact.hpp \
 	PhoneBook.hpp \
 
 OBJ_DIR = objs/

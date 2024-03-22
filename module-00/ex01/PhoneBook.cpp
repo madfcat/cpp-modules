@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 00:55:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 01:13:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	PhoneBook::getCurrentIndex() const
 	return (this->currentIndex);
 }
 
-Contact&	PhoneBook::getContact(int index)
+const Contact&	PhoneBook::getContact(int index) const
 {
 	return (this->contacts[index]);
 }
@@ -100,9 +100,9 @@ int	PhoneBook::showAllContacts() const
 	return (i);
 }
 
-void	PhoneBook::printContactInfo(int index)
+void	PhoneBook::printContactInfo(int index) const
 {
-	Contact contact = this->getContact(index);
+	const Contact contact = this->getContact(index);
 	std::cout << contact.getFirstName() << std::endl;
 	std::cout << contact.getLastName() << std::endl;
 	std::cout << contact.getNickname() << std::endl;
@@ -144,7 +144,7 @@ void	PhoneBook::runAddCommand(void)
 		this->incrementCurrentIndex();
 }
 
-void	PhoneBook::runSearchCommand(void)
+void	PhoneBook::runSearchCommand(void) const
 {
 	int i;
 
@@ -155,17 +155,26 @@ void	PhoneBook::runSearchCommand(void)
 	}
 	while (42)
 	{
-		std::cout << UNDERLINE << "Please, enter an index" << RESET ": ";
+		std::cout << UNDERLINE << "Please, enter an index" << RESET " (-1 to exit): ";
 		std::cin >> i;
-		if(std::cin.fail() || i >= this->getCurrentIndex()){
+		if(std::cin.fail()){
 			std::cin.clear();
 			std::cin.ignore(INT_MAX, '\n');
-			this->printErrorMessage("There is no data corresponing to this index!");
+			this->printErrorMessage("Wrong index format!");
+			continue ;
+		}
+		else if(i < 0)
+		{
+			std::cin.ignore();
 			break ;
+		}
+		else if(i >= this->getCurrentIndex() || i < 0){
+			std::cin.ignore();
+			this->printErrorMessage("There is no data corresponing to this index!");
+			continue ;
 		}
 		this->printContactInfo(i);
 		std::cin.ignore();
-		continue ;
 	}
 }
 

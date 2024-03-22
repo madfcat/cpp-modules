@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 00:55:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 01:02:33 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,29 @@ typedef void (Contact::*MemberFunction)(std::string);
 class PhoneBook
 {
 	private:
-		Contact	contacts[MAX_CONTACTS];
-		int		currentIndex;
+		Contact			contacts[MAX_CONTACTS];
+		int				currentIndex;
 
-		void		printIntro(void) const;
-		void		printErrorMessage(std::string message) const;
-		std::string	truncateField(std::string fieldName) const;
-		
-		int 		addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func);
-		void 		addContact(Contact& contact, int index);
+		void			printIntro(void) const;
+		void			printErrorMessage(std::string message) const;
+		std::string		truncateField(std::string fieldName) const;
 
-		void 		incrementCurrentIndex();
-		int			getCurrentIndex() const;
+		int 			addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func);
+		void 			addContact(Contact& contact, int index);
 
-		int			showAllContacts() const;
-		Contact&	getContact(int index);
-		void		printContactInfo(int index);
+		void 			incrementCurrentIndex();
+		int				getCurrentIndex() const;
 
-		void		runAddCommand(void);
-		void		runSearchCommand(void);
+		int				showAllContacts() const;
+		const Contact&	getContact(int index) const;
+		void			printContactInfo(int index) const;
+
+		void			runAddCommand(void);
+		void			runSearchCommand(void) const;
 	
 	public:
 		PhoneBook();
-		void		run(void);
+		void			run(void);
 };
 
 #endif
