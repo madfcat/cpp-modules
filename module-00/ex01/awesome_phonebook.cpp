@@ -1,32 +1,25 @@
 #include "awesome_phonebook.h"
 
+void printErrorMessage(std::string message)
+{
+	std::cout << RED << "☹︎ " <<  message << std::endl << RESET;
+}
+
 void printIntro(void)
 {
 	std::cout << YELLOW;
 	std::cout << "=========================================================" << std::endl;
 	std::cout << WHITE;
-	std::cout << "     ___        _______ ____   ___  __  __ _____       " << std::endl;
-	std::cout << "    / \\ \\      / / ____/ ___| / _ \\|  \\/  | ____|      " << std::endl;
-	std::cout << "   / _ \\ \\ /\\ / /|  _| \\___ \\| | | | |\\/| |  _|        " << std::endl;
-	std::cout << "  / ___ \\ V  V / | |___ ___) | |_| | |  | | |___       " << std::endl;
-	std::cout << " /_/   \\_\\_/\\_/  |_____|____/ \\___/|_|  |_|_____|      " << std::endl;
-	std::cout << "  ____  _   _  ___  _   _ _____ ____   ___   ___  _  __" << std::endl;
-	std::cout << " |  _ \\| | | |/ _ \\| \\ | | ____| __ ) / _ \\ / _ \\| |/ /" << std::endl;
-	std::cout << " | |_) | |_| | | | |  \\| |  _| |  _ \\| | | | | | | ' / " << std::endl;
-	std::cout << " |  __/|  _  | |_| | |\\  | |___| |_) | |_| | |_| | . \\ " << std::endl;
-	std::cout << " |_|   |_| |_|\\___/|_| \\_|_____|____/ \\___/ \\___/|_|\\_\\ " << std::endl;
-	std::cout << "                                                       " << std::endl;
+	std::cout << "       ___ _      ______________  __  _______         " << std::endl;
+	std::cout << "      / _ | | /| / / __/ __/ __ \\/  |/  / __/         " << std::endl;
+	std::cout << "     / __ | |/ |/ / _/_\\ \\/ /_/ / /|_/ / _/           " << std::endl;
+	std::cout << "    /_/_|_|__/|__/___/___/\\____/_/_ /_/___/____  __ __" << std::endl;
+	std::cout << "      / _ \\/ // / __ \\/ |/ / __/ _ )/ __ \\/ __ \\/ //_/" << std::endl;
+	std::cout << "     / ___/ _  / /_/ /    / _// _  / /_/ / /_/ / ,<   " << std::endl;
+	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << std::endl;
 	std::cout << YELLOW;
 	std::cout << "=========================================================" << std::endl;
 	std::cout << WHITE;
-/* std::cout << "    ___      _____ ___  ___  __  __ ___        " << std::endl;
-std::cout << "   /_\\ \\    / / __/ __|/ _ \\|  \\/  | __|       " << std::endl;
-std::cout << "  / _ \\ \\/\\/ /| _|\\__ \\ (_) | |\\/| | _|        " << std::endl;
-std::cout << " /_/_\\_\\_/\\_/_|___|___/\\___/|_|__|_|___|  _  __" << std::endl;
-std::cout << " | _ \\ || |/ _ \\| \\| | __| _ )/ _ \\ / _ \\| |/ /" << std::endl;
-std::cout << " |  _/ __ | (_) | .` | _|| _ \\ (_) | (_) | ' < " << std::endl;
-std::cout << " |_| |_||_|\\___/|_|\\_|___|___/\\___/ \\___/|_|\\_\\" << std::endl;
-std::cout << "                                               " << std::endl; */
 	std::cout << "You can use the Awesome Phonebook with the next commands:" << std::endl;
 	std::cout << "ADD, SEARCH and EXIT" << std::endl;
 	std::cout << "=========================================================" << std::endl;
@@ -40,7 +33,7 @@ int handleInput(std::string msg, std::string& inputLine,  Contact& contact, Memb
 	std::getline(std::cin, inputLine);
 	if (inputLine.length() == 0)
 	{
-		std::cout << RED << "☹︎ Try again!" << std::endl << RESET;
+		printErrorMessage( "Try again!");
 		return (EXIT_FAILURE);
 	}
 	(contact.*func)(inputLine);
@@ -69,7 +62,7 @@ void handleSearch(PhoneBook& phoneBook)
 		std::cin >> i;
 		if (i >= phoneBook.getCurrentIndex())
 		{
-			std::cout << RED << "☹︎ There is no data corresponing to this index!" << std::endl << RESET;
+			printErrorMessage("There is no data corresponing to this index!");
 			continue ;	
 		}
 		std::cout << std::setw(10) << i << "|";
@@ -122,15 +115,10 @@ int main(void)
 				phoneBook.incrementCurrentIndex();
 		}
 		else if (command == "SEARCH")
-		{
 			handleSearch(phoneBook);
-		}
 		else
-		{
-			std::cout << RED << "☹︎ No such command!" << std::endl << RESET;
-		}
+			printErrorMessage("No such command!");
 		std::cout << std::endl;
 	}
-
 	return (0);
 }

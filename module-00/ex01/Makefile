@@ -1,4 +1,3 @@
-
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror
 

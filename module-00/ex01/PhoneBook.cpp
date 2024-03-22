@@ -3,6 +3,7 @@
 PhoneBook::PhoneBook()
 {
 	std::memset(this->contacts, 0, MAX_CONTACTS * sizeof(Contact));
+	this->currentIndex = 0;
 }
 
 PhoneBook::~PhoneBook()
