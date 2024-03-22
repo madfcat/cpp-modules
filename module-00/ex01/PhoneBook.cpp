@@ -1,4 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/03/22 18:18:35 by vshchuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
+#include <iomanip>
+
+std::string truncate(std::string string)
+{
+	size_t MAX_UNTRUNCATED_LENGTH = 10;
+
+	if (string.length() > MAX_UNTRUNCATED_LENGTH)
+	{
+		string = string.substr(0, MAX_UNTRUNCATED_LENGTH);
+		string.replace(9, 1, ".");
+	}
+	return (string);
+}
 
 PhoneBook::PhoneBook()
 {
@@ -38,6 +63,30 @@ Contact& PhoneBook::getContact(int index)
 int PhoneBook::getCurrentIndex() const
 {
 	return (this->currentIndex);
+}
+
+int PhoneBook::showAllContacts() const
+{
+	int i;
+	for (i = 0; i < this->currentIndex; i++)
+	{
+		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << truncate(this->contacts[i].getFirstName()) << "|";
+		std::cout << std::setw(10) << truncate(this->contacts[i].getLastName()) << "|";
+		std::cout << std::setw(10) << truncate(this->contacts[i].getNickname());
+		std::cout << std::endl;
+	}
+	return (i);
+}
+
+void PhoneBook::printContactInfo(int index)
+{
+	Contact contact = this->getContact(index);
+	std::cout << contact.getFirstName() << std::endl;
+	std::cout << contact.getLastName() << std::endl;
+	std::cout << contact.getNickname() << std::endl;
+	std::cout << contact.getPhoneNumber() << std::endl;
+	std::cout << contact.getDarkestSecret() << std::endl;
 }
 
 // Remove later

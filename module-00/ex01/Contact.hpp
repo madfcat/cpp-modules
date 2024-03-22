@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 17:51:32 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/03/22 18:09:38 by vshchuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTACT_H
 # define CONTACT_H
 # include <iostream>
@@ -14,7 +26,7 @@ class Contact
 
 	public:
 		Contact();
-		~Contact();
+		// ~Contact();
 		void		setFirstName(std::string firstName);
 		void		setLastName(std::string lastName);
 		void		setNickname(std::string nickname);

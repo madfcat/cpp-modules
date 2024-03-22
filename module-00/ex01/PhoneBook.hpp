@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/03/22 18:18:48 by vshchuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
@@ -15,19 +27,21 @@ class PhoneBook
 
 	public:
 		PhoneBook();
-		~PhoneBook();
+		// ~PhoneBook();
 
-		void 	addContact(Contact& contact, int index);
-		void 	incrementCurrentIndex();
+		void 		addContact(Contact& contact, int index);
+		void 		incrementCurrentIndex();
 
-		void	printContactFirstName(int i);
-		void	printContactLastName(int i);
-		void	printContactNickname(int i);
-		void	printContactPhoneNumber(int i);
-		void	printContactDarkestSecret(int i);
+		void		printContactFirstName(int i);
+		void		printContactLastName(int i);
+		void		printContactNickname(int i);
+		void		printContactPhoneNumber(int i);
+		void		printContactDarkestSecret(int i);
 
 		Contact&	getContact(int index);
-		int		getCurrentIndex() const;
+		int			getCurrentIndex() const;
+		int			showAllContacts() const;
+		void		printContactInfo(int index);
 };
 
 #endif

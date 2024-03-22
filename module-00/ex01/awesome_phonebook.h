@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   awesome_phonebook.h                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 17:51:26 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/03/22 18:07:37 by vshchuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AWESOME_PHONEBOOK_H
 # define AWESOME_PHONEBOOK_H
 # include <iostream>
-# include <iomanip>
 # include <string>
 # include "PhoneBook.hpp"
 

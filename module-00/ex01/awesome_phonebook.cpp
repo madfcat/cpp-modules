@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   awesome_phonebook.cpp                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 17:51:23 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/03/22 18:20:41 by vshchuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "awesome_phonebook.h"
 
 void printErrorMessage(std::string message)
@@ -25,7 +37,7 @@ void printIntro(void)
 	std::cout << "=========================================================" << std::endl;
 }
 
-int handleInput(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func)
+int handleAdd(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func)
 {
 	std::cout << msg;
 	std::getline(std::cin, inputLine);
@@ -39,21 +51,15 @@ int handleInput(std::string msg, std::string& inputLine,  Contact& contact, Memb
 	return (EXIT_SUCCESS);
 }
 
-std::string truncate(std::string string)
-{
-	size_t MAX_UNTRUNCATED_LENGTH = 10;
-
-	if (string.length() > MAX_UNTRUNCATED_LENGTH)
-	{
-		string = string.substr(0, MAX_UNTRUNCATED_LENGTH);
-		string.replace(9, 1, ".");
-	}
-	return (string);
-}
-
 void handleSearch(PhoneBook& phoneBook)
 {
 	int i;
+
+	if (!phoneBook.showAllContacts())
+	{
+		printErrorMessage("The phonebook is empty!");
+		return ;
+	}
 	while (42)
 	{
 		std::cout << "Please, enter an index: ";
@@ -64,11 +70,7 @@ void handleSearch(PhoneBook& phoneBook)
 			printErrorMessage("There is no data corresponing to this index!");
 			break ;
 		}
-		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << truncate(phoneBook.getContact(i).getFirstName()) << "|";
-		std::cout << std::setw(10) << truncate(phoneBook.getContact(i).getLastName()) << "|";
-		std::cout << std::setw(10) << truncate(phoneBook.getContact(i).getNickname());
-		std::cout << std::endl;
+		phoneBook.printContactInfo(i);
 		std::cin.ignore();
 		continue ;
 	}
@@ -94,15 +96,15 @@ int main(void)
 			break ;
 		else if (command == "ADD")
 		{
-			while (handleInput("Enter the first name: ", inputLine, contact, &Contact::setFirstName) != EXIT_SUCCESS)
+			while (handleAdd("Enter the first name: ", inputLine, contact, &Contact::setFirstName) != EXIT_SUCCESS)
 				;
-			while (handleInput("Enter the last name: ", inputLine, contact, &Contact::setLastName) != EXIT_SUCCESS)
+			while (handleAdd("Enter the last name: ", inputLine, contact, &Contact::setLastName) != EXIT_SUCCESS)
 				;
-			while (handleInput("Enter the nickname: ", inputLine, contact, &Contact::setNickname) != EXIT_SUCCESS)
+			while (handleAdd("Enter the nickname: ", inputLine, contact, &Contact::setNickname) != EXIT_SUCCESS)
 				;
-			while (handleInput("Enter the phone number: ", inputLine, contact, &Contact::setPhoneNumber) != EXIT_SUCCESS)
+			while (handleAdd("Enter the phone number: ", inputLine, contact, &Contact::setPhoneNumber) != EXIT_SUCCESS)
 				;
-			while (handleInput("Enter the darkest secret: ", inputLine, contact, &Contact::setDarkestSecret) != EXIT_SUCCESS)
+			while (handleAdd("Enter the darkest secret: ", inputLine, contact, &Contact::setDarkestSecret) != EXIT_SUCCESS)
 				;
 			phoneBook.addContact(contact, phoneBook.getCurrentIndex());
 			if (phoneBook.getCurrentIndex() != MAX_CONTACTS)
