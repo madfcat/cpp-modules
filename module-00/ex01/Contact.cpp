@@ -9,10 +9,10 @@ Contact::Contact()
 	this->darkestSecret = "";
 }
 
-Contact::~Contact()
-{
-	std::cout << "Contact is being destroyed." << std::endl;
-}
+// Contact::~Contact()
+// {
+// 	std::cout << "Contact is being destroyed." << std::endl;
+// }
 
 std::string	Contact::getFirstName() const
 {

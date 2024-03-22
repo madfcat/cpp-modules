@@ -16,7 +16,7 @@ void printIntro(void)
 	std::cout << "    /_/_|_|__/|__/___/___/\\____/_/_ /_/___/____  __ __" << std::endl;
 	std::cout << "      / _ \\/ // / __ \\/ |/ / __/ _ )/ __ \\/ __ \\/ //_/" << std::endl;
 	std::cout << "     / ___/ _  / /_/ /    / _// _  / /_/ / /_/ / ,<   " << std::endl;
-	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << std::endl;
+	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << std::endl << std::endl;
 	std::cout << YELLOW;
 	std::cout << "=========================================================" << std::endl;
 	std::cout << WHITE;
@@ -24,8 +24,6 @@ void printIntro(void)
 	std::cout << "ADD, SEARCH and EXIT" << std::endl;
 	std::cout << "=========================================================" << std::endl;
 }
-
-typedef void (Contact::*MemberFunction)(std::string);
 
 int handleInput(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func)
 {
@@ -60,10 +58,11 @@ void handleSearch(PhoneBook& phoneBook)
 	{
 		std::cout << "Please, enter an index: ";
 		std::cin >> i;
-		if (i >= phoneBook.getCurrentIndex())
-		{
+		if(std::cin.fail() || i >= phoneBook.getCurrentIndex()){
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
 			printErrorMessage("There is no data corresponing to this index!");
-			continue ;	
+			break ;
 		}
 		std::cout << std::setw(10) << i << "|";
 		std::cout << std::setw(10) << truncate(phoneBook.getContact(i).getFirstName()) << "|";
@@ -71,7 +70,7 @@ void handleSearch(PhoneBook& phoneBook)
 		std::cout << std::setw(10) << truncate(phoneBook.getContact(i).getNickname());
 		std::cout << std::endl;
 		std::cin.ignore();
-		break ;
+		continue ;
 	}
 }
 
@@ -83,18 +82,13 @@ int main(void)
 	PhoneBook	phoneBook;
 	Contact		contact;
 
-// https://patorjk.com/software/taag/#p=display&f=Bulbhead&t=AWESOME%0APHONEBOOK
-// Big, BulbHead, Dancing Font, Doom, Graceful, Ogre, Slant, Small, Small SLant
-// Ivrit, JS Stick Letters
-
 	printIntro();
-
+	
 	while (42)
 	{
 		std::cout << UNDERLINE;
 		std::cout << UNDERLINE << "Please, enter a command" << RESET << ": ";
 		std::getline(std::cin, command);
-		// std::cin.get();
 
 		if (command == "EXIT")
 			break ;
@@ -120,5 +114,6 @@ int main(void)
 			printErrorMessage("No such command!");
 		std::cout << std::endl;
 	}
+
 	return (0);
 }

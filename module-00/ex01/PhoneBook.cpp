@@ -6,15 +6,10 @@ PhoneBook::PhoneBook()
 	this->currentIndex = 0;
 }
 
-PhoneBook::~PhoneBook()
-{
-	std::cout << "PhoneBook is being destroyed." << std::endl;
-}
-
-void PhoneBook::printContactFirstName(int i)
-{
-	std::cout << "First name is: " << contacts[i].getFirstName() << std::endl;
-}
+// PhoneBook::~PhoneBook()
+// {
+// 	std::cout << "PhoneBook is being destroyed." << std::endl;
+// }
 
 void PhoneBook::addContact(Contact& contact, int index)
 {
@@ -47,7 +42,13 @@ int PhoneBook::getCurrentIndex() const
 
 // Remove later
 
-void PhoneBook::printContactLastName(int i)
+/*
+void PhoneBook::printContactFirstName(int i)
+{
+	std::cout << "First name is: " << contacts[i].getFirstName() << std::endl;
+}
+
+ void PhoneBook::printContactLastName(int i)
 {
 	std::cout << "Last name is: " << contacts[i].getLastName() << std::endl;
 }
@@ -65,4 +66,4 @@ void PhoneBook::printContactPhoneNumber(int i)
 void PhoneBook::printContactDarkestSecret(int i)
 {
 	std::cout << "Darkest secret is: " << contacts[i].getDarkestSecret() << std::endl;
-}
+} */
