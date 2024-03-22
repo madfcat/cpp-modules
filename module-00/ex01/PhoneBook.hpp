@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 01:02:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 01:19:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@
 #define ITALIC  "\033[3m"
 #define UNDERLINE "\033[4m"
 
-typedef void (Contact::*MemberFunction)(std::string);
 
 class PhoneBook
 {
 	private:
+		typedef void	(Contact::*MemberFunction)(std::string);
+		
 		Contact			contacts[MAX_CONTACTS];
 		int				currentIndex;
 
