@@ -10,14 +10,24 @@
 class PhoneBook
 {
 	private:
-		Contact contacts[MAX_CONTACTS];
+		Contact	contacts[MAX_CONTACTS];
+		int		currentIndex;
 
 	public:
 		PhoneBook();
 		~PhoneBook();
 
-		void addContact(Contact contact);
-		void printContactFirstName(int i);
+		void 	addContact(Contact& contact, int index);
+		void 	incrementCurrentIndex();
+
+		void	printContactFirstName(int i);
+		void	printContactLastName(int i);
+		void	printContactNickname(int i);
+		void	printContactPhoneNumber(int i);
+		void	printContactDarkestSecret(int i);
+
+		Contact&	getContact(int index);
+		int		getCurrentIndex() const;
 };
 
 #endif

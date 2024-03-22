@@ -8,12 +8,16 @@ SRCS = awesome_phonebook.cpp \
 	Contact.cpp \
 	PhoneBook.cpp \
 
+HEADERS = awesome_phonebook.h \
+	Contact.hpp \
+	PhoneBook.hpp \
+
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJ_DIR) $(OBJS) $(HEADERS)
 	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
