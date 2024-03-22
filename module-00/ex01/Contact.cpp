@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/22 17:51:30 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:54:55 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ Contact::Contact()
 	this->phoneNumber = "";
 	this->darkestSecret = "";
 }
-
-// Contact::~Contact()
-// {
-// 	std::cout << "Contact is being destroyed." << std::endl;
-// }
 
 std::string	Contact::getFirstName() const
 {

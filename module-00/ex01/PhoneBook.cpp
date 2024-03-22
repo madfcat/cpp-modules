@@ -6,23 +6,49 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/22 18:18:35 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:55:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <iostream>
 #include <iomanip>
 
-std::string truncate(std::string string)
+void PhoneBook::printIntro(void) const
+{
+	std::cout << YELLOW;
+	std::cout << "=========================================================" << std::endl;
+	std::cout << WHITE;
+	std::cout << "       ___ _      ______________  __  _______         " << std::endl;
+	std::cout << "      / _ | | /| / / __/ __/ __ \\/  |/  / __/         " << std::endl;
+	std::cout << "     / __ | |/ |/ / _/_\\ \\/ /_/ / /|_/ / _/           " << std::endl;
+	std::cout << "    /_/_|_|__/|__/___/___/\\____/_/_ /_/___/____  __ __" << std::endl;
+	std::cout << "      / _ \\/ // / __ \\/ |/ / __/ _ )/ __ \\/ __ \\/ //_/" << std::endl;
+	std::cout << "     / ___/ _  / /_/ /    / _// _  / /_/ / /_/ / ,<   " << std::endl;
+	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << std::endl << std::endl;
+	std::cout << YELLOW;
+	std::cout << "=========================================================" << std::endl;
+	std::cout << WHITE;
+	std::cout << "You can use the Awesome Phonebook with the next commands:" << std::endl;
+	std::cout << "ADD, SEARCH and EXIT" << std::endl;
+	std::cout << "=========================================================" << std::endl;
+}
+
+void PhoneBook::printErrorMessage(std::string message) const
+{
+	std::cout << RED << "☹︎ " <<  message << std::endl << RESET;
+}
+
+std::string	PhoneBook::truncateField(std::string fieldName) const
 {
 	size_t MAX_UNTRUNCATED_LENGTH = 10;
 
-	if (string.length() > MAX_UNTRUNCATED_LENGTH)
+	if (fieldName.length() > MAX_UNTRUNCATED_LENGTH)
 	{
-		string = string.substr(0, MAX_UNTRUNCATED_LENGTH);
-		string.replace(9, 1, ".");
+		fieldName = fieldName.substr(0, MAX_UNTRUNCATED_LENGTH);
+		fieldName.replace(9, 1, ".");
 	}
-	return (string);
+	return (fieldName);
 }
 
 PhoneBook::PhoneBook()
@@ -31,12 +57,7 @@ PhoneBook::PhoneBook()
 	this->currentIndex = 0;
 }
 
-// PhoneBook::~PhoneBook()
-// {
-// 	std::cout << "PhoneBook is being destroyed." << std::endl;
-// }
-
-void PhoneBook::addContact(Contact& contact, int index)
+void	PhoneBook::addContact(Contact& contact, int index)
 {
 	if (index == MAX_CONTACTS)
 	{
@@ -50,36 +71,36 @@ void PhoneBook::addContact(Contact& contact, int index)
 	this->contacts[index].setDarkestSecret(contact.getDarkestSecret());
 }
 
-void PhoneBook::incrementCurrentIndex(void)
+void	PhoneBook::incrementCurrentIndex(void)
 {
 	this->currentIndex++;
 }
 
-Contact& PhoneBook::getContact(int index)
-{
-	return (this->contacts[index]);
-}
-
-int PhoneBook::getCurrentIndex() const
+int	PhoneBook::getCurrentIndex() const
 {
 	return (this->currentIndex);
 }
 
-int PhoneBook::showAllContacts() const
+Contact&	PhoneBook::getContact(int index)
+{
+	return (this->contacts[index]);
+}
+
+int	PhoneBook::showAllContacts() const
 {
 	int i;
 	for (i = 0; i < this->currentIndex; i++)
 	{
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << truncate(this->contacts[i].getFirstName()) << "|";
-		std::cout << std::setw(10) << truncate(this->contacts[i].getLastName()) << "|";
-		std::cout << std::setw(10) << truncate(this->contacts[i].getNickname());
+		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getFirstName()) << "|";
+		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getLastName()) << "|";
+		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getNickname());
 		std::cout << std::endl;
 	}
 	return (i);
 }
 
-void PhoneBook::printContactInfo(int index)
+void	PhoneBook::printContactInfo(int index)
 {
 	Contact contact = this->getContact(index);
 	std::cout << contact.getFirstName() << std::endl;
@@ -89,30 +110,87 @@ void PhoneBook::printContactInfo(int index)
 	std::cout << contact.getDarkestSecret() << std::endl;
 }
 
-// Remove later
-
-/*
-void PhoneBook::printContactFirstName(int i)
+int	PhoneBook::addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func)
 {
-	std::cout << "First name is: " << contacts[i].getFirstName() << std::endl;
+	std::cout << msg;
+	std::getline(std::cin, inputLine);
+	if (inputLine.length() == 0)
+	{
+		this->printErrorMessage( "Try again!");
+		return (EXIT_FAILURE);
+	}
+	(contact.*func)(inputLine);
+	inputLine = "";
+	return (EXIT_SUCCESS);
 }
 
- void PhoneBook::printContactLastName(int i)
+void	PhoneBook::runAddCommand(void)
 {
-	std::cout << "Last name is: " << contacts[i].getLastName() << std::endl;
+	std::string	inputLine = "";
+	Contact		contact;
+
+	while (this->addContactField("Enter the first name: ", inputLine, contact, &Contact::setFirstName) != EXIT_SUCCESS)
+		;
+	while (this->addContactField("Enter the last name: ", inputLine, contact, &Contact::setLastName) != EXIT_SUCCESS)
+		;
+	while (this->addContactField("Enter the nickname: ", inputLine, contact, &Contact::setNickname) != EXIT_SUCCESS)
+		;
+	while (this->addContactField("Enter the phone number: ", inputLine, contact, &Contact::setPhoneNumber) != EXIT_SUCCESS)
+		;
+	while (this->addContactField("Enter the darkest secret: ", inputLine, contact, &Contact::setDarkestSecret) != EXIT_SUCCESS)
+		;
+	this->addContact(contact, this->getCurrentIndex());
+	if (this->getCurrentIndex() != MAX_CONTACTS)
+		this->incrementCurrentIndex();
 }
 
-void PhoneBook::printContactNickname(int i)
+void	PhoneBook::runSearchCommand(void)
 {
-	std::cout << "Nickname is: " << contacts[i].getNickname() << std::endl;
+	int i;
+
+	if (!this->showAllContacts())
+	{
+		this->printErrorMessage("The phonebook is empty!");
+		return ;
+	}
+	while (42)
+	{
+		std::cout << UNDERLINE << "Please, enter an index" << RESET ": ";
+		std::cin >> i;
+		if(std::cin.fail() || i >= this->getCurrentIndex()){
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			this->printErrorMessage("There is no data corresponing to this index!");
+			break ;
+		}
+		this->printContactInfo(i);
+		std::cin.ignore();
+		continue ;
+	}
 }
 
-void PhoneBook::printContactPhoneNumber(int i)
+void	PhoneBook::run(void)
 {
-	std::cout << "Phone number is: " << contacts[i].getPhoneNumber() << std::endl;
-}
+	std::string	command;
 
-void PhoneBook::printContactDarkestSecret(int i)
-{
-	std::cout << "Darkest secret is: " << contacts[i].getDarkestSecret() << std::endl;
-} */
+	this->printIntro();
+	
+	while (42)
+	{
+		std::cout << UNDERLINE;
+		std::cout << UNDERLINE << "Please, enter a command" << RESET << ": ";
+		std::getline(std::cin, command);
+
+		if (command == "EXIT")
+			break ;
+		else if (command == "ADD")
+		{
+			this->runAddCommand();
+		}
+		else if (command == "SEARCH")
+			this->runSearchCommand();
+		else
+			this->printErrorMessage("No such command!");
+		std::cout << std::endl;
+	}
+}
