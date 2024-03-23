@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 17:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/23 01:04:53 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/23 14:17:34 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ NAME = awesome_phonebook
 
 SRCS = awesome_phonebook.cpp \
 	Contact.cpp \
-	PhoneBook.cpp \
+	PhoneBook.cpp
 
 HEADERS = Contact.hpp \
-	PhoneBook.hpp \
+	PhoneBook.hpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
