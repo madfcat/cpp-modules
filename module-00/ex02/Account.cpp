@@ -6,12 +6,15 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:52:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 04:39:13 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:16:00 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
+#include <chrono>
 #include <ctime>
+#include <sstream>
 #include "Account.hpp"
 
 int Account::_nbAccounts = 0;
@@ -21,10 +24,8 @@ int Account::_totalNbWithdrawals = 0;
 
 Account::Account()
 {
-	// _nbAccounts++;
 }
 
-// [19920104_091532] index:0;amount:42;created
 Account::Account( int initial_deposit )
 {
 	_accountIndex = _nbAccounts;
@@ -37,12 +38,6 @@ Account::Account( int initial_deposit )
 	std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
-// int	Account::_totalAmount = 0;
-// int	Account::_totalNbDeposits = 0;
-// int	Account::_totalNbWithdrawals = 0;
-
-
-// [19920104_091532] index:0;amount:47;closed
 Account::~Account( void )
 {
 	_displayTimestamp();
@@ -69,7 +64,6 @@ int	Account::getNbWithdrawals(void)
 	return (_totalNbWithdrawals);
 }
 
-//[19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 void	Account::displayAccountsInfos(void)
 {
 	_displayTimestamp();
@@ -77,19 +71,18 @@ void	Account::displayAccountsInfos(void)
 	std::cout << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
-//[19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
 void	Account::makeDeposit( int deposit )
 {
 	_nbDeposits++;
 	_totalNbDeposits++;
 	_displayTimestamp();
-	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount << ";deposit:" << deposit << ";amount:" << _amount + deposit << ";nb_deposits:" << _nbDeposits << std::endl;
+	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount;
+	std::cout << ";deposit:" << deposit << ";amount:" << _amount + deposit;
+	std::cout << ";nb_deposits:" << _nbDeposits << std::endl;
 	_amount += deposit;
 	_totalAmount += deposit;
 };
 
-//[19920104_091532] index:0;p_amount:47;withdrawal:refused
-//[19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
 bool	Account::makeWithdrawal( int withdrawal )
 {
 	_displayTimestamp();
@@ -98,7 +91,8 @@ bool	Account::makeWithdrawal( int withdrawal )
 	{
 		_nbWithdrawals++;
 		_totalNbWithdrawals++;
-		std::cout << ";withdrawal:" << withdrawal << ";amount:" << _amount - withdrawal << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+		std::cout << ";withdrawal:" << withdrawal << ";amount:" << _amount - withdrawal;
+		std::cout << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 		_amount -= withdrawal;
 		_totalAmount -= withdrawal;
 		return (true);
@@ -112,7 +106,6 @@ int		Account::checkAmount( void ) const
 	return (0);
 }
 
-//[19920104_091532] index:6;amount:763;deposits:1;withdrawals:0
 void	Account::displayStatus( void ) const
 {
 	_displayTimestamp();
@@ -122,17 +115,18 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-/*     // Get the current time
-    std::time_t currentTime = std::time(nullptr);
+    // Get current time
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    std::time_t now_time = std::chrono::system_clock::to_time_t(now);
 
-    // Convert the current time to a tm struct
-    std::tm* timeInfo = std::localtime(&currentTime);
+    // Convert to tm struct
+    std::tm tm = *std::localtime(&now_time);
 
-    // Display the current year
-    std::cout << "[" << (timeInfo->tm_year + 1900) << "_" << std::endl;
+    // Format the timestamp
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%Y%m%d_%H%M%S");
+    std::string formatted_timestamp = oss.str();
 
-    // Display the current time
-    std::cout << "Current Time: " << std::asctime(timeInfo); */
-
-	std::cout << "[19920104_091532]";
+    // Output the formatted timestamp
+    std::cout << "[" << formatted_timestamp << "]";
 }
