@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/23 14:43:12 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/23 21:01:37 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/24 03:51:32 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ $(NAME): $(OBJ_DIR) $(OBJS) $(HEADERS)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: %.cpp
+$(OBJ_DIR)%.o: %.cpp %.hpp | $(OBJ_DIR)
+	$(COMPILER) $(FLAGS) -c $< -o $@
+
+$(OBJ_DIR)%.o: %.cpp | $(OBJ_DIR)
 	$(COMPILER) $(FLAGS) -c $< -o $@
 
 clean:
