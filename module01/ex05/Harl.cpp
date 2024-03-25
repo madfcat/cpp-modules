@@ -6,12 +6,27 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:53:36 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/25 18:10:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/25 19:33:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
+
+Harl::Harl()
+{
+	this->levels[0] = "DEBUG";
+	this->functions[0] = &Harl::debug;
+
+	this->levels[1] = "INFO";
+	this->functions[1] = &Harl::info;
+
+	this->levels[2] = "WARNING";
+	this->functions[2] = &Harl::warning;
+
+	this->levels[3] = "ERROR";
+	this->functions[3] = &Harl::error;
+}
 
 void Harl::debug( void )
 {
@@ -34,9 +49,22 @@ void Harl::error( void )
 }
 
 void    Harl::complain( std::string level )
-{
-	(void)level;
-	(this->func) = (&Harl::error);
-	(this->*func)();
+{	
+	(this->func) = this->getFunction(level);
+	if (this->func)
+	{
+		(this->*func)();
+		return ;
+	}
+	std::cout << "There is no such level as " << level << std::endl;
 }
-	
+
+Harl::MemberFunction Harl::getFunction(std::string level)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->levels[i] == level)
+			return (this->functions[i]);
+	}
+	return (nullptr);
+}
