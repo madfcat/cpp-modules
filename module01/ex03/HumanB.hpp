@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:42:39 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/24 21:13:00 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/25 19:54:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class HumanB
 
 	public:
 		HumanB(std::string name);
-		//  ~HumanB();
 		void					attack() const;
 		void					setWeapon(Weapon &weapon);
 };
