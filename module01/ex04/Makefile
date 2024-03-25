@@ -6,19 +6,20 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 21:25:22 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/25 01:37:24 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/25 15:39:46 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17
 
 NAME = losersed
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	Replacer.cpp
 	
-
+HEADERS = Replacer.hpp
+	 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 CLASS_HEADERS = $(CLASS_SRCS:.cpp=.hpp)
