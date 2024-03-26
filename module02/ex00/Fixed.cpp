@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 00:40:47 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 00:49:05 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int Fixed::farctionalBits = 8;
 Fixed::Fixed(int value)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->value = value;
+	this->setRawBits(value);
 }
 
 Fixed::Fixed(const Fixed &otherNumber)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->value = otherNumber.getRawBits();
+	this->setRawBits(otherNumber.getRawBits());
 }
 
 Fixed& Fixed::operator=(const Fixed& otherNumber)
@@ -32,7 +32,7 @@ Fixed& Fixed::operator=(const Fixed& otherNumber)
 	if (this != &otherNumber)
 	{
 		std::cout << "Copy assignment operator called" << std::endl;
-		value = otherNumber.getRawBits();
+		this->setRawBits(otherNumber.getRawBits());
 	}
 	return (*this);
 }
