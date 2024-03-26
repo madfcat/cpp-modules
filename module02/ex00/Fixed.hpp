@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:49 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 00:19:32 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 01:14:18 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ class Fixed
 {
 	private:
 		int value;
-		static int farctionalBits;
+		static const int farctionalBits;
 
 	public:
 		Fixed(int = 0);

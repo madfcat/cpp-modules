@@ -6,14 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 00:49:05 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 01:14:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-int Fixed::farctionalBits = 8;
+const int Fixed::farctionalBits = 8;
 
 Fixed::Fixed(int value)
 {
