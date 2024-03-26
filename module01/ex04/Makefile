@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 21:25:22 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/26 01:28:41 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/27 00:22:58 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,4 +70,4 @@ fclean: clean fclean_tester
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re fclean_tester clean_tester

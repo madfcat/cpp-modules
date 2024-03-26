@@ -6,10 +6,9 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 16:14:26 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/25 20:00:01 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/03/27 00:20:47 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17
