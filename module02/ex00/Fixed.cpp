@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 01:14:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 01:23:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 const int Fixed::farctionalBits = 8;
 
-Fixed::Fixed(int value)
+Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->setRawBits(value);
+	this->setRawBits(0);
 }
 
 Fixed::Fixed(const Fixed &otherNumber)
