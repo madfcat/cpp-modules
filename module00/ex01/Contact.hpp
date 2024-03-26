@@ -6,12 +6,12 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:32 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 00:53:00 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:27:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 # include <iostream>
 # include <cstring>
 

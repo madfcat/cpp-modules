@@ -6,14 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:42:39 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/24 21:11:57 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:18:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
-# include "Weapon.hpp"
-#endif
+#ifndef HUMANA_HPP
+# ifndef WEAPON_HPP
+#  include "Weapon.hpp"
+# endif
 
 class HumanA
 {
@@ -25,3 +25,5 @@ class HumanA
 		 void		attack() const;
 		 HumanA(std::string name, Weapon &weapon);
 };
+
+#endif
