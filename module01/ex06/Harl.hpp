@@ -6,11 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:58:24 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/25 20:29:22 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:22:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#ifndef HARL_HPP
+# define HARL_HPP
+# include <string>
 
 class Harl
 {
@@ -27,3 +29,5 @@ class Harl
 		void    complain( std::string level );
 		int		getFunctionIndex(std::string level);
 };
+
+#endif

@@ -6,12 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 14:43:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 20:44:30 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:23:25 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+# include <iostream>
+# include <string>
 
 class Zombie
 {
@@ -25,3 +27,5 @@ class Zombie
 		Zombie() = default;
 		~Zombie();
 };
+
+#endif
