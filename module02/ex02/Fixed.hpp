@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:49 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 16:55:29 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:27:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ class Fixed
 		void setRawBits( int const raw );
 		float toFloat( void ) const;
 		int toInt( void ) const;
+		
 		static int getFractionalBitsNumber();
+		static int floatToFix(const float);
+		
 
 		/* Comparison operators */
 		Fixed operator>(const Fixed& b);

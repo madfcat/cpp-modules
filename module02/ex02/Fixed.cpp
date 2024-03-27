@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 17:00:50 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:39:09 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ const int Fixed::farctionalBitsNumber = 8;
 Fixed::Fixed()
 {
 	this->setRawBits(0);
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &otherNumber)
 {
 	this->setRawBits(otherNumber.getRawBits());
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& otherNumber)
@@ -33,33 +33,27 @@ Fixed& Fixed::operator=(const Fixed& otherNumber)
 	if (this != &otherNumber)
 	{
 		this->setRawBits(otherNumber.getRawBits());
-		std::cout << "Copy assignment operator called" << std::endl;
+		// std::cout << "Copy assignment operator called" << std::endl;
 	}
 	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value)
 {
 	setRawBits(value);
-	this->value = this->value << this->farctionalBitsNumber;
-	std::cout << "Int constructor called" << std::endl;
+	this->value = this->value << Fixed::getFractionalBitsNumber();
+	// std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed (const float value)
 {
-	int newValue;
-
-	int whole = value;
-	float fractional = value - whole;
-	newValue = whole << this->farctionalBitsNumber;
-	newValue = newValue + static_cast<int>(std::roundf(fractional * 256.0));
-	setRawBits(newValue);
-	std::cout << "Float constructor called" << std::endl;
+	setRawBits(static_cast<int>(std::roundf(value * 256.0)));
+	// std::cout << "Float constructor called" << std::endl;
 }
 
 int Fixed::getRawBits( void ) const
@@ -79,12 +73,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-	int whole = this->toInt();
-	float newFloat = static_cast<float>(whole);
-	int fractional = this->getRawBits() % 256;
-	if (fractional != 0)
-		newFloat += static_cast<float>(fractional) / 256.0;
-	return (newFloat);
+	return (static_cast<float>(this->getRawBits()) / 256.0);
 }
 
 std::ostream & operator << (std::ostream &out, const Fixed &fixed)
@@ -96,6 +85,11 @@ std::ostream & operator << (std::ostream &out, const Fixed &fixed)
 int Fixed::getFractionalBitsNumber()
 {
 	return (Fixed::farctionalBitsNumber);
+}
+
+int Fixed::floatToFix(const float floatNumber)
+{
+	return (static_cast<int>(std::roundf(floatNumber * 256.0)));
 }
 
 /* Comparison operators */
@@ -152,15 +146,16 @@ Fixed Fixed::operator*(const Fixed& b)
 {
 	Fixed newFixedNumber;
 
-	newFixedNumber.value = this->value * b.value;
+	// newFixedNumber.value = this->value * b.value;
+
+	newFixedNumber.value = static_cast<int>((unsigned long long)this->value * (unsigned long long)b.value >> Fixed::getFractionalBitsNumber());
 	return newFixedNumber;
 }
 
 Fixed Fixed::operator/(const Fixed& b)
 {
 	Fixed newFixedNumber;
-
-	newFixedNumber.value = this->value / b.value;
+	newFixedNumber.value = static_cast<int>(static_cast<unsigned long long>(this->value) << Fixed::getFractionalBitsNumber() / b.value);
 	return newFixedNumber;
 }
 
@@ -168,7 +163,7 @@ Fixed Fixed::operator/(const Fixed& b)
 
 Fixed& Fixed::operator++()
 {
-	this->value = this->toFloat() + 1/256.0;
+	this->value = Fixed::floatToFix(this->toFloat() + 1/256.0);
 	return (*this);
 }
 
@@ -181,7 +176,7 @@ Fixed Fixed::operator++(int)
 
 Fixed& Fixed::operator--()
 {
-	this->value -= 1/256.0;
+	this->value = Fixed::floatToFix(this->toFloat() + 1/256.0);
 	return (*this);
 }
 
