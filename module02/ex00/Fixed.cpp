@@ -6,33 +6,33 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 01:23:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 02:09:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-const int Fixed::farctionalBits = 8;
+const int Fixed::farctionalBitsNumber = 8;
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->setRawBits(0);
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &otherNumber)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	this->setRawBits(otherNumber.getRawBits());
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& otherNumber)
 {
 	if (this != &otherNumber)
 	{
-		std::cout << "Copy assignment operator called" << std::endl;
 		this->setRawBits(otherNumber.getRawBits());
+		std::cout << "Copy assignment operator called" << std::endl;
 	}
 	return (*this);
 }
