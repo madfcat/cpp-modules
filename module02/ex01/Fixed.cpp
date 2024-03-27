@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 03:24:01 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:42:16 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,14 @@ Fixed::Fixed (const float value)
 	int whole = value;
 	float fractional = value - whole;
 	newValue = whole << this->farctionalBitsNumber;
-	newValue = newValue + int(std::roundf(fractional * 256.0));
-
-	// std::cout << "Fract: " << static_cast<int>(fractional * (1 << this->farctionalBitsNumber)) << std::endl;
-	// std::cout << "Fract: " << int(std::roundf(fractional * 256.0)) << std::endl;
-
+	newValue = newValue + static_cast<int>(std::roundf(fractional * 256.0));
 
 	setRawBits(newValue);
-	// setRawBits(200);
 	std::cout << "Float constructor called" << std::endl;
 }
 
 int Fixed::getRawBits( void ) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return (value);
 }
 
@@ -87,10 +81,10 @@ int Fixed::toInt( void ) const
 float Fixed::toFloat( void ) const
 {
 	int whole = this->toInt();
-	float newFloat = float(whole);
+	float newFloat = static_cast<float>(whole);
 	int fractional = this->getRawBits() % 256;
 	if (fractional != 0)
-		newFloat += float(fractional) / 256.0;
+		newFloat += static_cast<float>(fractional) / 256.0;
 	return (newFloat);
 }
 
