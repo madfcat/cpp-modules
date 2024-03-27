@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 16:42:16 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:28:20 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed (const float value)
 {
-	int newValue;
-
-	int whole = value;
-	float fractional = value - whole;
-	newValue = whole << this->farctionalBitsNumber;
-	newValue = newValue + static_cast<int>(std::roundf(fractional * 256.0));
-
-	setRawBits(newValue);
+	setRawBits(static_cast<int>(std::roundf(value * 256.0)));
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -80,12 +73,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-	int whole = this->toInt();
-	float newFloat = static_cast<float>(whole);
-	int fractional = this->getRawBits() % 256;
-	if (fractional != 0)
-		newFloat += static_cast<float>(fractional) / 256.0;
-	return (newFloat);
+	return (static_cast<float>(this->getRawBits()) / 256.0);
 }
 
 std::ostream & operator << (std::ostream &out, const Fixed &fixed)
