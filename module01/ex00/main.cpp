@@ -6,12 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 14:43:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 22:03:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:38:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-// #include <string>
 
 Zombie* newZombie( std::string name );
 void randomChump( std::string name );

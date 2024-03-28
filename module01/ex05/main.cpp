@@ -6,13 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:14:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/25 20:17:08 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:42:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-#include <iostream>
-#include <string>
 
 void	test(Harl &harl, std::string level)
 {

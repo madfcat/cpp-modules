@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:58:24 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/26 14:22:18 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:42:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HARL_HPP
 # define HARLP_HPP
 # include <string>
+# include <iostream>
 
 class Harl
 {

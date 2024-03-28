@@ -6,12 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:53:36 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/25 19:33:08 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:40:06 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-#include <iostream>
 
 Harl::Harl()
 {

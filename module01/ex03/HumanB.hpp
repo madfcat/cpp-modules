@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:42:39 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/26 14:21:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:39:16 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # ifndef WEAPON_HPP
 #  include "Weapon.hpp"
 # endif
+# include <iostream>
 
 class HumanB
 {
