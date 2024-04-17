@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:23:52 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:21:54 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define MAX_CONTACTS 8
 
 # include <iostream>
-# include <cstring>
 
 // Define ANSI escape codes for colors
 # define RESET   "\033[0m"

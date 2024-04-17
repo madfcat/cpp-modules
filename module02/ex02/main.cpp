@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,162 +17,162 @@ int	main( void )
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	
-	std::cout << a << "\n";
-	std::cout << ++a << "\n";
-	std::cout << a << "\n";
-	std::cout << a++ << "\n";
-	std::cout << a << "\n";
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 	
-	std::cout << b << "\n";
+	std::cout << b << std::endl;
 	
-	std::cout << Fixed::max( a, b ) << "\n";
+	std::cout << Fixed::max( a, b ) << std::endl;
 
-/* 	std::cout << "Testing comparisson operators:" << "\n";
+/* 	std::cout << "Testing comparisson operators:" << std::endl;
 
-	std::cout << "Is more?" << "\n";
+	std::cout << "Is more?" << std::endl;
 	Fixed n1 = Fixed(1.0f);
 	n1++;
 	Fixed n2 = Fixed(1.0f);
-	std::cout << n1 << " > " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 > n2) << "\n";
-	std::cout << n1 << " > " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 > n2) << "\n";
-	std::cout << n1 << " > " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 > n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " > " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 > n2) << std::endl;
+	std::cout << n1 << " > " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 > n2) << std::endl;
+	std::cout << n1 << " > " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 > n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Is less?" << "\n";
+	std::cout << "Is less?" << std::endl;
 	n1 = Fixed(2.0f);
 	n1++;
 	n2 = Fixed(2.0f);
-	std::cout << n1 << " < " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 < n2) << "\n";
-	std::cout << n1 << " < " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 < n2) << "\n";
-	std::cout << n1 << " < " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 < n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " < " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 < n2) << std::endl;
+	std::cout << n1 << " < " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 < n2) << std::endl;
+	std::cout << n1 << " < " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 < n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Is more or equal?" << "\n";
+	std::cout << "Is more or equal?" << std::endl;
 	n1 = Fixed(2.0f);
 	n1++;
 	n2 = Fixed(2.0f);
-	std::cout << n1 << " >= " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 >= n2) << "\n";
-	std::cout << n1 << " >= " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 >= n2) << "\n";
-	std::cout << n1 << " >= " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 >= n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " >= " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 >= n2) << std::endl;
+	std::cout << n1 << " >= " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 >= n2) << std::endl;
+	std::cout << n1 << " >= " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 >= n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Is less or equal?" << "\n";
+	std::cout << "Is less or equal?" << std::endl;
 	n1 = Fixed(2.0f);
 	n1++;
 	n2 = Fixed(2.0f);
-	std::cout << n1 << " <= " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 <= n2) << "\n";
-	std::cout << n1 << " <= " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 <= n2) << "\n";
-	std::cout << n1 << " <= " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 <= n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " <= " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 <= n2) << std::endl;
+	std::cout << n1 << " <= " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 <= n2) << std::endl;
+	std::cout << n1 << " <= " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 <= n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Are equal?" << "\n";
+	std::cout << "Are equal?" << std::endl;
 	n1 = Fixed(1.0f);
 	n1++;
 	n2 = Fixed(1.0f);
-	std::cout << n1 << " == " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 == n2) << "\n";
-	std::cout << n1 << " == " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 == n2) << "\n";
-	std::cout << n1 << " == " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 == n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " == " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 == n2) << std::endl;
+	std::cout << n1 << " == " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 == n2) << std::endl;
+	std::cout << n1 << " == " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 == n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Are not equal?" << "\n";
+	std::cout << "Are not equal?" << std::endl;
 	n1 = Fixed(1.0f);
 	n1++;
 	n2 = Fixed(1.0f);
-	std::cout << n1 << " != " << n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 != n2) << "\n";
-	std::cout << n1 << " != " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 != n2) << "\n";
-	std::cout << n1 << " != " << ++n2 << "\n";
-	std::cout <<  std::boolalpha << (n1 != n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " != " << n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 != n2) << std::endl;
+	std::cout << n1 << " != " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 != n2) << std::endl;
+	std::cout << n1 << " != " << ++n2 << std::endl;
+	std::cout <<  std::boolalpha << (n1 != n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Testing arithmetic operators:" << "\n";
+	std::cout << "Testing arithmetic operators:" << std::endl;
 	n1 = Fixed(15.0f);
 	n2 = Fixed(3.0f);
-	std::cout << n1 << " + " << n2 << " = "<< n1 + n2 << "\n";
-	std::cout << n1 << " - " << n2 << " = "<< n1 - n2 << "\n";
-	std::cout << n1 << " / " << n2 << " = "<< n1 / n2 << "\n";
-	std::cout << n1 << " * " << n2 << " = "<< n1 * n2 << "\n";
+	std::cout << n1 << " + " << n2 << " = "<< n1 + n2 << std::endl;
+	std::cout << n1 << " - " << n2 << " = "<< n1 - n2 << std::endl;
+	std::cout << n1 << " / " << n2 << " = "<< n1 / n2 << std::endl;
+	std::cout << n1 << " * " << n2 << " = "<< n1 * n2 << std::endl;
 	n1 = Fixed(14.4f);
 	n2 = Fixed(0.3f);
-	std::cout << n1 << " + " << n2 << " = "<< n1 + n2 << "\n";
-	std::cout << n1 << " - " << n2 << " = "<< n1 - n2 << "\n";
-	std::cout << n1 << " / " << n2 << " = "<< n1 / n2 << "\n";
-	std::cout << n1 << " * " << n2 << " = "<< n1 * n2 << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " + " << n2 << " = "<< n1 + n2 << std::endl;
+	std::cout << n1 << " - " << n2 << " = "<< n1 - n2 << std::endl;
+	std::cout << n1 << " / " << n2 << " = "<< n1 / n2 << std::endl;
+	std::cout << n1 << " * " << n2 << " = "<< n1 * n2 << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Testing increment/decrement operators:" << "\n";
-
-	n1 = Fixed(1.0f);
-	std::cout << n1 << "\n";
-	std::cout << --n1 << " <<--- pre-decrement"<< "\n";
-	std::cout << n1 << "\n";
-	std::cout << "\n";
+	std::cout << "Testing increment/decrement operators:" << std::endl;
 
 	n1 = Fixed(1.0f);
-	std::cout << n1 << "\n";
-	std::cout << n1-- << " <<--- post-decrement"<< "\n";
-	std::cout << n1 << "\n";
-	std::cout << "\n";
+	std::cout << n1 << std::endl;
+	std::cout << --n1 << " <<--- pre-decrement"<< std::endl;
+	std::cout << n1 << std::endl;
+	std::cout << std::endl;
 
 	n1 = Fixed(1.0f);
-	std::cout << n1 << "\n";
-	std::cout << ++n1 << " <<--- pre-increment"<< "\n";
-	std::cout << n1 << "\n";
-	std::cout << "\n";
+	std::cout << n1 << std::endl;
+	std::cout << n1-- << " <<--- post-decrement"<< std::endl;
+	std::cout << n1 << std::endl;
+	std::cout << std::endl;
 
 	n1 = Fixed(1.0f);
-	std::cout << n1 << "\n";
-	std::cout << n1++ << " <<--- post-increment"<< "\n";
-	std::cout << n1 << "\n";
-	std::cout << "\n";
+	std::cout << n1 << std::endl;
+	std::cout << ++n1 << " <<--- pre-increment"<< std::endl;
+	std::cout << n1 << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Testing min/max operators:" << "\n";
 	n1 = Fixed(1.0f);
-	n2 = Fixed(1.0f);
+	std::cout << n1 << std::endl;
+	std::cout << n1++ << " <<--- post-increment"<< std::endl;
+	std::cout << n1 << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Min?" << "\n";
+	std::cout << "Testing min/max operators:" << std::endl;
 	n1 = Fixed(1.0f);
 	n2 = Fixed(1.0f);
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::min(n1, n2) << "\n";
+
+	std::cout << "Min?" << std::endl;
+	n1 = Fixed(1.0f);
+	n2 = Fixed(1.0f);
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::min(n1, n2) << std::endl;
 	n1++;
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::min(n1, n2) << "\n";
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::min(n1, n2) << std::endl;
 	n2++;
 	n2++;
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::min(n1, n2) << "\n";
-	std::cout << "\n";
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::min(n1, n2) << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "Max?" << "\n";
+	std::cout << "Max?" << std::endl;
 	n1 = Fixed(1.0f);
 	n2 = Fixed(1.0f);
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::max(n1, n2) << "\n";
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::max(n1, n2) << std::endl;
 	n1++;
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::max(n1, n2) << "\n";
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::max(n1, n2) << std::endl;
 	n2++;
 	n2++;
-	std::cout << n1 << " between " << n2 << "\n";
-	std::cout << Fixed::max(n1, n2) << "\n";
-	std::cout << "\n"; */
+	std::cout << n1 << " between " << n2 << std::endl;
+	std::cout << Fixed::max(n1, n2) << std::endl;
+	std::cout << std::endl; */
 
 	return 0;
 }

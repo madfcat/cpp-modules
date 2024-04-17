@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:14:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	test(Harl &harl, std::string level)
 {
-	std::cout << "Testing " << level << ":" << "\n";
+	std::cout << "Testing " << level << ":" << std::endl;
 	harl.complain(level);
-	std::cout << "\n";
+	std::cout << std::endl;
 }
 
 int	main(void)

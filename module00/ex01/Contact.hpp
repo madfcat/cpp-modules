@@ -6,14 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:32 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/26 14:27:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:21:55 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 # include <iostream>
-# include <cstring>
 
 class Contact
 {

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:42:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Created: 2024/04/17 16:28:23 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/04/17 17:23:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include <iostream>
 
-HumanB::HumanB(std::string name): weapon(nullptr)
+class ClapTrap
 {
-	this->name = name;
-}
+	private:
+		int	points;
+		int energyPoints;
+		int attackDamage;
 
-void	HumanB::attack() const
-{
-	if (this->weapon)
-	{
-		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
-	}
-	else
-		std::cout << this->name << " can not attack without a weapon" << std::endl;
-}
+	public:
+		ClapTrap();
+		ClapTrap(const ClapTrap& clapTrap);
+		ClapTrap& operator=(const ClapTrap& otherClapTrap);
+		~ClapTrap();
 
-void	HumanB::setWeapon(Weapon &weapon)
-{
-	this->weapon = &weapon;
-}
+		void attack(const std::string& target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
+};
