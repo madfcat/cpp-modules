@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 01:13:29 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:08:38 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@
 void PhoneBook::printIntro(void) const
 {
 	std::cout << YELLOW;
-	std::cout << "=========================================================" << std::endl;
+	std::cout << "=========================================================" << "\n";
 	std::cout << WHITE;
-	std::cout << "       ___ _      ______________  __  _______         " << std::endl;
-	std::cout << "      / _ | | /| / / __/ __/ __ \\/  |/  / __/         " << std::endl;
-	std::cout << "     / __ | |/ |/ / _/_\\ \\/ /_/ / /|_/ / _/           " << std::endl;
-	std::cout << "    /_/_|_|__/|__/___/___/\\____/_/_ /_/___/____  __ __" << std::endl;
-	std::cout << "      / _ \\/ // / __ \\/ |/ / __/ _ )/ __ \\/ __ \\/ //_/" << std::endl;
-	std::cout << "     / ___/ _  / /_/ /    / _// _  / /_/ / /_/ / ,<   " << std::endl;
-	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << std::endl << std::endl;
+	std::cout << "       ___ _      ______________  __  _______         " << "\n";
+	std::cout << "      / _ | | /| / / __/ __/ __ \\/  |/  / __/         " << "\n";
+	std::cout << "     / __ | |/ |/ / _/_\\ \\/ /_/ / /|_/ / _/           " << "\n";
+	std::cout << "    /_/_|_|__/|__/___/___/\\____/_/_ /_/___/____  __ __" << "\n";
+	std::cout << "      / _ \\/ // / __ \\/ |/ / __/ _ )/ __ \\/ __ \\/ //_/" << "\n";
+	std::cout << "     / ___/ _  / /_/ /    / _// _  / /_/ / /_/ / ,<   " << "\n";
+	std::cout << "    /_/  /_//_/\\____/_/|_/___/____/\\____/\\____/_/|_|  " << "\n" << "\n";
 	std::cout << YELLOW;
-	std::cout << "=========================================================" << std::endl;
+	std::cout << "=========================================================" << "\n";
 	std::cout << WHITE;
-	std::cout << "You can use the Awesome Phonebook with the next commands:" << std::endl;
-	std::cout << "ADD, SEARCH and EXIT" << std::endl;
-	std::cout << "=========================================================" << std::endl;
+	std::cout << "You can use the Awesome Phonebook with the next commands:" << "\n";
+	std::cout << "ADD, SEARCH and EXIT" << "\n";
+	std::cout << "=========================================================" << "\n";
 }
 
 void PhoneBook::printErrorMessage(std::string message) const
 {
-	std::cout << RED << "☹︎ " <<  message << std::endl << RESET;
+	std::cout << RED << "☹︎ " <<  message << "\n" << RESET;
 }
 
 std::string	PhoneBook::truncateField(std::string fieldName) const
@@ -95,7 +95,7 @@ int	PhoneBook::showAllContacts() const
 		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getFirstName()) << "|";
 		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getLastName()) << "|";
 		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getNickname());
-		std::cout << std::endl;
+		std::cout << "\n";
 	}
 	return (i);
 }
@@ -103,11 +103,11 @@ int	PhoneBook::showAllContacts() const
 void	PhoneBook::printContactInfo(int index) const
 {
 	const Contact contact = this->getContact(index);
-	std::cout << contact.getFirstName() << std::endl;
-	std::cout << contact.getLastName() << std::endl;
-	std::cout << contact.getNickname() << std::endl;
-	std::cout << contact.getPhoneNumber() << std::endl;
-	std::cout << contact.getDarkestSecret() << std::endl;
+	std::cout << contact.getFirstName() << "\n";
+	std::cout << contact.getLastName() << "\n";
+	std::cout << contact.getNickname() << "\n";
+	std::cout << contact.getPhoneNumber() << "\n";
+	std::cout << contact.getDarkestSecret() << "\n";
 }
 
 int	PhoneBook::addContactField(std::string msg, std::string& inputLine,  Contact& contact, MemberFunction func)
@@ -200,6 +200,6 @@ void	PhoneBook::run(void)
 			this->runSearchCommand();
 		else
 			this->printErrorMessage("No such command!");
-		std::cout << std::endl;
+		std::cout << "\n";
 	}
 }

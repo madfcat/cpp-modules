@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/23 00:54:55 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:07:56 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void Contact::setFirstName(std::string firstName)
 
 void Contact::setLastName(std::string lastName)
 {
-	// std::cout << "You are about to add " << lastName << std::endl;
 	this->lastName = lastName;
 }
 

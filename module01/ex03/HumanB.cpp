@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:42:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/28 18:39:10 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	HumanB::attack() const
 {
 	if (this->weapon)
 	{
-		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+		std::cout << this->name << " attacks with their " << this->weapon->getType() << "\n";
 	}
 	else
-		std::cout << this->name << " can not attack without a weapon" << std::endl;
+		std::cout << this->name << " can not attack without a weapon" << "\n";
 }
 
 void	HumanB::setWeapon(Weapon &weapon)
