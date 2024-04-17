@@ -6,19 +6,21 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:49 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 20:27:47 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:56:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
-#include <iostream>
+# include <iostream>
+# include <cmath>
 
 class Fixed
 {
 	private:
 		int value;
 		static const int farctionalBitsNumber;
+		static const int epsilon;
 
 	public:
 		Fixed();
@@ -33,17 +35,15 @@ class Fixed
 		float toFloat( void ) const;
 		int toInt( void ) const;
 		
-		static int getFractionalBitsNumber();
 		static int floatToFix(const float);
-		
 
 		/* Comparison operators */
-		Fixed operator>(const Fixed& b);
-		Fixed operator<(const Fixed& b);
-		Fixed operator>=(const Fixed& b);
-		Fixed operator<=(const Fixed& b);
-		Fixed operator==(const Fixed& b);
-		Fixed operator!=(const Fixed& b);
+		bool operator>(const Fixed& b);
+		bool operator<(const Fixed& b);
+		bool operator>=(const Fixed& b);
+		bool operator<=(const Fixed& b);
+		bool operator==(const Fixed& b);
+		bool operator!=(const Fixed& b);
 
 		/* Arithmetic operators */
 		Fixed operator+(const Fixed&);

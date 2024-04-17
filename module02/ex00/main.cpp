@@ -6,12 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 01:32:50 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:42:05 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
 
 int main( void ) {
 	Fixed a;

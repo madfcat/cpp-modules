@@ -6,15 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 20:39:09 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:55:50 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
-#include <cmath>
 
 const int Fixed::farctionalBitsNumber = 8;
+const int Fixed::epsilon = Fixed::floatToFix(1/256.0);
 
 Fixed::Fixed()
 {
@@ -46,7 +45,7 @@ Fixed::~Fixed()
 Fixed::Fixed(const int value)
 {
 	setRawBits(value);
-	this->value = this->value << Fixed::getFractionalBitsNumber();
+	this->value = this->value << this->farctionalBitsNumber;
 	// std::cout << "Int constructor called" << std::endl;
 }
 
@@ -68,7 +67,7 @@ void Fixed::setRawBits( int const raw )
 
 int Fixed::toInt( void ) const
 {
-	return (this->getRawBits() >> Fixed::getFractionalBitsNumber());
+	return (this->getRawBits() >> this->farctionalBitsNumber);
 }
 
 float Fixed::toFloat( void ) const
@@ -82,11 +81,6 @@ std::ostream & operator << (std::ostream &out, const Fixed &fixed)
 	return out;
 }
 
-int Fixed::getFractionalBitsNumber()
-{
-	return (Fixed::farctionalBitsNumber);
-}
-
 int Fixed::floatToFix(const float floatNumber)
 {
 	return (static_cast<int>(std::roundf(floatNumber * 256.0)));
@@ -94,34 +88,34 @@ int Fixed::floatToFix(const float floatNumber)
 
 /* Comparison operators */
 
-Fixed Fixed::operator>(const Fixed& b)
+bool Fixed::operator>(const Fixed& b)
 {
 	return (this->value > b.value);
 }
 
-Fixed Fixed::operator<(const Fixed& b)
+bool Fixed::operator<(const Fixed& b)
 {
 	return (this->value < b.value);
 }
 
-Fixed Fixed::operator>=(const Fixed& b)
+bool Fixed::operator>=(const Fixed& b)
 {
 	return (this->value >= b.value);
 }
 
-Fixed Fixed::operator<=(const Fixed& b)
+bool Fixed::operator<=(const Fixed& b)
 {
 	return (this->value <= b.value);
 }
 
-Fixed Fixed::operator==(const Fixed& b)
+bool Fixed::operator==(const Fixed& b)
 {
 	return (this->value == b.value);
 }
 
-Fixed Fixed::operator!=(const Fixed& b)
+bool Fixed::operator!=(const Fixed& b)
 {
-	return (this->value <= b.value);
+	return (this->value != b.value);
 }
 
 /* Arithmetic operators */
@@ -148,14 +142,14 @@ Fixed Fixed::operator*(const Fixed& b)
 
 	// newFixedNumber.value = this->value * b.value;
 
-	newFixedNumber.value = static_cast<int>((unsigned long long)this->value * (unsigned long long)b.value >> Fixed::getFractionalBitsNumber());
+	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) * b.value) >> this->farctionalBitsNumber);
 	return newFixedNumber;
 }
 
 Fixed Fixed::operator/(const Fixed& b)
 {
 	Fixed newFixedNumber;
-	newFixedNumber.value = static_cast<int>(static_cast<unsigned long long>(this->value) << Fixed::getFractionalBitsNumber() / b.value);
+	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) << this->farctionalBitsNumber) / b.value);
 	return newFixedNumber;
 }
 
@@ -163,7 +157,7 @@ Fixed Fixed::operator/(const Fixed& b)
 
 Fixed& Fixed::operator++()
 {
-	this->value = Fixed::floatToFix(this->toFloat() + 1/256.0);
+	this->value += Fixed::epsilon;
 	return (*this);
 }
 
@@ -176,7 +170,7 @@ Fixed Fixed::operator++(int)
 
 Fixed& Fixed::operator--()
 {
-	this->value = Fixed::floatToFix(this->toFloat() + 1/256.0);
+	this->value -= Fixed::epsilon;
 	return (*this);
 }
 

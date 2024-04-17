@@ -6,13 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/27 19:28:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:44:05 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
-#include <cmath>
 
 const int Fixed::farctionalBitsNumber = 8;
 
