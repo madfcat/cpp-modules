@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:38 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:25:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,26 @@ const Contact&	PhoneBook::getContact(int index) const
 	return (this->contacts[index]);
 }
 
+void PhoneBook::printLineSeparator() const
+{
+	std::cout << std::setw(10) << "----------" << "+";
+	std::cout << std::setw(10) << "----------" << "+";
+	std::cout << std::setw(10) << "----------" << "+";
+	std::cout << std::setw(10) << "----------";
+	std::cout << "\n";
+}
+
 int	PhoneBook::showAllContacts() const
 {
 	int i;
+	
+	this->printLineSeparator();
+	std::cout << std::setw(10) << "Index" << "|";
+	std::cout << std::setw(10) << "Name" << "|";
+	std::cout << std::setw(10) << "Surname" << "|";
+	std::cout << std::setw(10) << "Nickname";
+	std::cout << "\n";
+	this->printLineSeparator();
 	for (i = 0; i < this->currentIndex; i++)
 	{
 		std::cout << std::setw(10) << i << "|";
@@ -97,6 +114,7 @@ int	PhoneBook::showAllContacts() const
 		std::cout << std::setw(10) << this->truncateField(this->contacts[i].getNickname());
 		std::cout << "\n";
 	}
+	this->printLineSeparator();
 	return (i);
 }
 

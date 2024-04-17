@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 01:12:47 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:04:13 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 
     // Check if the file was opened successfully
     if (!scriptFile.is_open()) {
-        std::cerr << "Error: Unable to create the script file!" << "\n";
+        std::cout << "Error: Unable to create the script file!" << "\n";
         return 1;
     }
 

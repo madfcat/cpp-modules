@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:34:19 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int Fixed::farctionalBitsNumber = 8;
+const int Fixed::fractionalBitsNumber = 8;
 
 Fixed::Fixed()
 {
@@ -44,7 +44,7 @@ Fixed::~Fixed()
 Fixed::Fixed(const int value)
 {
 	setRawBits(value);
-	this->value = this->value << this->farctionalBitsNumber;
+	this->value = this->value << this->fractionalBitsNumber;
 	std::cout << "Int constructor called" << "\n";
 }
 
@@ -82,5 +82,5 @@ std::ostream & operator << (std::ostream &out, const Fixed &fixed)
 
 int Fixed::getFractionalBitsNumber()
 {
-	return (Fixed::farctionalBitsNumber);
+	return (Fixed::fractionalBitsNumber);
 }

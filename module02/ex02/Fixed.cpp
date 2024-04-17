@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:34:19 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int Fixed::farctionalBitsNumber = 8;
+const int Fixed::fractionalBitsNumber = 8;
 const int Fixed::epsilon = Fixed::floatToFix(1/256.0);
 
 Fixed::Fixed()
@@ -45,7 +45,7 @@ Fixed::~Fixed()
 Fixed::Fixed(const int value)
 {
 	setRawBits(value);
-	this->value = this->value << this->farctionalBitsNumber;
+	this->value = this->value << this->fractionalBitsNumber;
 	// std::cout << "Int constructor called" << "\n";
 }
 
@@ -67,7 +67,7 @@ void Fixed::setRawBits( int const raw )
 
 int Fixed::toInt( void ) const
 {
-	return (this->getRawBits() >> this->farctionalBitsNumber);
+	return (this->getRawBits() >> this->fractionalBitsNumber);
 }
 
 float Fixed::toFloat( void ) const
@@ -142,14 +142,14 @@ Fixed Fixed::operator*(const Fixed& b)
 
 	// newFixedNumber.value = this->value * b.value;
 
-	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) * b.value) >> this->farctionalBitsNumber);
+	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) * b.value) >> this->fractionalBitsNumber);
 	return newFixedNumber;
 }
 
 Fixed Fixed::operator/(const Fixed& b)
 {
 	Fixed newFixedNumber;
-	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) << this->farctionalBitsNumber) / b.value);
+	newFixedNumber.value = static_cast<int>((static_cast<unsigned long long>(this->value) << this->fractionalBitsNumber) / b.value);
 	return newFixedNumber;
 }
 

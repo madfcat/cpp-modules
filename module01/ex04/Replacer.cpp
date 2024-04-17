@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:23:59 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 16:08:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:04:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	Replacer::outputError(std::string message)
 {
-		std::cerr << message << "\n";
+		std::cout << message << "\n";
 		return (1);
 }
 

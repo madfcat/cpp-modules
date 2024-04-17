@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/26 14:27:15 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:23:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class PhoneBook
 		void 			incrementCurrentIndex();
 		int				getCurrentIndex() const;
 
+		void 			printLineSeparator() const;
 		int				showAllContacts() const;
 		const Contact&	getContact(int index) const;
 		void			printContactInfo(int index) const;
