@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/04/17 20:09:40 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/04/24 12:44:00 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++17
 NAME = trap
 
 SRCS = main.cpp \
-	Fixed.cpp
+	ClapTrap.cpp
 	
-HEADERS = Fixed.hpp
+HEADERS = ClapTrap.hpp
 	 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

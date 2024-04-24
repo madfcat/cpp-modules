@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 17:23:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:48:07 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 class ClapTrap
 {
 	private:
-		int	points;
-		int energyPoints;
-		int attackDamage;
+		unsigned int	points;
+		unsigned int	energyPoints;
+		unsigned int	attackDamage;
 
 	public:
 		ClapTrap();
