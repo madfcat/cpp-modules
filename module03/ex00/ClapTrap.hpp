@@ -6,21 +6,24 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/24 12:48:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:08:02 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+# include <iostream>
 
 class ClapTrap
 {
 	private:
+		std::string			name;
 		unsigned int	points;
 		unsigned int	energyPoints;
 		unsigned int	attackDamage;
 
 	public:
-		ClapTrap();
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& clapTrap);
 		ClapTrap& operator=(const ClapTrap& otherClapTrap);
 		~ClapTrap();
@@ -29,3 +32,5 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
+
+#endif

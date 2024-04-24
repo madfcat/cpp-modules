@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:40:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/24 16:27:22 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:14:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(void)
 {
 	{
-	ClapTrap clapTrap1;
+	ClapTrap clapTrap1("ClapTrap1");
 
 	clapTrap1.attack("Enemy #1");
 	clapTrap1.takeDamage(5);
@@ -24,7 +24,7 @@ int main(void)
 	std::cout << std::endl;
 	
 	{
-	ClapTrap clapTrap1;
+	ClapTrap clapTrap1("ClapTrap1");
 
 	clapTrap1.attack("Enemy #2");
 	clapTrap1.takeDamage(15);
@@ -36,12 +36,12 @@ int main(void)
 	{
 	std::cout << "====== Testing copy constructor / assignment operator ======" << std::endl;
 	// copy constructor
-	ClapTrap clapTrap1;
+	ClapTrap clapTrap1("ClapTrap1");
 	ClapTrap clapTrap2 = clapTrap1;
 	ClapTrap clapTrap3(clapTrap1);
 
 	// assignment operator
-	ClapTrap clapTrap4;
+	ClapTrap clapTrap4("ClapTrap4");
 	clapTrap4 = clapTrap1;
 	std::cout << "clapTrap1:" << std::endl;
 	clapTrap1.takeDamage(1);
