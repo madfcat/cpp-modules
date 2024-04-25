@@ -6,14 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:43:03 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/24 18:03:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:41:00 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 # ifndef CLAPTRAP_HPP
-# include "ClapTrap.hpp"
+#  include "ClapTrap.hpp"
 # endif
 
 class ScavTrap: public ClapTrap
