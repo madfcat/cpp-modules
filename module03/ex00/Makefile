@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/04/24 12:44:00 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/04/25 16:26:21 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,14 @@ NAME = trap
 
 SRCS = main.cpp \
 	ClapTrap.cpp
-	
-HEADERS = ClapTrap.hpp
 	 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
-CLASS_HEADERS = $(CLASS_SRCS:.cpp=.hpp)
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(COMPILER) $(FLAGS) $(OBJS) $(CLASS_HEADERS) -o $(NAME)
+	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
