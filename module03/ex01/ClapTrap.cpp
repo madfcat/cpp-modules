@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/24 17:55:30 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:52:09 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,48 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (this->points == 0)
 	{
-		std::cout <<  this->name << ": ClapTrap  can't attack. It is already dead." << std::endl;
+		std::cout <<  this->name << ": ClapTrap can't attack. It is already dead." << std::endl;
 		return ;
 	}
 	else if (this->energyPoints == 0)
 	{
-		std::cout << this->name << ": ClapTrap  has no energy points." << std::endl;
+		std::cout << this->name << ": ClapTrap has no energy points." << std::endl;
 		return ;
 	}
-	std::cout << this->name << ": ClapTrap  attacks " << target << ", causing " << this->attackDamage << " points of damage!"<< std::endl;
+	std::cout << this->name << ": ClapTrap attacks " << target << ", causing " << this->attackDamage << " points of damage!"<< std::endl;
 	this->energyPoints -= 1;
-	std::cout << this->name << ": ClapTrap  lost 1 energy point." << std::endl;
+	std::cout << this->name << ": ClapTrap lost 1 energy point." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->points == 0)
 	{
-		std::cout << this->name << ": ClapTrap  can't take any damage. It is already dead." << std::endl;
+		std::cout << this->name << ": ClapTrap can't take any damage. It is already dead." << std::endl;
 		return ;
 	}
 	else if (this->energyPoints == 0)
 	{
-		std::cout << this->name << ": ClapTrap  has no energy points. " << std::endl;
+		std::cout << this->name << ": ClapTrap has no energy points. " << std::endl;
 		return ;
 	}
 	if (amount > this->points)
 		this->points = 0;
 	else
 		this->points -= amount;
-	std::cout << this->name << ": ClapTrap  is damaged by " << amount << " points. " << this->name << " hit points: " << this->points << std::endl;
+	std::cout << this->name << ": ClapTrap is damaged by " << amount << " points. " << this->name << " hit points: " << this->points << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->points == 0)
 	{
-		std::cout << this->name << ": ClapTrap  can't be repaired. It is already dead." << std::endl;
+		std::cout << this->name << ": ClapTrap can't be repaired. It is already dead." << std::endl;
 		return ;
 	}
 	else if (this->energyPoints == 0)
 	{
-		std::cout << this->name << ": ClapTrap  has no energy points." << std::endl;
+		std::cout << this->name << ": ClapTrap has no energy points." << std::endl;
 		return ;
 	}
 	this->points += amount;
