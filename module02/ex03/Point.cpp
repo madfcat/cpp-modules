@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:49:40 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 15:27:21 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:33:21 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Point::Point(const Point &point): x(Fixed(point.getX())), y(Fixed(point.getY()))
 
 Point& Point::operator=(const Point& point)
 {
+	(void)point;
 	return (*this);
 }
 
