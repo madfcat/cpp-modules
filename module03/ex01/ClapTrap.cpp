@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 15:57:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:46:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name): name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
+{
 	std::cout << this->name << ": ClapTrap constructor called." << std::endl;
 	std::cout << this->name << ": Hit points = " << this->hitPoints << std::endl;
 	std::cout << this->name << ": Energy points = " << this->energyPoints << std::endl;
@@ -59,7 +60,7 @@ void	ClapTrap::attack(const std::string& target)
 	}
 	std::cout << this->name << ": ClapTrap attacks " << target << ", causing " << this->attackDamage << " points of damage!"<< std::endl;
 	this->energyPoints -= 1;
-	std::cout << this->name << ": ClapTrap lost 1 energy point." << std::endl;
+	std::cout << this->name << ": ClapTrap lost 1 energy point. Energy points left: " << this->energyPoints << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -94,7 +95,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	}
 	this->hitPoints += amount;
-	std::cout << this->name << ": ClapTrap  is repaired by " << amount << " points. " << this->name << " hit points: " << this->hitPoints << std::endl;
+	std::cout << this->name << ": ClapTrap is repaired by " << amount << " points. " << this->name << " hit points: " << this->hitPoints << std::endl;
 	this->energyPoints -= 1;
-	std::cout << this->name << ": ClapTrap  lost 1 energy point." << std::endl;
+	std::cout << this->name << ": ClapTrap lost 1 energy point. Energy points left: " << this->energyPoints << std::endl;
 }

@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:43:01 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/26 12:02:00 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:54:22 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->hitPoints = 100;
     this->energyPoints = 50;
@@ -31,13 +31,12 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
-	std::cout << this->name << ": ScavTrap assignation operator called." << std::endl;
+	std::cout << this->name << ": ScavTrap assignment operator called." << std::endl;
 	if (this != &other)
 	{
 		ClapTrap::operator=(other);
 	}
 	return (*this);
-
 }
 
 ScavTrap::~ScavTrap()
