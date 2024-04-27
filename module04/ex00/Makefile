@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/04/27 17:36:33 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/04/27 18:06:19 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ NAME = animal
 SRCS = main.cpp \
 	Animal.cpp \
 	Cat.cpp \
-	Dog.cpp
+	Dog.cpp \
+	WrongAnimal.cpp \
+	WrongCat.cpp
 	 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

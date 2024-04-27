@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:33 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 17:34:53 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/27 18:08:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ Dog::~Dog()
 
 void Dog::makeSound() const
 {
-	std::cout << "Woof" << std::endl;
+	std::cout << this->type << " makes sound: Woof" << std::endl;
 }

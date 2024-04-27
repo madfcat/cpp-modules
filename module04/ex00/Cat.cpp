@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 17:22:43 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/27 18:08:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ Cat::~Cat()
 
 void Cat::makeSound() const
 {
-	std::cout << "Meow" << std::endl;
+	std::cout << this->type << " makes sound: Meow" << std::endl;
 }
