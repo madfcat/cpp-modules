@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 18:06:57 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:39:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,28 @@ int main() {
 
 		delete (meta);
 		delete (i);
+	}
+
+	std::cout << std::endl;
+	{	
+		std::cout << " " << std::endl;
+		std::cout << "====== Testing copy constructor ======" << std::endl;
+		const Cat* firstCat = new Cat();
+		const Cat* secondCat = new Cat(*firstCat);
+
+		delete (firstCat);
+		delete (secondCat);
+
+		std::cout << std::endl;
+		std::cout << "====== Testing assignment operator ======" << std::endl;
+		Cat someCat;
+		Cat& referenceCat = someCat;
+		std::cout << "== Creating dynamically allocated thirdCat:" << std::endl;
+		Cat* thirdCat = new Cat();
+		std::cout << "== Assignment operator:" << std::endl;
+		referenceCat = *thirdCat;
+
+		delete (thirdCat);
 	}
 
 	return (0);

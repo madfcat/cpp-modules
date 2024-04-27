@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 18:08:47 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:27:18 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Cat::Cat(const Cat& other) : Animal(other)
 
 Cat& Cat::operator=(const Cat& other)
 {
-	std::cout << "Cat assignation operator called" << std::endl;
+	std::cout << "Cat assignment operator called" << std::endl;
 	if (this != &other)
 		Animal::operator=(other);
 	return (*this);

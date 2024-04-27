@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:33 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 18:08:47 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:20:55 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Dog::Dog(const Dog& other) : Animal(other)
 
 Dog& Dog::operator=(const Dog& other)
 {
-	std::cout << "Dog assignation operator called" << std::endl;
+	std::cout << "Dog assignment operator called" << std::endl;
 	if (this != &other)
 		Animal::operator=(other);
 	return (*this);
