@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 17:42:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/28 21:46:13 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ Cat::Cat() : Animal()
 	std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other)
+Cat::Cat(const Cat& other) : Animal(other), brain(new Brain())
 {
 	for (int i = 0; i < 100; i++)
+	{
+		// std::cout <<  other.brain->getIdea(i) << std::endl;
 		this->brain->setIdea(i, other.brain->getIdea(i));
+	}
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:33 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 18:00:55 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/28 22:12:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{
+		delete (this->brain);
+		this->brain = new Brain();
+		
 		Animal::operator=(other);
 		for (int i = 0; i < 100; i++)
 			this->brain->setIdea(i, other.brain->getIdea(i));
@@ -43,7 +46,7 @@ Dog& Dog::operator=(const Dog& other)
 
 Dog::~Dog()
 {
-	delete this->brain;
+	delete (this->brain);
 	std::cout << "Dog destructor called" << std::endl;
 }
 

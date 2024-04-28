@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 19:39:58 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/28 21:50:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int main() {
 		std::cout << "====== Testing copy constructor ======" << std::endl;
 		const Cat* firstCat = new Cat();
 		const Cat* secondCat = new Cat(*firstCat);
+		std::cout << "== secondCat type: " << secondCat->getType() << std::endl;
 
 		delete (firstCat);
 		delete (secondCat);
@@ -64,6 +65,7 @@ int main() {
 		Cat* thirdCat = new Cat();
 		std::cout << "== Assignment operator:" << std::endl;
 		referenceCat = *thirdCat;
+		std::cout << "== referenceCat type: " << referenceCat.getType() << std::endl;
 
 		delete (thirdCat);
 	}

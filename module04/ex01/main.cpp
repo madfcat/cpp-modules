@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 18:05:35 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/28 22:15:37 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int main() {
 			delete animals[i];
 	} */
 
-	std::cout << std::endl;
+/* 	std::cout << std::endl;
 	std::cout << "====== Shallow copy constructor test ======" << std::endl;
 	{
 		const int n = 2;
@@ -98,7 +98,7 @@ int main() {
 		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 
 		std::cout << "== Let's change copyDog and now check copyDog and original" << std::endl;
-		reinterpret_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "Hello world!");
+		reinterpret_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "New Dog Idea #15: Changed my mind with this idea!);
 		std::cout << reinterpret_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
 		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 		std::cout << "== Now let's remove animals array" << std::endl;
@@ -106,6 +106,44 @@ int main() {
 			delete animals[i];
 		std::cout << "== And finally remove copyDog" << std::endl;
 		delete copyDog;
+	} */
+
+	std::cout << std::endl;
+	std::cout << "====== Shallow assignment constructor test ======" << std::endl;
+	{
+		const int n = 2;
+		Animal* animals[n];
+
+		for (int i = 0; i < n; i++)
+		{
+			if (i % 2 == 0)
+			{
+				animals[i] = new Dog();
+				fill_ideas(i, animals[i]->getType(), reinterpret_cast<Dog*>(animals[i])->getBrain());
+			}
+			else
+			{
+				animals[i] = new Cat();
+				fill_ideas(i, animals[i]->getType(), reinterpret_cast<Cat*>(animals[i])->getBrain());
+			}
+		}
+		Animal* firstDog = new Dog();
+		Dog& referenceDog = reinterpret_cast<Dog&>(*firstDog);
+		std::cout << "== Assignment operator: " << std::endl;
+		referenceDog = reinterpret_cast<Dog&>(*animals[0]);
+		
+		std::cout << "== Let's check referenceDog and original" << std::endl;
+		std::cout << reinterpret_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
+		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
+
+		std::cout << "== Let's change referenceDog and now check referenceDog and original" << std::endl;
+		reinterpret_cast<Dog&>(referenceDog).getBrain()->setIdea(15, "New Dog Idea #15: Changed my mind with this idea!");
+		std::cout << reinterpret_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
+		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
+		std::cout << "== Now let's remove animals array" << std::endl;
+		for (int i = 0; i < n; i++)
+			delete animals[i];
+		delete (firstDog);
 	}
 
 	return (0);
