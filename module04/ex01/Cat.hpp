@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:30 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 17:08:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:39:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ class Cat : public Animal
 		Cat();
 		Cat(const Cat& other);
 		Cat& operator=(const Cat& other);
-		~Cat();
+		~Cat() override;
 
-		void	makeSound() const;
+		void	makeSound() const override;
 		Brain*	getBrain() const;
 };
 

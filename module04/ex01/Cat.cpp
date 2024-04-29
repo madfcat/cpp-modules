@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:46:13 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:34:01 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Cat& Cat::operator=(const Cat& other)
 
 Cat::~Cat()
 {
-	delete this->brain;
+	delete (this->brain);
 	std::cout << "Cat destructor called" << std::endl;
 }
 
