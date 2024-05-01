@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:36:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/29 14:29:59 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/04/30 01:29:23 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ class Animal
 		Animal();
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
-		virtual ~Animal();
 
 	public:
-
+		virtual ~Animal();
 		std::string getType() const;
 		virtual void 		makeSound() const;
 };
