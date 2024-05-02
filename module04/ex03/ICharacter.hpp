@@ -6,18 +6,23 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:32:13 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/01 14:53:27 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:30:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 # include <iostream>
+# ifndef AMATERIA_HPP
+#  include "AMateria.hpp"
+# endif
 
 class ICharacter
 {
 	private:
 		std::string name;
+		static const int inventorySize = 4;
+		AMateria *inventory[inventorySize];
 
 	public:
 		ICharacter(const std::string& name);

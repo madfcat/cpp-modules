@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/04/29 14:47:08 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/02 15:50:16 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,11 @@ FLAGS = -Wall -Wextra -Werror -std=c++17 -g
 NAME = materia
 
 SRCS = main.cpp \
+		AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

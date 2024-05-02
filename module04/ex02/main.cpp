@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/02 14:24:38 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:25:53 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ int main() {
 	/* {
 		Animal animal = Animal();
 	} */
-
 
 	return (0);
 }

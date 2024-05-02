@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/01 14:22:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:47:59 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 
 class Cure: public AMateria
 {
-	private:
-		std::string name;
-
 	public:
 		Cure();
 		Cure(const Cure* other);
@@ -32,8 +29,6 @@ class Cure: public AMateria
 
 		AMateria* clone() const;
 		void use(ICharacter& target);
-
-		const std::string& getName() const;
 };
 
 #endif
