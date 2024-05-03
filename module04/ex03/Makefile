@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/05/03 16:02:28 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/03 16:07:38 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,6 @@ SRCS = main.cpp \
 		Cure.cpp \
 		Ice.cpp \
 		MateriaSource.cpp
-
-HEADERS = ICharacter.hpp \
-		IMateriaSource.hpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

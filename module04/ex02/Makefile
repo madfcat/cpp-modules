@@ -6,12 +6,12 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/04/28 17:51:57 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/03 14:28:11 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = c++
-FLAGS = -Wall -Wextra -Werror -std=c++17 -g
+FLAGS = -Wall -Wextra -Werror -std=c++17
 
 NAME = animal
 
