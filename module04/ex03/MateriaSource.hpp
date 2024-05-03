@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 14:55:58 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 15:16:31 by vshchuki         ###   ########.fr       */
+/*   Created: 2024/05/03 14:51:53 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/05/03 15:35:48 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMATERIASOURCE_HPP
-# define IMATERIASOURCE_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 # ifndef AMATERIA_HPP
 #  include "AMateria.hpp"
 # endif
+# ifndef IMATERIASOURCE_HPP
+#  include "IMateriaSource.hpp"
+# endif
 # include <iostream>
 
-class IMateriaSource
+class MateriaSource : public IMateriaSource
 {
+	private:
+		static const int storageSize = 4;
+		AMateria* storage[storageSize];
+
 	public:
-		virtual ~IMateriaSource() {};
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
+		MateriaSource();
+		MateriaSource(const MateriaSource& other);
+		MateriaSource& operator=(const MateriaSource& other);
+
+		~MateriaSource() override;
+		void learnMateria(AMateria*) override;
+		AMateria* createMateria(std::string const & type) override;
 };
 
 #endif

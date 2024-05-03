@@ -6,12 +6,12 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/05/02 15:50:16 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/03 16:02:28 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = c++
-FLAGS = -Wall -Wextra -Werror -std=c++17 -g
+FLAGS = -Wall -Wextra -Werror -std=c++17
 
 NAME = materia
 
@@ -21,6 +21,9 @@ SRCS = main.cpp \
 		Cure.cpp \
 		Ice.cpp \
 		MateriaSource.cpp
+
+HEADERS = ICharacter.hpp \
+		IMateriaSource.hpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/02 16:00:06 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:58:56 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ class Ice: public AMateria
 {
 	public:
 		Ice();
-		Ice(const Ice* other);
+		Ice(const Ice& other);
 		Ice& operator=(const Ice& other);
-		~Ice();
+		~Ice() override;
 
-		AMateria* clone() const;
-		void use(ICharacter& target);
+		AMateria* clone() const override;
+		void use(ICharacter& target) override;
 };
 
 #endif
