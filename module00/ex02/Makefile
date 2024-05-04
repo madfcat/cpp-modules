@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/23 14:16:37 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/24 03:52:25 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/04 16:30:09 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,12 @@ NAME = dream_job
 SRCS = Account.cpp \
 	tests.cpp
 
-HEADERS = Account.hpp
-
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS) $(HEADERS)
+$(NAME): $(OBJ_DIR) $(OBJS)
 	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
