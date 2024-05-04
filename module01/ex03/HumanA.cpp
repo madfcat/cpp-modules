@@ -6,15 +6,15 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:42:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:29:09 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA( std::string name, Weapon &weapon) : weapon(weapon)
+HumanA::HumanA( std::string name, Weapon &weapon) : weapon(weapon), name(name)
 {
-	this->name = name;
+	std::cout << this->name << " is being created." << std::endl;
 }
 
 void	HumanA::attack() const
