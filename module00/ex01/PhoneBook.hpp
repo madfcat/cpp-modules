@@ -6,14 +6,15 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 17:21:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:24:57 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-
+# ifndef CONTACT_HPP
 # include "Contact.hpp"
+# endif
 # define MAX_CONTACTS 8
 
 # include <iostream>

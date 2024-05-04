@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:09:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int	PhoneBook::addContactField(std::string msg, std::string& inputLine,  Contact
 	std::getline(std::cin, inputLine);
 	if (inputLine.length() == 0)
 	{
-		this->printErrorMessage( "Try again!");
+		this->printErrorMessage( "A saved contact can’t have empty fields. Try again!");
 		return (EXIT_FAILURE);
 	}
 	(contact.*func)(inputLine);

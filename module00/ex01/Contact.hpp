@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:32 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 17:21:55 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:23:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Contact
 
 	public:
 		Contact();
-		// ~Contact();
+ 
 		void		setFirstName(std::string firstName);
 		void		setLastName(std::string lastName);
 		void		setNickname(std::string nickname);
