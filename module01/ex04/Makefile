@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 21:25:22 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/27 00:22:58 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/04 16:46:53 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,8 @@ NAME = losersed
 SRCS = main.cpp \
 	Replacer.cpp
 
-HEADERS = Replacer.hpp
-
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
-
-CLASS_HEADERS = $(CLASS_SRCS:.cpp=.hpp)
 
 TESTER_NAME = tester
 TESTER_SRCS = tester.cpp
@@ -33,7 +29,7 @@ TESTER_OBJS = $(addprefix $(TESTER_OBJ_DIR), $(TESTER_SRCS:.cpp=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(COMPILER) $(FLAGS) $(OBJS) $(CLASS_HEADERS) -o $(NAME)
+	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
