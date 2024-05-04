@@ -6,12 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:17 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:53:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cctype>
 
 void convertToUpperCase(char *str)
 {
@@ -44,3 +43,4 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
+
