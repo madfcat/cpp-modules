@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/29 22:19:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:29:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /**
  * Inspired by: https://www.geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle-or-not/
 */
-bool bsp( Point const &a, Point const &b, Point const &c, Point const &point)
+bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
 	Fixed zero = Fixed(0.0f);
    	Fixed one = Fixed(1.0f);

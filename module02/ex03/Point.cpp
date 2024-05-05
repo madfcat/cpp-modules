@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:49:40 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 15:33:21 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:28:17 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,3 @@ Fixed Point::getY(void) const
 {
 	return (this->y);
 }
-
-// void Point::setX(const Fixed x)
-// {
-// 	this->x = x;
-// }
-
-// void Point::setY(const Fixed y)
-// {
-// 	this->y = y;
-// }

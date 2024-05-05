@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:25:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ float Fixed::toFloat( void ) const
 	return (static_cast<float>(this->getRawBits()) / 256.0);
 }
 
-std::ostream & operator << (std::ostream &out, const Fixed &fixed)
+std::ostream & operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
-	return out;
+	return (out);
 }
 
 int Fixed::getFractionalBitsNumber()
