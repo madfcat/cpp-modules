@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/24 21:25:22 by vshchuki          #+#    #+#              #
-#    Updated: 2024/05/04 16:46:53 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/05 16:33:54 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,12 +51,13 @@ $(TESTER_NAME): $(TESTER_OBJ_DIR) $(TESTER_OBJS) $(NAME)
 	$(COMPILER) $(FLAGS) $(TESTER_OBJS) -o $(TESTER_NAME)
 
 clean_tester:
+	rm -f *.replace
+	rm -f *.txt
 	rm -rf $(TESTER_OBJ_DIR)
 
 fclean_tester:
 	rm -f tests.sh
 	rm -f $(TESTER_NAME)
-
 
 clean: clean_tester
 	rm -rf $(OBJ_DIR)

@@ -6,12 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 14:43:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:02:07 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
 
 int main(void)
 {

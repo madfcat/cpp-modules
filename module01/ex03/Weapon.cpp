@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:43:01 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/04 17:30:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:07:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Weapon::Weapon(std::string type) : type(type)
 	std::cout << "Weapon of type: \"" << this->type << "\" is being created." << std::endl;
 }
 
-std::string	Weapon::getType() const
+const std::string&	Weapon::getType() const
 {
 	return (this->type);
 }

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:23:57 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/26 14:22:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:15:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,4 @@ class Replacer
 		static int			outputError(std::string message);
 };
 
-#endif REPLACER_HPP
+#endif
