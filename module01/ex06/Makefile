@@ -6,14 +6,14 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 16:14:26 by vshchuki          #+#    #+#              #
-#    Updated: 2024/05/04 16:47:19 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/05 17:00:32 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17
 
-NAME = harlFilter
+NAME = harl_filter
 
 SRCS = main.cpp \
 	Harl.cpp
