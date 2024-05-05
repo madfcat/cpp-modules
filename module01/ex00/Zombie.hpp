@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 14:43:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/04 16:56:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 14:06:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ class Zombie
 {
 	private:
 		std::string name;
-
 
 	public:
 		void announce(void);
