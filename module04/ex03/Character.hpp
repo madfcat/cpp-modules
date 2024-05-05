@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 14:06:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:51:32 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #  include "ICharacter.hpp"
 # endif
 # include <iostream>
+# include <string>
 
 class Character: public ICharacter
 {

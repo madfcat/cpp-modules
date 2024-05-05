@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:39:20 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/26 13:55:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:49:35 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # ifndef CLAPTRAP_HPP
 #  include "ClapTrap.hpp"
 # endif
+# include <iostream>
+# include <string>
 
 class FragTrap: virtual public ClapTrap
 {

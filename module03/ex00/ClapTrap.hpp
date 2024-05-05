@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 15:51:02 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:48:17 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 # include <iostream>
+# include <string>
 
 class ClapTrap
 {

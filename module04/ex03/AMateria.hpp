@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:47:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 15:53:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:51:23 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 # include <iostream>
+# include <string>
 
 class ICharacter;
 

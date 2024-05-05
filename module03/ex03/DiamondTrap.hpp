@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:17:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/26 15:48:39 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:49:07 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 # include <iostream>
+# include <string>
 # ifndef SCAVTRAP_HPP
 #  include "ScavTrap.hpp"
 # endif

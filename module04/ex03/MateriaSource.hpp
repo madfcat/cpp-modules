@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 15:35:48 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:52:13 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #  include "IMateriaSource.hpp"
 # endif
 # include <iostream>
+# include <string>
 
 class MateriaSource : public IMateriaSource
 {

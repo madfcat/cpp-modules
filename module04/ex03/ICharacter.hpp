@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:32:13 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 14:09:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:51:49 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 # include <iostream>
+# include <string>
 # ifndef AMATERIA_HPP
 #  include "AMateria.hpp"
 # endif
