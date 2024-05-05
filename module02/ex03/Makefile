@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 02:55:10 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/28 00:49:01 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/05 18:40:53 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,16 @@ NAME = fixed
 
 SRCS = main.cpp \
 	Fixed.cpp \
-	Point.cpp
-	
-HEADERS = Fixed.hpp \
-	Point.hpp
+	Point.cpp \
+	bsp.cpp
 	 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
-CLASS_HEADERS = $(CLASS_SRCS:.cpp=.hpp)
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(COMPILER) $(FLAGS) $(OBJS) $(CLASS_HEADERS) -o $(NAME)
+	$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

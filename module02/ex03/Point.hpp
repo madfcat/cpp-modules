@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 23:00:12 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/05 16:12:02 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:49:33 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ class Point
 		Fixed getY(void) const;
 		void setX(const Fixed);
 		void setY(const Fixed);
-
-		// bool bsp( Point const a, Point const b, Point const c, Point const point);
 };
 
 #endif

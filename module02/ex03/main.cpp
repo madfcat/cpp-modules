@@ -6,69 +6,72 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 17:29:27 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:43:41 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 #include "Point.hpp"
+#include <iostream>
 
-/**
- * Inspired by: https://www.geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle-or-not/
-*/
-bool bsp( Point const a, Point const b, Point const c, Point const point)
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+
+void printCoordinates(Point const point)
 {
-	Fixed zero = Fixed(0.0f);
-   	Fixed one = Fixed(1.0f);
-
-	Fixed denominator = ((b.getY() - c.getY()) * (a.getX() - c.getX()) + (c.getX() - b.getX()) * (a.getY() - c.getY()));
-	if (denominator.abs() == Fixed())
-		return (false);
-
-	Fixed w1 = ((b.getY() - c.getY()) * (point.getX() - c.getX()) + (c.getX() - b.getX()) * (point.getY() - c.getY())) / denominator;
-	Fixed w2 = ((c.getY() - a.getY()) * (point.getX() - c.getX()) + (a.getX() - c.getX()) * (point.getY() - c.getY())) / denominator;
-	return (w1 > zero && w2 > zero && (w1 + w2) < one);
+	std::cout << "X: " << point.getX() << " Y: " << point.getY() << std::endl;
 }
-
+/**
+ * Testing: https://www.desmos.com/calculator
+*/
 int	main( void )
 {
 	Point a1(0.0f, 0.0f);
 	Point b1(4.0f, 0.0f);
 	Point c1(2.0f, 4.0f);
-	Point p1(3.0f, 1.0f);
-	std::cout << std::boolalpha << "Res: " << bsp(a1, b1, c1, p1) << std::endl;
+	Point p11(3.0f, 1.0f);
+	Point p12(5.0f, 1.0f);
+	std::cout << std::boolalpha << "Test1-1: " << bsp(a1, b1, c1, p11) << std::endl;
+	std::cout << std::boolalpha << "Test1-2: " << bsp(a1, b1, c1, p12) << std::endl;
 	std::cout << "----" << std::endl;
 
 	Point a2(0.0f, 0.0f);
-	Point b2(4.0f, 0.0f);
-	Point c2(2.0f, 4.0f);
-	Point p2(5.0f, 1.0f);
-	std::cout << std::boolalpha << "Res: " << bsp(a2, b2, c2, p2) << std::endl;
+	Point b2(0.0f, 5.0f);
+	Point c2(5.0f, 0.0f);
+	Point p21(2.0f, 2.0f);
+	Point p22(15.0f, 15.0f);
+	Point p23(0.5f, 5.0f);
+	std::cout << std::boolalpha << "Test2-1: " << bsp(a2, b2, c2, p21) << std::endl;
+	std::cout << std::boolalpha << "Test2-2: " << bsp(a2, b2, c2, p22) << std::endl;
+	std::cout << std::boolalpha << "Test2-3: " << bsp(a2, b2, c2, p23) << std::endl;
 	std::cout << "----" << std::endl;
 
-	Point a3(0.0f, 0.0f);
-	Point b3(0.0f, 5.0f);
-	Point c3(5.0f, 0.0f);
-	Point p3(15.0f, 15.0f);
-	std::cout << std::boolalpha << "Res: " << bsp(a3, b3, c3, p3) << std::endl;
+	Point a3(0, 0);
+	Point b3(10, 30);
+	Point c3(20, 0);
+	Point p31(10, 0);
+	Point p32(10, 30);
+	std::cout << std::boolalpha << "Test3-1: " << bsp(a3, b3, c3, p31) << std::endl;
+	std::cout << std::boolalpha << "Test3-2: " << bsp(a3, b3, c3, p32) << std::endl;
 	std::cout << "----" << std::endl;
 
-	Point a4(0.0f, 0.0f);
-	Point b4(0.0f, 5.0f);
-	Point c4(5.0f, 0.0f);
-	Point p4(0.5f, 5.0f);
-	std::cout << std::boolalpha << "Res: " << bsp(a4, b4, c4, p4) << std::endl;
+	Point a4(4.7f, 9.0f);
+	Point b4(-2.0f, -5.3f);
+	Point c4(-1.6f, 7.8f);
+	printCoordinates(a4);
+	printCoordinates(b4);
+	printCoordinates(c4);
+	Point p41(2.0f, 2.0f);
+	Point p42(0.0f, -1.5f);
+	Point p43(0.5f, 5.0f);
+	printCoordinates(p41);
+	printCoordinates(p42);
+	printCoordinates(p43);
+	std::cout << std::boolalpha << "Test4-1: " << bsp(a4, b4, c4, p41) << std::endl;
+	std::cout << std::boolalpha << "Test4-2: " << bsp(a4, b4, c4, p42) << std::endl;
+	std::cout << std::boolalpha << "Test4-3: " << bsp(a4, b4, c4, p43) << std::endl;
+	std::cout << std::boolalpha << "Test4-4: " << bsp(a4, b4, c4, a4) << std::endl;
+	std::cout << std::boolalpha << "Test4-4: " << bsp(a4, b4, c4, b4) << std::endl;
+	std::cout << std::boolalpha << "Test4-4: " << bsp(a4, b4, c4, c4) << std::endl;
 	std::cout << "----" << std::endl;
 
-	Point a5(0, 0);
-	Point b5(10, 30);
-	Point c5(20, 0);
-	Point p5(10, 0);
-	Point p6(10, 30);
-	std::cout << std::boolalpha << "Res: " << bsp(a5, b5, c5, p5) << std::endl;
-	std::cout << "----" << std::endl;
-	std::cout << std::boolalpha << "Res: " << bsp(a5, b5, c5, p6) << std::endl;
-	std::cout << "----" << std::endl;
-
-	return 0;
+	return (0);
 }

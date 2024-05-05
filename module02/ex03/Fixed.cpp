@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/29 02:43:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:44:34 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,6 @@ bool Fixed::operator!=(const Fixed& b)
 {
 	return (this->value != b.value);
 }
-
-// bool Fixed::operator==(const Fixed& b)
-// {
-// 	return (std::abs(this->value - b.value) < Fixed::epsilon);
-// }
-
-// bool Fixed::operator!=(const Fixed& b)
-// {
-// 	return (std::abs(this->value - b.value) > Fixed::epsilon);
-// }
 
 /* Arithmetic operators */
 
