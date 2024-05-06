@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:40:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 22:42:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:31:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ int main(void)
 	scavTrap3.takeDamage(0);
 	scavTrap3.takeDamage(100);
 	scavTrap3.takeDamage(1);
-
 	}
 	std::cout << std::endl;
 
-		{
+	{
 	std::cout << "====== Testing copy constructor / assignment operator ======" << std::endl;
 	// copy constructor
 	ScavTrap scavTrap1("ScavTrap1");

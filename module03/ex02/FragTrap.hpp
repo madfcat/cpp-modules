@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:39:20 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/26 13:55:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:40:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #  include "ClapTrap.hpp"
 # endif
 
-class FragTrap: virtual public ClapTrap
+class FragTrap: public ClapTrap
 {
 	public:
 		using ClapTrap::ClapTrap;

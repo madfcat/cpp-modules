@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:43:01 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/26 14:18:39 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:33:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << this->name << ": Energy points = " << this->energyPoints << std::endl;
 	std::cout << this->name << ": Attack points = " << this->attackDamage << std::endl;
 }
-
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
@@ -58,7 +57,7 @@ void	ScavTrap::attack(const std::string& target)
 	}
 	std::cout << this->name << ": ScavTrap attacks " << target << ", causing " << this->attackDamage << " points of damage!"<< std::endl;
 	this->energyPoints -= 1;
-	std::cout << this->name << ": ScavTrap lost 1 energy point." << std::endl;
+	std::cout << this->name << ": ScavTrap lost 1 energy point. Energy points left: " << this->energyPoints << std::endl;
 }
 
 void ScavTrap::guardGate()
