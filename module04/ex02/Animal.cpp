@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:36:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:44:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:34:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,4 @@ Animal::~Animal()
 std::string Animal::getType() const
 {
 	return (this->type);
-}
-
-void Animal::makeSound() const
-{
-	std::cout << this->type << " makes sound: Animal sound" << std::endl;
 }

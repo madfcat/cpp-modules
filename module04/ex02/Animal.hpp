@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:36:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/30 01:29:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:01 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 # include <iostream>
+# include <string>
 
 class Animal
 {
@@ -25,7 +26,7 @@ class Animal
 	public:
 		virtual ~Animal();
 		std::string getType() const;
-		virtual void 		makeSound() const;
+		virtual void 		makeSound() const = 0;
 };
 
 #endif

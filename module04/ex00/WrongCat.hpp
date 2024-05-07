@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:30 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/27 18:05:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:48 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # ifndef WRONG_ANIMAL_HPP
 #  include "WrongAnimal.hpp"
 # endif
+# include <iostream>
 
 class WrongCat : public WrongAnimal
 {

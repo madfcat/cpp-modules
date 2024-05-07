@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 15:58:35 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:39:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # ifndef ICHARACTER_HPP
 #  include "ICharacter.hpp"
 # endif
+# include <iostream>
 
 class Cure: public AMateria
 {

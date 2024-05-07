@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:55:58 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:52:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:39:36 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # ifndef AMATERIA_HPP
 #  include "AMateria.hpp"
 # endif
-# include <iostream>
 # include <string>
 
 class IMateriaSource

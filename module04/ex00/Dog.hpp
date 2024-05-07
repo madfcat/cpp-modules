@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/29 14:39:34 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # ifndef ANIMAL_HPP
 #  include "Animal.hpp"
 # endif
+# include <iostream>
 
 class Dog : public Animal
 {

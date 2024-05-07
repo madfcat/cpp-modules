@@ -6,13 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:48:57 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 16:52:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 # include <iostream>
+# include <string>
 
 class Brain
 {

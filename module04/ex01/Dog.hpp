@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/29 14:39:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:39:00 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # ifndef BRAIN_HPP
 # include "Brain.hpp"
 # endif
+# include <iostream>
 
 class Dog : public Animal
 {

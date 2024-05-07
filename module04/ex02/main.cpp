@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/02 14:25:53 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:31:36 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ template <typename T>
 void fill_ideas(int n, T animal)
 {
 	for (int i = 0; i < 100; i++)
-		// brain->setIdea(i, "Hello world!");
 		animal->getBrain()->setIdea(i, animal->getType() + " #" + std::to_string(n) + " Idea #" + std::to_string(i));
 }
 
 int main() {
-/* 	std::cout << "====== Test from PDF ======" << std::endl;
+	std::cout << "====== Test from PDF ======" << std::endl;
 	{
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
 		
 		delete j;//should not create a leak
 		delete i;
-	} */
+	}
 	
-/* 	std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << "====== More tests ======" << std::endl;
 	{
 		const int n = 10;
@@ -48,7 +47,7 @@ int main() {
 			else
 			{
 				animals[i] = new Cat();
-				fill_ideas<Dog*>(i, dynamic_cast<Dog*>(animals[i]));
+				fill_ideas<Cat*>(i, dynamic_cast<Cat*>(animals[i]));
 			}
 		}
 
@@ -57,19 +56,23 @@ int main() {
 			animals[i]->makeSound();
 		}
 
-		for (int i = 0; i < 100; i++)
+		int animalsToIterate = 1; // n for max
+		for (int j = 0; j < animalsToIterate; j++)
 		{
-			if (i % 2 == 0)
-				std::cout << i << ". "<< reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(i) << std::endl;
-			else
-				std::cout << i << ". "<< reinterpret_cast<Cat*>(animals[0])->getBrain()->getIdea(i) << std::endl;
+			for (int i = 0; i < 100; i++)
+			{
+				if (animals[j]->getType() == "Dog")
+					std::cout << i << ". "<< dynamic_cast<Dog*>(animals[j])->getBrain()->getIdea(i) << std::endl;
+				else
+					std::cout << i << ". "<< dynamic_cast<Cat*>(animals[j])->getBrain()->getIdea(i) << std::endl;
+			}
 		}
 
 		for (int i = 0; i < n; i++)
 			delete (animals[i]);
-	} */
+	}
 
-/* 	std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << "====== Shallow copy constructor test ======" << std::endl;
 	{
 		const int n = 2;
@@ -97,7 +100,7 @@ int main() {
 		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 
 		std::cout << "== Let's change copyDog and now check copyDog and original" << std::endl;
-		reinterpret_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "New Dog Idea #15: Changed my mind with this idea!);
+		reinterpret_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "New Dog Idea #15: Changed my mind with this idea!");
 		std::cout << reinterpret_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
 		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 		std::cout << "== Now let's remove animals array" << std::endl;
@@ -105,7 +108,7 @@ int main() {
 			delete (animals[i]);
 		std::cout << "== And finally remove copyDog" << std::endl;
 		delete (copyDog);
-	} */
+	}
 
 	std::cout << std::endl;
 	std::cout << "====== Shallow assignment constructor test ======" << std::endl;
@@ -127,18 +130,18 @@ int main() {
 			}
 		}
 		Animal* firstDog = new Dog();
-		Dog& referenceDog = reinterpret_cast<Dog&>(*firstDog);
+		Dog& referenceDog = dynamic_cast<Dog&>(*firstDog);
 		std::cout << "== Assignment operator: " << std::endl;
-		referenceDog = reinterpret_cast<Dog&>(*animals[0]);
+		referenceDog = dynamic_cast<Dog&>(*animals[0]);
 		
 		std::cout << "== Let's check referenceDog and original" << std::endl;
-		std::cout << reinterpret_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
-		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
+		std::cout << dynamic_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
+		std::cout << dynamic_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
 
 		std::cout << "== Let's change referenceDog and now check referenceDog and original" << std::endl;
-		reinterpret_cast<Dog&>(referenceDog).getBrain()->setIdea(15, "New Dog Idea #15: Changed my mind with this idea!");
-		std::cout << reinterpret_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
-		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
+		dynamic_cast<Dog&>(referenceDog).getBrain()->setIdea(15, "New Dog Idea #15: Changed my mind with this idea!");
+		std::cout << dynamic_cast<Dog&>(referenceDog).getBrain()->getIdea(15) << std::endl;
+		std::cout << dynamic_cast<Dog*>(animals[0])->getBrain()->getIdea(15) << std::endl;
 		std::cout << "== Now let's remove animals array" << std::endl;
 		for (int i = 0; i < n; i++)
 			delete (animals[i]);

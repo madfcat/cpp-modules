@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:33 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/29 14:38:18 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:50:25 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Dog::Dog(const Dog& other) : Animal(other), brain(new Brain())
 {
 	for (int i = 0; i < 100; i++)
 	{
-		// std::cout <<  other.brain->getIdea(i) << std::endl;
 		this->brain->setIdea(i, other.brain->getIdea(i));
 	}
 	std::cout << "Dog copy constructor called" << std::endl;
