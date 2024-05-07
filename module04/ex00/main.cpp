@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:50:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:32:24 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ int main() {
 		const WrongAnimal* i = new WrongCat();
 
 		std::cout << i->getType() << " " << std::endl;
-		i->makeSound(); //will output the cat sound!
+		i->makeSound(); //will output the animal sound!
 		meta->makeSound();
 
 		delete (meta);
 		delete (i);
+
+		const WrongCat* wrongCat = new WrongCat();
+		wrongCat->makeSound(); //will output the animal sound!
+		delete (wrongCat);
 	}
 
 	std::cout << std::endl;
