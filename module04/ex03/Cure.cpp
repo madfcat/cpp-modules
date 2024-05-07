@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:27 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 16:05:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:03:12 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void Cure::use(ICharacter& target)
 
 AMateria* Cure::clone() const
 {
+	std::cout << "Cure cloned" << std::endl;
 	return (new Cure());
 }

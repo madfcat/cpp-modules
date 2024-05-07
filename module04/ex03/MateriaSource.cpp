@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:56 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 16:00:52 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:34:49 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ void MateriaSource::learnMateria(AMateria* m)
 	{
 		if (!this->storage[i])
 		{
+			std::cout << "Learned " << m->getType() << std::endl;
 			this->storage[i] = m;
 			return ;
 		}
 	}
+	std::cout << "Storage is full" << std::endl;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -64,7 +66,11 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	for (int i = 0; i < this->storageSize; i++)
 	{
 		if (this->storage[i] && this->storage[i]->getType() == type)
+		{
+			std::cout << "Created " << type << std::endl;
 			return (this->storage[i]->clone());
+		}
 	}
+	std::cout << "Materia type is unknown" << std::endl;
 	return (nullptr);
 }

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:33 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 16:05:29 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:03:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void Ice::use(ICharacter& target)
 
 AMateria* Ice::clone() const
 {
+	std::cout << "Ice cloned" << std::endl;
 	return (new Ice());
 }

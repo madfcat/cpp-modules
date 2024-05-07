@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:47:37 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/03 16:04:09 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:00:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 
 AMateria::AMateria() : type("default")
 {
-	std::cout << "AMateria constructor called" << std::endl;
+	std::cout << "Type " << this->getType() << ": AMateria constructor called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria& other) : type(other.type)
 {
-	std::cout << "AMateria copy constructor called" << std::endl;
+	std::cout << "Type " << this->getType() << ": AMateria copy constructor called" << std::endl;
 }
 
 AMateria& AMateria::operator=(const AMateria& other)
 {
-	std::cout << "AMateria assignment operator called" << std::endl;
+	std::cout << "Type " << this->getType() << ": AMateria assignment operator called" << std::endl;
 	(void)other;
 	return (*this);
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "AMateria destructor called" << std::endl;
+	std::cout << "Type " << this->getType() << ": AMateria destructor called" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type) : type(type)
