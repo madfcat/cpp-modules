@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:40:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/25 21:36:12 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:19:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main(void)
 	fragTrap1.highFivesGuys();
 	}
 	std::cout << std::endl;
+
 	{
 	std::cout << "fragTrap1" << std::endl;
 	FragTrap fragTrap1("FragTrap1");
