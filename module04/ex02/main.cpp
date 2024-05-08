@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:35:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/07 17:31:36 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/08 14:24:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,18 @@ int main() {
 				fill_ideas<Cat*>(i, dynamic_cast<Cat*>(animals[i]));
 			}
 		}
-		Animal* copyDog = new Dog(*reinterpret_cast<Dog*>(animals[0]));
+		Animal* copyDog = new Dog(*dynamic_cast<Dog*>(animals[0]));
 		copyDog->makeSound();
 
 		
 		std::cout << "== Let's check copyDog and original" << std::endl;
-		std::cout << reinterpret_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
-		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
+		std::cout << dynamic_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
+		std::cout << dynamic_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 
 		std::cout << "== Let's change copyDog and now check copyDog and original" << std::endl;
-		reinterpret_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "New Dog Idea #15: Changed my mind with this idea!");
-		std::cout << reinterpret_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
-		std::cout << reinterpret_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
+		dynamic_cast<Dog*>(copyDog)->getBrain()->setIdea(0, "New Dog Idea #15: Changed my mind with this idea!");
+		std::cout << dynamic_cast<Dog*>(copyDog)->getBrain()->getIdea(0) << std::endl;
+		std::cout << dynamic_cast<Dog*>(animals[0])->getBrain()->getIdea(0) << std::endl;
 		std::cout << "== Now let's remove animals array" << std::endl;
 		for (int i = 0; i < n; i++)
 			delete (animals[i]);

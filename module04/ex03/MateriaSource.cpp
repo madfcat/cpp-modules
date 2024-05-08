@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:56 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/07 19:34:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:55:09 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ MateriaSource::~MateriaSource()
 		delete (this->storage[i]);
 }
 
+/**
+ * Learn a new materia. It will delete Materia from argument if the storage is full.
+*/
 void MateriaSource::learnMateria(AMateria* m)
 {
 	for (int i = 0; i < this->storageSize; i++)
@@ -59,6 +62,7 @@ void MateriaSource::learnMateria(AMateria* m)
 		}
 	}
 	std::cout << "Storage is full" << std::endl;
+	delete (m);
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

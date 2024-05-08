@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/07 19:32:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:47:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ std::string const & Character::getName() const
 	return (this->name);
 }
 
+/**
+ * Equip a Materia to the character’s inventory.
+ * It will clone the Materia and deete the Materia passed as a argument.
+*/
 void Character::equip(AMateria* m)
 {
 	if (!m)
@@ -70,6 +74,7 @@ void Character::equip(AMateria* m)
 		{
 			std::cout << this->getName() + " equipped " + m->getType() + " to inventory slot: " << i << std::endl;
 		 	inventory[i] = m->clone();
+			delete (m);
 			return ;
 		}
 	}
@@ -98,4 +103,11 @@ void Character::use(int idx, ICharacter& target)
 	}
 	std::cout << this->getName() + " used " + inventory[idx]->getType() + " from inventory slot: " << idx << " on " << target.getName() << std::endl;
 	inventory[idx]->use(target);
+}
+
+AMateria* Character::getInventory(int idx) const
+{
+	if (idx < 0 || idx >= this->inventorySize)
+		return (nullptr);
+	return (this->inventory[idx]);
 }

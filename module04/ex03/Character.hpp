@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:51:32 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/08 14:09:37 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class Character: public ICharacter
 		void equip(AMateria* m) override;
 		void unequip(int idx) override;
 		void use(int idx, ICharacter& target) override;
+
+		AMateria* getInventory(int idx) const;
 };
 
 #endif
