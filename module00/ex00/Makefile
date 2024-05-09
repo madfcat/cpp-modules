@@ -6,13 +6,13 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 17:52:14 by vshchuki          #+#    #+#              #
-#    Updated: 2024/03/24 03:52:05 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/09 23:05:54 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 COMPILER = c++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++17
 
 NAME = megaphone
 

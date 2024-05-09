@@ -6,38 +6,35 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:17 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/04 15:53:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/09 23:11:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
+#include <cctype>
 
-void convertToUpperCase(char *str)
+void convertToUpperCase(std::string& str)
 {
-	int i = 0;
-
-	while (str[i])
+	for (char& c : str)
 	{
-		str[i] = toupper(str[i]);
-		i++;
+		c = std::toupper(c);
 	}
 }
 
 int main(int argc, char *argv[])
 {
-	int i = 1;
-
 	if (argc == 1)
 	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
 
-	while (argv[i])
+	for (int i = 1; i < argc; i++)
 	{
-		convertToUpperCase(argv[i]);
-		std::cout << argv[i];
-		i++;
+		std::string arg = argv[i];
+		convertToUpperCase(arg);
+		std::cout << arg;
 	}
 	std::cout << std::endl;
 
