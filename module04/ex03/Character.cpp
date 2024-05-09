@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/09 20:47:46 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/09 21:50:17 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,14 @@ Character::Character() : name("Unknown"), inventory{nullptr}
 Character::Character(const std::string &name) : name(name), inventory{nullptr}
 {
 	std::cout << this->getName() << ": Character constructor called" << std::endl;
-	// std::cout << this->inventory[0] << std::endl;
-	// std::cout << this->inventory[1] << std::endl;
-	// std::cout << this->inventory[2] << std::endl;
-	// std::cout << this->inventory[3] << std::endl;
 }
 
-Character::Character(const Character& other) : name(other.name)
+Character::Character(const Character& other) : name(other.name), inventory{nullptr}
 {
 	std::cout << this->getName() + ": Character copy constructor called" << std::endl;
-	// 	std::cout << this->inventory[0] << std::endl;
-	// 	std::cout << this->inventory[1] << std::endl;
-	// 	std::cout << this->inventory[2] << std::endl;
-	// 	std::cout << this->inventory[3] << std::endl;
+
 	for (int i = 0; i < this->inventorySize; i++)
 	{
-		// Character *ptr = nullptr;
-		// std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-		// std::cout << this->name << std::endl;
-		// std::cout << ptr << std::endl;
-		// std::cout << this->inventory[i] << std::endl;
-		// std::cout << (*this->inventory[i]).getType() << std::endl;
-		// if (this->inventory[i])
-		// {
-		// 	std::cout << "here" << std::endl;
-		// 	delete (this->inventory[i]);
-		// 	this->inventory[i] = nullptr;
-		// }
 		if (other.inventory[i])
 		 	inventory[i] = other.inventory[i]->clone();
 	}
