@@ -6,26 +6,50 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/08 18:47:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/09 20:47:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
+Character::Character() : name("Unknown"), inventory{nullptr}
+{
+	std::cout << "Character default constructor called" << std::endl;
+}
+
 Character::Character(const std::string &name) : name(name), inventory{nullptr}
 {
 	std::cout << this->getName() << ": Character constructor called" << std::endl;
+	// std::cout << this->inventory[0] << std::endl;
+	// std::cout << this->inventory[1] << std::endl;
+	// std::cout << this->inventory[2] << std::endl;
+	// std::cout << this->inventory[3] << std::endl;
 }
 
 Character::Character(const Character& other) : name(other.name)
 {
+	std::cout << this->getName() + ": Character copy constructor called" << std::endl;
+	// 	std::cout << this->inventory[0] << std::endl;
+	// 	std::cout << this->inventory[1] << std::endl;
+	// 	std::cout << this->inventory[2] << std::endl;
+	// 	std::cout << this->inventory[3] << std::endl;
 	for (int i = 0; i < this->inventorySize; i++)
 	{
-		delete (this->inventory[i]);
+		// Character *ptr = nullptr;
+		// std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
+		// std::cout << this->name << std::endl;
+		// std::cout << ptr << std::endl;
+		// std::cout << this->inventory[i] << std::endl;
+		// std::cout << (*this->inventory[i]).getType() << std::endl;
+		// if (this->inventory[i])
+		// {
+		// 	std::cout << "here" << std::endl;
+		// 	delete (this->inventory[i]);
+		// 	this->inventory[i] = nullptr;
+		// }
 		if (other.inventory[i])
 		 	inventory[i] = other.inventory[i]->clone();
 	}
-	std::cout << this->getName() + ": Character copy constructor called" << std::endl;
 }
 
 Character& Character::operator=(const Character& other)
@@ -37,6 +61,7 @@ Character& Character::operator=(const Character& other)
 		for (int i = 0; i < this->inventorySize; i++)
 		{
 			delete (this->inventory[i]);
+			this->inventory[i] = nullptr;
 			if (other.inventory[i])
 				inventory[i] = other.inventory[i]->clone();
 		}
@@ -46,9 +71,15 @@ Character& Character::operator=(const Character& other)
 
 Character::~Character()
 {
-	for (int i = 0; i < this->inventorySize; i++)
-		delete (this->inventory[i]);
 	std::cout << this->getName() + ": Character destructor called" << std::endl;
+	for (int i = 0; i < this->inventorySize; i++)
+	{
+		if (this->inventory[i] != nullptr)
+		{
+			delete (this->inventory[i]);
+			this->inventory[i] = nullptr;
+		}
+	}
 	
 }
 
@@ -75,6 +106,7 @@ void Character::equip(AMateria* m)
 			std::cout << this->getName() + " equipped " + m->getType() + " to inventory slot: " << i << std::endl;
 		 	inventory[i] = m->clone();
 			delete (m);
+			m = nullptr;
 			return ;
 		}
 	}
