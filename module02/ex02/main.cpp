@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:34:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/04/17 20:10:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/09 23:38:37 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main( void )
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
 
-/* 	std::cout << "Testing comparisson operators:" << std::endl;
+ 	std::cout << "Testing comparisson operators:" << std::endl;
 
 	std::cout << "Is more?" << std::endl;
 	Fixed n1 = Fixed(1.0f);
@@ -172,7 +172,7 @@ int	main( void )
 	n2++;
 	std::cout << n1 << " between " << n2 << std::endl;
 	std::cout << Fixed::max(n1, n2) << std::endl;
-	std::cout << std::endl; */
+	std::cout << std::endl;
 
 	return 0;
 }
