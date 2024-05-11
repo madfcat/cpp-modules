@@ -6,7 +6,15 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:53:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/10 14:53:35 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/11 18:22:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Bureaucrat.hpp"
+
+int main(int argc, char const *argv[])
+{
+	
+
+	return 0;
+}

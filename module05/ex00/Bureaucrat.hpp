@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/10 18:14:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/11 20:44:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <string>
+# include <stdexcept>
 
 class Bureaucrat
 {
@@ -27,8 +28,8 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 
-		void GradeTooHighException();
-		void GradeTooLowException();
+		GradeTooHighException;
+		GradeTooLowException;
 };
 
 #endif
