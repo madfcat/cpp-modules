@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/08 14:09:37 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:27:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ class Character: public ICharacter
 		Character();
 		Character(const Character& other);
 		Character& operator=(const Character& other);
-		~Character() override;
+		virtual ~Character() override;
 
 		Character(std::string const & name);
 
-		std::string const & getName() const override;
-		void equip(AMateria* m) override;
-		void unequip(int idx) override;
-		void use(int idx, ICharacter& target) override;
+		virtual std::string const & getName() const override;
+		virtual void 				equip(AMateria* m) override;
+		virtual void 				unequip(int idx) override;
+		virtual void 				use(int idx, ICharacter& target) override;
 
 		AMateria* getInventory(int idx) const;
 };

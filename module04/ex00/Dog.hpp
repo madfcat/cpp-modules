@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 16:40:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/07 17:38:43 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:22:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class Dog : public Animal
 		Dog();
 		Dog(const Dog& other);
 		Dog& operator=(const Dog& other);
-		~Dog() override;
+		virtual ~Dog() override;
 		
-		void	makeSound() const override;
+		virtual void	makeSound() const override;
 };
 
 #endif
