@@ -6,10 +6,9 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 14:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/05/10 14:51:56 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/05/11 14:42:01 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17
@@ -22,7 +21,7 @@ SRCS = main.cpp \
 	Dog.cpp \
 	WrongAnimal.cpp \
 	WrongCat.cpp
-	 
+
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 

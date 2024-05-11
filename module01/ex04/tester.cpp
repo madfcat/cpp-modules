@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 01:12:47 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:30:38 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:27:44 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,25 @@ int	main(void)
 	}
 
 	scriptFile << "#!/bin/bash" << std::endl << std::endl;
-	scriptFile << "./losersed test.txt h '#'" << std::endl;
 	scriptFile << "echo 'Running tests.sh'" << std::endl;
+	scriptFile << "echo 'Generated: test.txt:'" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
+	scriptFile << "cat test.txt" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
+
+	scriptFile << "echo 'Running ./losersed test.txt h '#''" << std::endl;
+	scriptFile << "./losersed test.txt h '#'" << std::endl;
+	scriptFile << "echo 'Output: test.txt.replace:'" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
+	scriptFile << "cat test.txt.replace" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
+
+	scriptFile << "echo '\n'" << std::endl;
+
+	scriptFile << "echo 'Running diff test.txt test.txt.replace'" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
+	scriptFile << "diff test.txt test.txt.replace" << std::endl;
+	scriptFile << "echo '--------------------------------------------'" << std::endl;
 
 	scriptFile.close();
 
