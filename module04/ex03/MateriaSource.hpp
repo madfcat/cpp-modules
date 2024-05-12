@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/09 16:49:32 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:02:20 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class MateriaSource : public IMateriaSource
 {
 	private:
 		static const int storageSize = 4;
-		AMateria* storage[storageSize];
+		AMateria* storage[storageSize] = {nullptr};
 
 	public:
 		MateriaSource();

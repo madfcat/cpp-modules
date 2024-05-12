@@ -6,28 +6,30 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/09 21:50:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:02:37 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() : name("Unknown"), inventory{nullptr}
+Character::Character()
 {
 	std::cout << "Character default constructor called" << std::endl;
 }
 
-Character::Character(const std::string &name) : name(name), inventory{nullptr}
+Character::Character(const std::string &name) : name(name)
 {
 	std::cout << this->getName() << ": Character constructor called" << std::endl;
 }
 
-Character::Character(const Character& other) : name(other.name), inventory{nullptr}
+Character::Character(const Character& other) : name(other.name)
 {
 	std::cout << this->getName() + ": Character copy constructor called" << std::endl;
 
 	for (int i = 0; i < this->inventorySize; i++)
 	{
+		delete (this->inventory[i]);
+		this->inventory[i] = nullptr;
 		if (other.inventory[i])
 		 	inventory[i] = other.inventory[i]->clone();
 	}

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/08 14:09:37 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:01:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 class Character: public ICharacter
 {
 	private:
-		std::string name;
+		std::string name = "Unknown";
 		static const int inventorySize = 4;
-		AMateria *inventory[inventorySize];
+		AMateria *inventory[inventorySize] = {nullptr};
 
 	public:
 		Character();
