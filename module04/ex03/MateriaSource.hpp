@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:02:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:16:56 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ class MateriaSource : public IMateriaSource
 		MateriaSource(const MateriaSource& other);
 		MateriaSource& operator=(const MateriaSource& other);
 
-		~MateriaSource() override;
-		void learnMateria(AMateria*) override;
-		AMateria* createMateria(std::string const & type) override;
+		virtual ~MateriaSource() override;
+		virtual void		learnMateria(AMateria*) override;
+		virtual AMateria*	createMateria(std::string const & type) override;
 };
 
 #endif

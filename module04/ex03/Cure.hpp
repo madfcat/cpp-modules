@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/07 17:39:14 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:24:06 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class Cure: public AMateria
 		Cure();
 		Cure(const Cure& other);
 		Cure& operator=(const Cure& other);
-		~Cure() override;
+		virtual ~Cure() override;
 
-		AMateria* clone() const override;
-		void use(ICharacter& target) override;
+		virtual AMateria*	clone() const override;
+		virtual void		use(ICharacter& target) override;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:56 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:03:16 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:17:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ MateriaSource::MateriaSource()
 	std::cout << "MateriaSource constructor called" << std::endl;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other)
+MateriaSource::MateriaSource(const MateriaSource& other): storage{nullptr}
 {
 	std::cout << "MateriaSource copy constructor called" << std::endl;
 	for (int i = 0; i < this->storageSize; i++)
