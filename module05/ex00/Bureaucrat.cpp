@@ -6,34 +6,92 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/11 18:25:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:04:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat()
+{
+	std::cout << this->name << ": Bureaucrat default costructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name), grade(grade)
+{
+	std::cout << this->name << ": Bureaucrat costructor called" << std::endl;
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+{
+	std::cout << this->name << ": Bureaucrat copy costructor called" << std::endl;
+	this->name = other.name;
+	this->grade = other.grade;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+	std::cout << this->name << ": Bureaucrat assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		this->name = other.name;
+		this->grade = other.grade;
+	}
+	return *this;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << this->name << ": Bureaucrat destructor called" << std::endl;
+}
 
 const std::string Bureaucrat::getName() const
 {
 	return this->name;
 }
 
-unsigned char Bureaucrat::getGrade() const
+unsigned int Bureaucrat::getGrade() const
 {
 	return this->grade;
 }
 
-void Bureaucrat::GradeTooLowException()
+void Bureaucrat::incrementGrade()
 {
-	throw std::invalid_argument("Invalid grade. Grade is too low.");
+	if (this->grade == this->HighestGrade)
+	{
+		std::cout << "Highest grade can not be incremented" << std::endl;
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else
+		this->grade--;
+}
+void Bureaucrat::decrementGrade()
+{
+	if (this->grade == this->LowestGrade)
+	{
+		std::cout << "Lowest grade can not be decremented" << std::endl;
+		throw Bureaucrat::GradeTooLowException();
+	}
+	else
+		this->grade++;
 }
 
-void Bureaucrat::GradeTooHighException()
+const char* Bureaucrat::GradeTooHighException::what() const noexcept
 {
-	throw std::invalid_argument("Invalid grade. Grade is too high.");
+	return "❗️ Invalid grade. Grade is too high.";
 }
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat& bureaucrat)
+const char* Bureaucrat::GradeTooLowException::what() const noexcept
 {
-	os << "<name> bureaucrat grade " << bureaucrat.getGrade();
+	return "❗️ Invalid grade. Grade is too low.";
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
+{
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return os;
 }
