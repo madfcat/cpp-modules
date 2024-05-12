@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:53:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:14:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/12 20:51:41 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ int main()
 		std::cout << "====== Copy Constructor test ======" << std::endl;
 		Bureaucrat helga("Helga", 4);
 		Bureaucrat helga2 = helga;
+		std::cout << "Helga2 grade: " << helga2.getGrade() << std::endl;
 	}
 	{
 		std::cout << std::endl;
 		std::cout << "====== Assignment operator test ======" << std::endl;
 		Bureaucrat george("George", 4);
 		Bureaucrat george2;
+		std::cout << "George2 grade: " << george2.getGrade() << std::endl;
 		george2 = george;
 	}
 }
