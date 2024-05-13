@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:28:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:49:02 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:36:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap
 		unsigned int	attackDamage;
 
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& clapTrap);
 		ClapTrap& operator=(const ClapTrap& otherClapTrap);
