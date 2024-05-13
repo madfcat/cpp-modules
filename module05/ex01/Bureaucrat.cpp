@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:49:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:44:57 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,6 @@ Bureaucrat::~Bureaucrat()
 	std::cout << this->name << ": Bureaucrat destructor called" << std::endl;
 }
 
-const std::string Bureaucrat::getName() const
-{
-	return this->name;
-}
-
-unsigned int Bureaucrat::getGrade() const
-{
-	return this->grade;
-}
-
 void Bureaucrat::incrementGrade()
 {
 	if (this->grade == this->HighestGrade)
@@ -78,6 +68,29 @@ void Bureaucrat::decrementGrade()
 	}
 	else
 		this->grade++;
+}
+
+void Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+	std::cout << this->getName() + " signed " + form.getName()<< std::endl;
+}
+
+const std::string Bureaucrat::getName() const
+{
+	return this->name;
+}
+
+unsigned int Bureaucrat::getGrade() const
+{
+	return this->grade;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const noexcept

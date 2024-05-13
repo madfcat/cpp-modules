@@ -6,15 +6,19 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:46:59 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:52:12 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef FORM_HPP
 # define FORM_HPP
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# ifndef BUREAUCRAT_HPP
+#  include "Bureaucrat.hpp"
+# endif
 
 class Form
 {
@@ -32,10 +36,13 @@ class Form
 
 		Form(std::string name, int gradeToSign, int gradeToExecute);
 
-		const std::string	getName() const;
-		bool				getIsSigned() const;
-		const int			getGradeToSign() const;
-		const int			getGradeToExecute() const;
+		void		beSigned(Bureaucrat& bureaucrat);
+
+		std::string	getName() const;
+		bool		getIsSigned() const;
+		int			getGradeToSign() const;
+		int			getGradeToExecute() const;
+
 
 		class GradeTooHighException: std::exception
 		{
@@ -46,7 +53,6 @@ class Form
 		{
 			const char* what() const noexcept override;
 		};
-		
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& form);

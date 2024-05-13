@@ -6,15 +6,19 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 19:52:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:39:57 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# ifndef FORM_HPP
+#  include "Form.hpp"
+# endif
 
 class Bureaucrat
 {
@@ -31,10 +35,14 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
 
-		const std::string getName() const;
-		unsigned int getGrade() const;
-		void incrementGrade();
-		void decrementGrade();
+
+		void				signForm(Form& form);
+
+		void 				incrementGrade();
+		void 				decrementGrade();
+
+		const std::string	getName() const;
+		unsigned int		getGrade() const;
 
 		class GradeTooHighException : public std::exception
 		{

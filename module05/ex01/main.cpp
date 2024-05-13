@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:53:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:14:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:43:56 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int main()
 		{
 			helga.incrementGrade();
 		}
-			catch(const std::exception& e)
+		catch(const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
