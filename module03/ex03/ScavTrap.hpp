@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:43:03 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:50:00 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:51:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class ScavTrap: virtual public ClapTrap
 {
 	public:
-		using ClapTrap::ClapTrap;
+		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap& copy);
 		ScavTrap& operator=(const ScavTrap &other);

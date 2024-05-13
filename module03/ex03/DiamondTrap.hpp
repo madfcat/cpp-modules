@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:17:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:49:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:53:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 		std::string name;
 
 	public:
+		DiamondTrap();
 		DiamondTrap(std::string name);
 		DiamondTrap(const DiamondTrap& other);
 		DiamondTrap& operator=(const DiamondTrap &other);
