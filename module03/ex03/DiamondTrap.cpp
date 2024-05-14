@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:17:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 19:54:00 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:06:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("Unknown_clap_name"), ScavTrap(name), FragTrap(name), name("Unknown")
+DiamondTrap::DiamondTrap() : ClapTrap("Unknown_clap_name"), ScavTrap("Unknown"), FragTrap("Unknown"), name("Unknown")
 {
 	this->energyPoints = 50;
 	std::cout << this->name << ": DiamondTrap default constructor called." << std::endl;

@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:36:42 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 19:54:15 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:04:18 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap(name)
+FragTrap::FragTrap() : ClapTrap()
 {
 	this->name = "Unknown";
 	this->hitPoints = 100;
