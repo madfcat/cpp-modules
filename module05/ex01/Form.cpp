@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 18:51:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/18 18:45:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ Form::Form()
 	std::cout << this->name << ": Form default costructor called" << std::endl;
 }
 
-Form::Form(std::string name, int gradeToSign, int gradeToExecute): name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
+Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
+    : name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
 {
-	std::cout << this->name << ": Form costructor called" << std::endl;
-	if (gradeToSign > 150 || gradeToToExecute > 150)
-		throw Form::GradeTooLowException();
-	if (gradeToSign < 1 || gradeToToExecute < 1)
-		throw Form::GradeTooHighException();
+    std::cout << this->name << ": Form constructor called" << std::endl;
+    if (gradeToSign > 150 || gradeToToExecute > 150)
+        throw Form::GradeTooLowException();
+    if (gradeToSign < 1 || gradeToToExecute < 1)
+        throw Form::GradeTooHighException();
 }
 
 Form::Form(const Form& other): name(other.getName()), isSigned(other.getIsSigned()), gradeToSign(other.getGradeToSign()), gradeToToExecute(other.getGradeToExecute())
@@ -67,14 +68,24 @@ bool Form::getIsSigned() const
 	return this->isSigned;
 }
 
-int Form::getGradeToSign() const
+unsigned int Form::getGradeToSign() const
 {
 	return this->gradeToSign;
 }
 
-int Form::getGradeToExecute() const
+unsigned int Form::getGradeToExecute() const
 {
 	return this->gradeToToExecute;
+}
+
+const char* Form::GradeTooHighException::what() const noexcept
+{
+	return "❗️ Invalid grade. Grade is too high.";
+}
+
+const char* Form::GradeTooLowException::what() const noexcept
+{
+	return "❗️ Invalid grade. Grade is too low.";
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& form)

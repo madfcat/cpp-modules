@@ -6,83 +6,141 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:53:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 19:43:56 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/18 19:50:41 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
 	{
 		std::cout << std::endl;
 		std::cout << "====== Testing GradeTooLowException ======" << std::endl;
-		Bureaucrat* johnny = nullptr;
+		std::cout << "== Testing gradeToSign GradeTooLowException" << std::endl;
+		Form* form1 = nullptr;
 		try
 		{
-			johnny = new Bureaucrat("Johnny", 151);
+			form1 = new Form("Form #1", 151, 10);
 		}
 		catch(const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << johnny << std::endl;
-		delete johnny;
-	}
-	{
-		std::cout << std::endl;
-		std::cout << "====== Testing GradeTooHighException ======" << std::endl;
-		Bureaucrat* mary = nullptr;
+		std::cout << form1 << std::endl;
+		delete form1;
+
+		std::cout << "== Testing gradeToExecute GradeTooLowException" << std::endl;
+		std::shared_ptr<Form> form2;
 		try
 		{
-			new Bureaucrat("Mary", 0);
+			form2 = std::make_shared<Form>("Form #2", 150, 151);
 		}
 		catch(const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << mary << std::endl;
-		delete mary;
-	}
-	{
-		std::cout << std::endl;
-		std::cout << "====== Testing Shared pointers / decrement exception ======" << std::endl;
-		std::shared_ptr<Bureaucrat> jessica = std::make_shared<Bureaucrat>();
+		std::cout << form2 << std::endl;
+
+		std::cout << "== Testing gradeToSign GradeTooHighException" << std::endl;
+		std::shared_ptr<Form> form3;
 		try
 		{
-			jessica->decrementGrade();
+			form3 = std::make_shared<Form>("Form #3", 0, 10);
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << form3 << std::endl;
+
+		std::cout << "== Testing gradeToExecute GradeTooHighException" << std::endl;
+		std::shared_ptr<Form> form4;
+		try
+		{
+			form4 = std::make_shared<Form>("Form #4", 150, 151);
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << form4 << std::endl;
+	}
+	{
+		Bureaucrat travis = Bureaucrat("Travis", 10);
+		Bureaucrat stewart = Bureaucrat("Stewart", 1);
+
+		std::cout << std::endl;
+		std::cout << "====== Copy Constructor test ======" << std::endl;
+		Form form1("Form To Copy", 5, 5);
+		std::cout << "== form1 be signed by Travis" << std::endl;
+		try
+		{
+			form1.beSigned(travis);
 		}
 		catch (const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << *jessica << std::endl;
-	}
-	{
-		std::cout << std::endl;
-		std::cout << "====== Testing stack object / increment exception ======" << std::endl;
-		Bureaucrat helga("Helga", 1);
+
+		std::cout << "== Travis signs form1" << std::endl;
 		try
 		{
-			helga.incrementGrade();
+			travis.signForm(form1);
 		}
-		catch(const std::exception& e)
+		catch (const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << helga << std::endl;
-	}
-	{
-		std::cout << std::endl;
-		std::cout << "====== Copy Constructor test ======" << std::endl;
-		Bureaucrat helga("Helga", 4);
-		Bureaucrat helga2 = helga;
-	}
-	{
+		Form form2 = form1;
+		std::cout << "form2 has name " << form2.getName() << " and isSigned = " << std::boolalpha << form2.getIsSigned() << std::endl;
+
 		std::cout << std::endl;
 		std::cout << "====== Assignment operator test ======" << std::endl;
-		Bureaucrat george("George", 4);
-		Bureaucrat george2;
-		george2 = george;
+		Form form3("Form to assign", 4, 10);
+		Form form4;
+		std::cout << "== form3 be signed by Travis" << std::endl;
+		try
+		{
+			form3.beSigned(travis);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << "== Travis signs form3" << std::endl;
+		try
+		{
+			travis.signForm(form3);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		form4 = form3;
+		std::cout << "form4 has name " << form4.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
+		std::cout << "== form3 be signed by Stewart" << std::endl;
+		try
+		{
+			form3.beSigned(stewart);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << "== Stewart signs form4" << std::endl;
+		try
+		{
+			stewart.signForm(form4);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << "form3 has name " << form3.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
+		std::cout << "form4 has name " << form4.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
+		std::cout << std::endl;
+		std::cout << "== Destruction" << std::endl;
 	}
 }

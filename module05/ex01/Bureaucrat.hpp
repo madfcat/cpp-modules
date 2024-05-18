@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 19:39:57 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/18 18:34:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # ifndef FORM_HPP
 #  include "Form.hpp"
 # endif
+
+class Form;
 
 class Bureaucrat
 {
