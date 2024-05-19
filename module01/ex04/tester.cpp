@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 01:12:47 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/11 15:27:44 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 18:11:57 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(void)
 {
 	/* Create a test file */
-	std::ofstream testFile ("test.txt");
+	std::ofstream testFile("test.txt");
 
 	if (!testFile.is_open()) {
 		std::cout << "Error: Unable to create the test file!" << std::endl;
