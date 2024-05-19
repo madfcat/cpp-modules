@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:53:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/18 19:50:41 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 18:25:38 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int main()
 			std::cout << e.what() << std::endl;
 		}
 		Form form2 = form1;
-		std::cout << "form2 has name " << form2.getName() << " and isSigned = " << std::boolalpha << form2.getIsSigned() << std::endl;
+		std::cout << "form2 - " << form2 << std::endl;
 
 		std::cout << std::endl;
 		std::cout << "====== Assignment operator test ======" << std::endl;
@@ -119,7 +119,7 @@ int main()
 			std::cout << e.what() << std::endl;
 		}
 		form4 = form3;
-		std::cout << "form4 has name " << form4.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
+		std::cout << "form4 - " << form4 << std::endl;
 		std::cout << "== form3 be signed by Stewart" << std::endl;
 		try
 		{
@@ -138,8 +138,8 @@ int main()
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << "form3 has name " << form3.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
-		std::cout << "form4 has name " << form4.getName() << " and isSigned = " << std::boolalpha << form4.getIsSigned() << std::endl;
+		std::cout << "form3 - " << form3 << std::endl;
+		std::cout << "form4 - " << form4 << std::endl;
 		std::cout << std::endl;
 		std::cout << "== Destruction" << std::endl;
 	}
