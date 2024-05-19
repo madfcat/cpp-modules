@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:32:13 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:51:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:54:50 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define ICHARACTER_HPP
 # include <iostream>
 # include <string>
-# ifndef AMATERIA_HPP
-#  include "AMateria.hpp"
-# endif
+# include "AMateria.hpp"
 
 class ICharacter
 {

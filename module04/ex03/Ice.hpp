@@ -6,18 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:27:34 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 02:24:25 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:54:43 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_HPP
 # define ICE_HPP
-# ifndef AMATERIA_HPP
-#  include "AMateria.hpp"
-# endif
-# ifndef ICHARACTER_HPP
-#  include "ICharacter.hpp"
-# endif
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 # include <iostream>
 
 class Ice: public AMateria

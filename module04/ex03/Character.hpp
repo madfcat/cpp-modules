@@ -6,15 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:16:50 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:54:30 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
-# ifndef ICHARACTER_HPP
-#  include "ICharacter.hpp"
-# endif
+# include "ICharacter.hpp"
 # include <iostream>
 # include <string>
 
