@@ -6,15 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:39:20 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/13 19:52:14 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:58:50 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
-# ifndef CLAPTRAP_HPP
-#  include "ClapTrap.hpp"
-# endif
+# include "ClapTrap.hpp"
 
 class FragTrap: public ClapTrap
 {
