@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/18 18:34:40 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:58:25 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
-# ifndef FORM_HPP
-#  include "Form.hpp"
-# endif
+# include "Form.hpp"
 
 class Form;
 
