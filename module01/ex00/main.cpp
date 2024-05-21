@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 14:43:15 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/03/28 18:38:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:59:32 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void)
 	Zombie *someZombie;
 
 	someZombie = newZombie("George");
-	(*someZombie).announce();
+	someZombie->announce();
 	delete someZombie;
 	
 	randomChump("Nicolas");

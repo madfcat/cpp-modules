@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/04 16:09:27 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:58:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,16 +147,18 @@ void	PhoneBook::runAddCommand(void)
 	std::string	inputLine = "";
 	Contact		contact;
 
-	while (this->addContactField("Enter the first name: ", inputLine, contact, &Contact::setFirstName) != EXIT_SUCCESS)
+	while (!std::cin.eof() && this->addContactField("Enter the first name: ", inputLine, contact, &Contact::setFirstName) != EXIT_SUCCESS)
 		;
-	while (this->addContactField("Enter the last name: ", inputLine, contact, &Contact::setLastName) != EXIT_SUCCESS)
+	while (!std::cin.eof() && this->addContactField("Enter the last name: ", inputLine, contact, &Contact::setLastName) != EXIT_SUCCESS)
 		;
-	while (this->addContactField("Enter the nickname: ", inputLine, contact, &Contact::setNickname) != EXIT_SUCCESS)
+	while (!std::cin.eof() && this->addContactField("Enter the nickname: ", inputLine, contact, &Contact::setNickname) != EXIT_SUCCESS)
 		;
-	while (this->addContactField("Enter the phone number: ", inputLine, contact, &Contact::setPhoneNumber) != EXIT_SUCCESS)
+	while (!std::cin.eof() && this->addContactField("Enter the phone number: ", inputLine, contact, &Contact::setPhoneNumber) != EXIT_SUCCESS)
 		;
-	while (this->addContactField("Enter the darkest secret: ", inputLine, contact, &Contact::setDarkestSecret) != EXIT_SUCCESS)
+	while (!std::cin.eof() && this->addContactField("Enter the darkest secret: ", inputLine, contact, &Contact::setDarkestSecret) != EXIT_SUCCESS)
 		;
+	if (std::cin.eof())
+		return ;
 	this->addContact(contact, this->getCurrentIndex());
 	if (this->getCurrentIndex() != MAX_CONTACTS)
 		this->incrementCurrentIndex();
@@ -175,6 +177,8 @@ void	PhoneBook::runSearchCommand(void) const
 	{
 		std::cout << UNDERLINE << "Please, enter an index" << RESET " (-1 to exit): ";
 		std::cin >> i;
+		if (std::cin.eof())
+			return ;
 		if(std::cin.fail()){
 			std::cin.clear();
 			std::cin.ignore(INT_MAX, '\n');
@@ -207,7 +211,8 @@ void	PhoneBook::run(void)
 		std::cout << UNDERLINE;
 		std::cout << UNDERLINE << "Please, enter a command" << RESET << ": ";
 		std::getline(std::cin, command);
-
+		if (std::cin.eof())
+			return ;
 		if (command == "EXIT")
 			break ;
 		else if (command == "ADD")
