@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 19:55:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/21 21:19:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ const char* AForm::GradeTooLowException::what() const noexcept
 
 const char* AForm::IsNotSignedException::what() const noexcept
 {
-	return "❗️ Form is noth signed.";
+	return "❗️ Form is not signed.";
 }
 
 std::ostream& operator<<(std::ostream& os, const AForm& form)
