@@ -6,16 +6,15 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:28 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 20:23:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:34:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #pragma once
 #ifndef ROBOTOMY_REQUEST_FORM_HPP
 # define ROBOTOMY_REQUEST_FORM_HPP
 # include "AForm.hpp"
-# include <cstdlib>
+# include <random>
 
 class RobotomyRequestForm : public AForm
 {

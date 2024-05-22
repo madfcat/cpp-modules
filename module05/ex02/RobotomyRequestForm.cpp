@@ -6,18 +6,18 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:31 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 20:32:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:47:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 145, 137)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 145, 137), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
@@ -41,13 +41,13 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
 
-/**
- * Improve by using:
- * https://stackoverflow.com/questions/19665818/generate-random-numbers-using-c11-random-library
-*/
 int	RobotomyRequestForm::executeAction() const
 {
-	if (std::rand() % 2 == 0)
+	std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> dist(0, 1);
+		
+	if (dist(mt) % 2 == 0)
 		std::cout << "🤖 " + this->target + " has been robotomized successfully ✅" << std::endl;
 	else
 		std::cout << "🤖 " + this->target + " robotomy failed 🚫" << std::endl;
