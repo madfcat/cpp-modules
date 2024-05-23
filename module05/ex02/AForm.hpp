@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 20:13:34 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:51:35 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ class AForm
 		unsigned int	getGradeToSign() const;
 		unsigned int	getGradeToExecute() const;
 
+		void			execute(Bureaucrat const & executor) const;
 
+	private:
 		class GradeTooHighException: public std::exception
 		{
 			const char* what() const noexcept override;
@@ -57,7 +59,6 @@ class AForm
 		{
 			const char* what() const noexcept;
 		};
-		void			execute(Bureaucrat const & executor) const;
 
 	protected:
 		virtual int		executeAction() const = 0;

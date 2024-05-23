@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/22 18:09:22 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:02:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 int	PresidentialPardonForm::executeAction() const
 {
-	std::cout << this->target + " has been pardoned by Zaphod Beeblebrox " << std::endl;
+	std::cout << this->target + " has been pardoned by Zaphod Beeblebrox 📝" << std::endl;
 
 	return EXIT_SUCCESS;
 }

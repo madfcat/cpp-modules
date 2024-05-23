@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:33:10 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/22 17:48:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:00:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef SHRUBBERY_CREATION_FORM_HPP
-# define SHRUBBERY_CREATION_FORM_HPP
+#ifndef PRESIDENTIAL_PARDON_FORM_HPP
+# define PRESIDENTIAL_PARDON_FORM_HPP
 # include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm

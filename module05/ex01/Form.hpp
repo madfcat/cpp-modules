@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/18 19:51:02 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:52:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form
 		unsigned int	getGradeToSign() const;
 		unsigned int	getGradeToExecute() const;
 
-
+	private:
 		class GradeTooHighException: public std::exception
 		{
 			const char* what() const noexcept override;

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 18:45:05 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:54:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ class Bureaucrat
 
 
 		void				signForm(AForm& form);
+		void				executeForm(AForm const & form);
 
 		void 				incrementGrade();
 		void 				decrementGrade();
 
 		const std::string	getName() const;
 		unsigned int		getGrade() const;
+		
 
+	private:
 		class GradeTooHighException : public std::exception
 		{
 			public:
