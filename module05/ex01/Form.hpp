@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/21 21:14:14 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:49:56 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ class Form
 		bool				isSigned = false;
 		const unsigned int	gradeToSign = 150;
 		const unsigned int	gradeToToExecute = 150; 
-	
-		class GradeTooHighException: public std::exception
-		{
-			const char* what() const noexcept override;
-		};
-
-		class GradeTooLowException: public std::exception
-		{
-			const char* what() const noexcept override;
-		};
 
 	public:
 		Form();
@@ -51,6 +41,17 @@ class Form
 		bool			getIsSigned() const;
 		unsigned int	getGradeToSign() const;
 		unsigned int	getGradeToExecute() const;
+
+	private:
+		class GradeTooHighException: public std::exception
+		{
+			const char* what() const noexcept override;
+		};
+
+		class GradeTooLowException: public std::exception
+		{
+			const char* what() const noexcept override;
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& form);
