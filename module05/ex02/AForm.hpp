@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/25 16:51:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:01:39 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ class Bureaucrat;
 
 class AForm
 {
-	protected:
+	private:
 		const std::string	name = "Unknown";
 		bool				isSigned = false;
 		const unsigned int	gradeToSign = 150;
 		const unsigned int	gradeToToExecute = 150; 
 
-	private:
 		class GradeTooHighException: public std::exception
 		{
 			const char* what() const noexcept override;
