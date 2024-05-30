@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:37 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 20:15:59 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:50:15 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 const ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
 	std::cout << "ShrubberyCreationForm assignment operator called" << std::endl;
-	if (this != &other)
-		this->isSigned = other.getIsSigned();
-		
+	(void)other;
 	return (*this);
 }
 

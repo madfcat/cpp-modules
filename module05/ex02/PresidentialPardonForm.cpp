@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:50 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/23 16:02:29 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:50:06 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& oth
 const PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
 {
 	std::cout << "PresidentialPardonForm assignment operator called" << std::endl;
-	if (this != &other)
-		this->isSigned = other.getIsSigned();
-
+	(void)other;
 	return (*this);
 }
 

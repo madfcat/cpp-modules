@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:31 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/22 17:47:58 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:50:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AFo
 const RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
 	std::cout << "RobotomyRequestForm assignment operator called" << std::endl;
-	if (this != &other)
-		this->isSigned = other.getIsSigned();
-		
+	(void)other;
 	return (*this);
 }
 
