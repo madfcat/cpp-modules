@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:51:20 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/30 18:41:34 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:07:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main()
 		std::cout << rrf->getGradeToExecute() << std::endl;
 		std::cout << rrf->getGradeToSign() << std::endl;
 		std::cout << rrf->getIsSigned() << std::endl;
+
+		delete rrf;
 	}
 	
 	return 0;
