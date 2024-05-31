@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:32:13 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/19 17:54:50 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:50:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class ICharacter
 {
 	public:
-		virtual ~ICharacter() {};
+		virtual ~ICharacter() {}
 		virtual std::string const & getName() const = 0;
 		virtual void equip(AMateria* m) = 0;
 		virtual void unequip(int idx) = 0;

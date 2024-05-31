@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:55:58 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/19 17:54:56 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:50:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class IMateriaSource
 {
 	public:
-		virtual ~IMateriaSource() {};
+		virtual ~IMateriaSource() {}
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
 };
