@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:06:52 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/30 18:49:44 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/04 22:38:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,22 @@ Intern::Intern()
 	};
 }
 
-// Intern(const Intern& other);
-// const Intern& operator=(const Intern& other);
+Intern::Intern(const Intern& other): Intern()
+{
+	std::cout << "Intern copy constructor called"<< std::endl;	
+}
+const Intern& Intern::operator=(const Intern& other)
+{
+	std::cout << "Intern assignment operator called"<< std::endl;	
+
+	for (int i = 0; i < FormCount; i++)
+	{
+		this->formNameArray[i] = other.formNameArray[i];
+		this->factoryArray[i] = other.factoryArray[i];
+	}
+
+	return (*this);
+}
 
 Intern::~Intern()
 {
@@ -65,18 +79,3 @@ FactoryFunction Intern::getFunction(std::string formTarget)
 
 	return nullptr;
 }
-
-// Form*	Intern::makeShrubberyCreationForm(std::string formTarget)
-// {
-// 	return new ShrubberyCreationForm(formTarget);
-// }
-
-// Form*	Intern::makeRobotomyRequestForm(std::string formTarget)
-// {
-// 	return new RobotomyRequestForm(formTarget);
-// }
-
-// Form*	Intern::makePresidentialPardonForm(std::string formTarget)
-// {
-// 	return new PresidentialPardonForm(formTarget);
-// }

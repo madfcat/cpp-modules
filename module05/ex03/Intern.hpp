@@ -6,10 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:07:03 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/30 18:47:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/04 22:33:54 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef INTERN_HPP
 # define INTERN_HPP
 # include "AForm.hpp"
@@ -21,7 +22,6 @@
 
 using Form = AForm;
 using FactoryFunction = std::unique_ptr<Form>(*)(std::string target);
-// using FactoryFunction = Form* (*)(std::string target);
 
 class Intern
 {
@@ -38,9 +38,6 @@ class Intern
 
 		Form*			makeForm(std::string formName, std::string formTarget);
 		FactoryFunction getFunction(std::string formName);
-		// Form*			makeShrubberyCreationForm(std::string formTarget);
-		// Form*			makeRobotomyRequestForm(std::string formTarget);
-		// Form*			makePresidentialPardonForm(std::string formTarget);
 };
 
 #endif
