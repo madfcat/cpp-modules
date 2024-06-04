@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:55:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:02:37 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/04 22:38:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Character::Character(const Character& other) : name(other.name)
 		delete (this->inventory[i]);
 		this->inventory[i] = nullptr;
 		if (other.inventory[i])
-		 	inventory[i] = other.inventory[i]->clone();
+		 	this->inventory[i] = other.inventory[i]->clone();
 	}
 }
 
@@ -46,7 +46,7 @@ Character& Character::operator=(const Character& other)
 			delete (this->inventory[i]);
 			this->inventory[i] = nullptr;
 			if (other.inventory[i])
-				inventory[i] = other.inventory[i]->clone();
+				this->inventory[i] = other.inventory[i]->clone();
 		}
 	}
 	return (*this);
