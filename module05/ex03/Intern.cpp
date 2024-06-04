@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:06:52 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/04 22:38:10 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/04 22:45:45 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ Intern::Intern()
 Intern::Intern(const Intern& other): Intern()
 {
 	std::cout << "Intern copy constructor called"<< std::endl;	
+	for (int i = 0; i < FormCount; i++)
+	{
+		this->formNameArray[i] = other.formNameArray[i];
+		this->factoryArray[i] = other.factoryArray[i];
+	}
 }
 const Intern& Intern::operator=(const Intern& other)
 {
