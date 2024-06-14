@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 14:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/04 23:57:28 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/06/15 01:30:51 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++17
 NAME = convert
 
 SRCS = main.cpp \
+		ScalarConverter.cpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
