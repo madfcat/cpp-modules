@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:53:12 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/15 02:11:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/15 19:24:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,32 @@ int main(int argc, const char *argv[])
 
 	ScalarConverter::convert("*");
 	ScalarConverter::convert("42");
-	ScalarConverter::convert("42.5");
-	ScalarConverter::convert("42.5f");
+	ScalarConverter::convert("42.53");
+	ScalarConverter::convert("42.53f");
+
+	std::cout << std::endl;
+	std::cout << "=== Test negative ===" << std::endl;
+	ScalarConverter::convert("-42.53");
+	ScalarConverter::convert("-42.53f");
+
+	std::cout << std::endl;
+	std::cout << "=== Test special ===" << std::endl;
+
+	ScalarConverter::convert("nan");
+	ScalarConverter::convert("+inf");
+	ScalarConverter::convert("-inf");
+	ScalarConverter::convert("+inff");
+	ScalarConverter::convert("-inff");
+
+	std::cout << "=== Test edge cases ===" << std::endl;
+
+	ScalarConverter::convert("nn");
+	ScalarConverter::convert("+19");
 
 	// ScalarConverter::convert("999999999999999999999999999999");
 
+		// std::cout << std::numeric_limits<double>::quiet_NaN() << std::endl;
+		// std::cout << std::numeric_limits<float>::quiet_NaN() << std::endl;
 	return 0;
 }
 
@@ -56,7 +77,7 @@ int main(int argc, const char *argv[])
 // 		std::cout << b << std::endl;
 // 		std::cout << c << std::endl;
 
-// 		std::cout << std::numeric_limits<double>::quiet_NaN() << std::endl;
+		// std::cout << std::numeric_limits<double>::quiet_NaN() << std::endl;
 // 		std::cout << std::numeric_limits<double>::infinity() << std::endl;
 // 		std::cout << -std::numeric_limits<double>::infinity() << std::endl;
 
@@ -64,7 +85,7 @@ int main(int argc, const char *argv[])
 // 		std::cout << std::numeric_limits<char>::infinity() << std::endl;
 // 		std::cout << -std::numeric_limits<char>::infinity() << std::endl;
 
-// 		std::cout << std::numeric_limits<int>::quiet_NaN() << std::endl;
+		// std::cout << std::numeric_limits<int>::quiet_NaN() << std::endl;
 // 		std::cout << std::numeric_limits<int>::infinity() << std::endl;
 // 		std::cout << -std::numeric_limits<int>::infinity() << std::endl;
 // 	}
