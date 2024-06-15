@@ -6,15 +6,18 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/15 21:55:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/16 01:31:49 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <string>
 #include <iostream>
-#include "Double.hpp"
-#include "Float.hpp"
+#include <iomanip>
+
+#include <sstream>
+// #include "Double.hpp"
+// #include "Float.hpp"
 
 class Helper
 {
@@ -27,16 +30,16 @@ class Helper
 		~Helper() = delete;
 
 	public:
-		static std::string detect_type(std::string str);
-		static std::string convert_char(char c);
-
+		static std::string	detectType(std::string str);
+		static std::string	convert_char(char c);
+		static bool 		isValidPointNummber(std::string &str, bool isFloat = true);
 		template <typename T>
-		static void printOutput(const T &value, std::string type = "unset");
+		static void 		printOutput(const T &value, std::string type = "unset", std::string str = "unset");
 };
 
 // // Explicit instantiation for necessary types
 // // This ensures the compiler generates the function for these types
-extern template void Helper::printOutput(const char&, std::string);
-extern template void Helper::printOutput(const int&, std::string);
-extern template void Helper::printOutput(const float&, std::string);
-extern template void Helper::printOutput(const double&, std::string);
+extern template void Helper::printOutput(const char&, std::string, std::string);
+extern template void Helper::printOutput(const int&, std::string, std::string);
+extern template void Helper::printOutput(const float&, std::string, std::string);
+extern template void Helper::printOutput(const double&, std::string, std::string);

@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 14:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/15 21:40:32 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/06/16 01:33:30 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ NAME = convert
 
 SRCS = main.cpp \
 		ScalarConverter.cpp \
-		Double.cpp \
-		Float.cpp \
 		Helper.cpp
 
 OBJ_DIR = objs/
