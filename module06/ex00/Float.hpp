@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Float.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 22:53:12 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/15 20:37:27 by vshchuki         ###   ########.fr       */
+/*   Created: 2024/06/15 19:41:47 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/06/15 20:05:00 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
 
-int main(int argc, const char *argv[])
+#pragma once
+#include <iostream>
+#include <cmath>
+
+class Float
 {
-	if (argc != 2)
-	{
-		std::cout << "Usage: ./convert [value]" << std::endl;
-		return 1;
-	}
-	ScalarConverter::convert(argv[1]);
-}
+private:
+	float value;
+
+public:
+	Float();
+	Float(float value);
+	Float(const Float &);
+	Float &operator=(const Float &);
+	~Float();
+
+	float getValue() const;
+};
+
+std::ostream& operator<<(std::ostream &os, const Float &);

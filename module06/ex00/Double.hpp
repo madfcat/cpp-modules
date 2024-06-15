@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Double.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 22:53:12 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/15 20:37:27 by vshchuki         ###   ########.fr       */
+/*   Created: 2024/06/15 19:41:53 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/06/15 20:56:36 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
+#include <iostream>
+#include <cmath>
 
-int main(int argc, const char *argv[])
+class Double
 {
-	if (argc != 2)
-	{
-		std::cout << "Usage: ./convert [value]" << std::endl;
-		return 1;
-	}
-	ScalarConverter::convert(argv[1]);
-}
+private:
+	double value;
+
+public:
+	Double();
+	Double(double value);
+	Double(const Double &);
+	Double &operator=(const Double &);
+	~Double();
+
+	double getValue() const;
+};
+
+std::ostream& operator<<(std::ostream &os, const Double &);

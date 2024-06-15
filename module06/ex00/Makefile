@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/10 14:51:38 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/15 01:30:51 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/06/15 21:40:32 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ FLAGS = -Wall -Wextra -Werror -std=c++17
 NAME = convert
 
 SRCS = main.cpp \
-		ScalarConverter.cpp
+		ScalarConverter.cpp \
+		Double.cpp \
+		Float.cpp \
+		Helper.cpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
@@ -37,7 +40,6 @@ $(OBJ_DIR)%.o: %.cpp | $(OBJ_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	rm -f *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)
