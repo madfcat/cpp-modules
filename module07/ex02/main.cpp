@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:45:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 23:51:12 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/17 00:02:36 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,17 @@ int main()
 		for (unsigned int i = 0; i < arr1.size(); i++)
 		{
 			std::cout << arr2[i] << std::endl;
+		}
+
+		std::cout << std::endl;
+		std::cout << "=== Testing exceptions ===" << std::endl;
+		try
+		{
+			arr2[5] = "This should throw an exception";
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
 		}
 	}
 }
