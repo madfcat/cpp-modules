@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 18:03:07 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/16 18:06:26 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/06/16 18:15:58 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++17
 
 NAME = whatever
 
-SRCS = main.cpp \
+SRCS = main.cpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
