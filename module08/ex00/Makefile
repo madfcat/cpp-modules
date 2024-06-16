@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/16 23:23:08 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/17 01:04:53 by vshchuki         ###   ########.fr        #
+#    Created: 2024/06/17 01:04:45 by vshchuki          #+#    #+#              #
+#    Updated: 2024/06/17 01:08:46 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = c++
 FLAGS = -Wall -Wextra -Werror -std=c++17
 
-NAME = array
+NAME = easyfind
 
 SRCS = main.cpp
 
