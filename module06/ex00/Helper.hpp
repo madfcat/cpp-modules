@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 01:31:49 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/16 13:45:30 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-
 #include <sstream>
-// #include "Double.hpp"
-// #include "Float.hpp"
 
 class Helper
 {

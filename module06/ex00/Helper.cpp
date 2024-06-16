@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 01:32:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:45:44 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,16 +118,12 @@ void Helper::printOutput(const T &value, std::string type, std::string str)
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
 	}
-
+	/* flaot, double */
 	int precision = 1; 
 	if (type == "float")
 			precision = str.size() - str.find(".") - 2;
 	if (type == "double")
 			precision = str.size() - str.find(".") - 1;
-
-	// std::cout << "float: " << std::fixed << std::setprecision(precision) << Float(static_cast<float>(value)) << std::endl;
-	
-	// std::cout << "double: " << std::fixed << std::setprecision(precision) << Double(static_cast<double>(value)) << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(precision) << static_cast<float>(value) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(precision) << static_cast<double>(value) << std::endl;
 }
