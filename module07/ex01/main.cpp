@@ -6,11 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:56:11 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 18:51:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/16 23:30:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+#include <iostream>
+#include <string>
 
 void square(int& a)
 {

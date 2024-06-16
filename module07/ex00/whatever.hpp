@@ -6,13 +6,11 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:52:11 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 18:07:37 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/16 23:30:39 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <iostream>
-#include <string>
 
 template <typename T>
 void swap(T& value1, T& value2)
