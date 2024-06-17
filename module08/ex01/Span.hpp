@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 12:20:04 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 14:14:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:49:20 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <exception>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 
 class Span
 {

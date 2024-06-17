@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vshchuki <vshchuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 13:30:56 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 14:14:21 by vshchuki         ###   ########.fr       */
+/*   Created: 2024/06/17 14:50:14 by vshchuki          #+#    #+#             */
+/*   Updated: 2024/06/17 14:54:05 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span()
-{}
+Span::Span() {}
 
 Span::Span(unsigned int N)
 {
@@ -22,20 +21,23 @@ Span::Span(unsigned int N)
 
 Span::Span(const Span& other)
 {
+	std::cout << "Copy constructor called" << std::endl;
+	this->data.reserve(other.data.capacity());
 	this->data = other.data;
 }
 
 Span& Span::operator=(const Span& other)
 {
+	std::cout << "Assignment operator called" << std::endl;
 	if (this != &other)
 	{
+		this->data.reserve(other.data.capacity());
 		this->data = other.data;
 	}
 	return (*this);
 }
 
-Span::~Span()
-{}
+Span::~Span() {}
 
 void	Span::addNumber(int num)
 {
