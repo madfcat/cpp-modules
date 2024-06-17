@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 12:19:59 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 14:54:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/17 20:18:09 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int main()
 	std::cout << std::endl;
 	std::cout << "=== Tests copy constructor ===" << std::endl;
 	{
-
 		unsigned int vectorSize= 10;
 		Span sp1 = Span(vectorSize);
 		for (unsigned int i = 0; i < vectorSize - 1; i++)
@@ -68,7 +67,6 @@ int main()
 	std::cout << std::endl;
 	std::cout << "=== Tests assignemnt operator ===" << std::endl;
 	{
-
 		unsigned int vectorSize= 10;
 		Span sp1 = Span(vectorSize);
 		Span sp2;
@@ -88,6 +86,30 @@ int main()
 		std::cout << "Shortest span for sp2: " << sp2.shortestSpan() << std::endl;
 		std::cout << "Longest span for sp1: " << sp1.longestSpan() << std::endl;
 		std::cout << "Longest span for sp2: " << sp2.longestSpan() << std::endl;
+		try
+		{
+			sp1.addNumber(1);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << "Error: " << e.what() << std::endl;
+		}
+	}
+
+	std::cout << std::endl;
+	std::cout << "=== Test adding several numbers  ===" << std::endl;
+	{
+		unsigned int vectorSize= 10;
+		Span sp1 = Span(vectorSize);
+		for (unsigned int i = 0; i < vectorSize - 5; i++)
+			sp1.addNumber(i + 1);
+
+		std::cout << "Shortest span for sp1: " << sp1.shortestSpan() << std::endl;
+		std::cout << "Longest span for sp1: " << sp1.longestSpan() << std::endl;
+		std::vector<int> myArray = { 5, 6, 7, 8, 9 };
+		sp1.addNumbers(myArray.begin(), myArray.end());
+		std::cout << "Shortest span for sp1: " << sp1.shortestSpan() << std::endl;
+		std::cout << "Longest span for sp1: " << sp1.longestSpan() << std::endl;
 	}
 
 	return 0;

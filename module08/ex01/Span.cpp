@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:50:14 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 14:54:05 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/06/17 20:11:40 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,17 @@ void	Span::addNumber(int num)
 {
 	if (this->data.size() == this->data.capacity())
 		throw std::exception();
-	
+
 	this->data.push_back(num);
+}
+
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	unsigned int range = std::distance(begin, end);
+	if (this->data.size() + range > this->data.capacity())
+		throw std::exception();
+
+	this->data.insert(this->data.end(), begin, end);
 }
 
 int		Span::shortestSpan()
