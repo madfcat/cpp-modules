@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vshchuki <vshchuki@student.42.fr>          +#+  +:+       +#+         #
+#    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/17 12:19:55 by vshchuki          #+#    #+#              #
-#    Updated: 2024/06/17 13:55:50 by vshchuki         ###   ########.fr        #
+#    Created: 2024/06/20 19:11:56 by vshchuki          #+#    #+#              #
+#    Updated: 2024/06/20 19:11:58 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
