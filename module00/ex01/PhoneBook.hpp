@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:51:53 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/05 16:45:21 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:59:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <iostream>
 # include <string>
+# include <cstring>
+# include <climits>
 
 // Define ANSI escape codes for colors
 # define RESET   "\033[0m"
