@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/07 17:21:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 00:20:58 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <ctime>
 
 // Text color macros
 // #define TEXT_BLACK         "\033[30m"
@@ -49,6 +51,9 @@
 // #define RESET_BOLD_UNDERLINE "\033[22;24m"
 // #define RESET_BG "\033[49m"
 
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 1
+
 enum LogType
 {
 	DEFAULT,
@@ -60,11 +65,22 @@ enum LogType
 class BitcoinExchange
 {
 	private:
-		static const std::string 	dbFilename;
-		std::ifstream				dbData;
-		std::string					inputFilename;
-		std::ifstream				inputData;
+		static const std::string 				dbFilename;
+		std::ifstream							dbStream;
+		std::deque<time_t>						dbDataDates;
+		std::deque<float>							dbDataRates;
+		std::string								inputFilename;
+		std::ifstream							inputStream;
+		std::deque<time_t>						inputDataDates;
+		std::deque<float>							inputDataValues;
 
+		void									loadFile(std::ifstream& stream, std::string dataFilename);
+		std::tuple<std::string, std::string>	splitStrToTuple(std::string str, std::string delimiter);
+		time_t									convertToEpoch(const std::string& dateString);
+		void									parseStream(std::ifstream& stream, std::deque<time_t>& dataDates,
+															std::deque<float>& dataValues, std::string delimiter);
+		ssize_t									binarySearchRate(time_t date);
+		// convert();
 
 	public:
 		BitcoinExchange();
@@ -72,6 +88,7 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange&);
 		BitcoinExchange& operator=(const BitcoinExchange&);
 		~BitcoinExchange();
+
 
 		class ExchangeError : public std::exception
 		{
@@ -83,7 +100,6 @@ class BitcoinExchange
 				std::string getMessage() const;
 		};
 
-		void						loadFile(std::ifstream& stream, std::string dataFilename);
-		static void					log(std::string message, LogType type);
-		// convert();
+		static void								log(std::string message, LogType type);
+
 };
