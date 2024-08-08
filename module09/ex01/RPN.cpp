@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:40:59 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:45:55 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,6 @@ RPN::~RPN()
 }
 
 /* Methods */
-
-void printStack(std::stack<float> s) {
-    while (!s.empty()) {
-        std::cout << s.top() << " ";
-        s.pop();
-    }
-    std::cout << std::endl;
-}
 
 bool RPN::checkOperand(std::string token)
 {
@@ -122,11 +114,9 @@ void RPN::execute(std::string delimiter)
 	{
 		std::string token;
 		size_t delimiterPos = str.find(delimiter);
-		// log("not empty", INFO);
 
 		if (delimiterPos == std::string::npos)
 		{
-			// log(str, INFO);
 			checkToken(str);
 			token = str;
 			str = "";
@@ -144,13 +134,11 @@ void RPN::execute(std::string delimiter)
 		else
 		{
 			token = str.substr(0, delimiterPos);
-			// log(token, INFO);
 			checkToken(token);
 			
 			str = str.substr(delimiterPos + delimiter.length());
 		}
 
-		// printStack(this->currNumbers);
 		if (checkIsStackReady(token))
 			calculate(token);
 		else

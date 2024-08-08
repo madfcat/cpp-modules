@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:35:41 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:46:15 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ class RPN
 				std::string getMessage() const;
 		};
 
-		void						execute(std::string delimiter);
 		bool						checkOperand(std::string token);
 		bool						checkOperator(std::string token);
 		void						checkToken(std::string token);
 		bool						checkIsStackReady(std::string token);
 		void						applyOperator(float operand1, float operand2, std::string operandToken);
 		void						calculate(std::string operandToken);
+		void						execute(std::string delimiter);
 
 		std::string					trimTrailingZeros(std::string floatStr);
 		static void					log(std::string message, LogType type = DEFAULT);
