@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 03:19:06 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:35:28 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	log("BitcoinExchange default destructor called", INFO);
+	log("BitcoinExchange destructor called", INFO);
 	if (this->dbStream.is_open())
 		this->dbStream.close();
 	if (this->inputStream.is_open())
@@ -196,7 +196,8 @@ time_t BitcoinExchange::convertToEpoch(const std::string& dateString)
 	return timeSinceEpoch;
 }
 
-std::string BitcoinExchange::trimTrailingZeros(std::string floatStr) {
+std::string BitcoinExchange::trimTrailingZeros(std::string floatStr)
+{
 	size_t dotPos = floatStr.find(".");
 	if (dotPos == std::string::npos) {
 		return floatStr;
