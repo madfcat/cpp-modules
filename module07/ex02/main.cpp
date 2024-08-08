@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:45:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 00:02:36 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:51:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int main()
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:24:58 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 01:38:12 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:51:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void ScalarConverter::convert(std::string str)
 	}
 	catch (const std::out_of_range &e)
 	{
-		std::cerr << "Out of range: " << e.what() << std::endl;
+		std::cout << "Out of range: " << e.what() << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << "Exception " << e.what() << std::endl;
+		std::cout << "Exception " << e.what() << std::endl;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 15:45:44 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:51:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ std::string Helper::detectType(std::string str)
 	}
 	catch (const std::out_of_range &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 		return "overflow";
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 		return "unknown or impossible";
 	}
 }
