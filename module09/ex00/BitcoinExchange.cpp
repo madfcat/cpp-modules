@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 01:56:53 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 03:19:06 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ BitcoinExchange::BitcoinExchange(const char *inputFilename) : inputFilename(inpu
 	log("BitcoinExchange constructor called", INFO);
 	loadFile(this->dbStream, this->dbFilename);
 	loadFile(this->inputStream, this->inputFilename);
-
-	parseStream(this->dbStream, ",");
-	log("Parsed dbStream", INFO);
-	convert(this->inputStream, " | ");
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : dbDataDates(other.dbDataDates),
+																dbDataRates(other.dbDataRates)
 {
 	log("BitcoinExchange copy constructor called", INFO);
 	this->inputFilename = other.inputFilename;
@@ -46,6 +43,8 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	if (this != &other)
 	{
 		this->inputFilename = other.inputFilename;
+		this->dbDataDates = other.dbDataDates;
+		this->dbDataRates = other.dbDataRates;
 		this->dbStream.close();
 		this->inputStream.close();
 		loadFile(this->dbStream, this->dbFilename);
@@ -69,7 +68,7 @@ void BitcoinExchange::loadFile(std::ifstream& stream, std::string dbFilename)
 {
 	stream.open(dbFilename);
 	if (!stream.is_open())
-		throw ExchangeError("File can not be opened: " + dbFilename);
+		throw Error("File can not be opened: " + dbFilename);
 }
 
 void BitcoinExchange::parseStream(std::ifstream& stream, std::string delimiter)
@@ -86,12 +85,12 @@ void BitcoinExchange::parseStream(std::ifstream& stream, std::string delimiter)
 		{
 			auto [dateStr, valueStr] = splitStrToTuple(line, delimiter);
 			if ((value = std::stof(valueStr)) < 0)
-				throw BitcoinExchange::ExchangeError("Not a positive number.");
+				throw BitcoinExchange::Error("Not a positive number.");
 			epochDate = convertToEpoch(dateStr);
 			this->dbDataDates.push_back(epochDate);
 			this->dbDataRates.push_back(value);
 		}
-		catch (const BitcoinExchange::ExchangeError& e)
+		catch (const BitcoinExchange::Error& e)
 		{
 			log(e.getMessage(), ERROR);
 		}
@@ -107,7 +106,7 @@ ssize_t BitcoinExchange::binarySearchRate(std::string dateStr)
 	time_t epochDate = convertToEpoch(dateStr);
 
 	if (end == -1)
-		throw BitcoinExchange::ExchangeError("No matching rate for the date: " + dateStr);
+		throw BitcoinExchange::Error("No matching rate for the date: " + dateStr);
 
 	ssize_t curr = start + (end - start) / 2;
 	while (start != curr)
@@ -126,7 +125,7 @@ ssize_t BitcoinExchange::binarySearchRate(std::string dateStr)
 		curr = start + (end - start) / 2;
 	}
 	if (curr == 0 && epochDate < dbDataDates[curr])
-		throw BitcoinExchange::ExchangeError("No matching rate for the date: " + dateStr);
+		throw BitcoinExchange::Error("No matching rate for the date: " + dateStr);
 	return curr;
 }
 
@@ -142,27 +141,34 @@ void BitcoinExchange::convert(std::ifstream& stream, std::string delimiter)
 		{
 			auto [dateStr, valueStr] = splitStrToTuple(line, delimiter);
 			if ((value = std::stof(valueStr)) < 0)
-				throw BitcoinExchange::ExchangeError("Not a positive number.");
+				throw BitcoinExchange::Error("Not a positive number.");
 			if (value > 1000)
-				throw BitcoinExchange::ExchangeError("Too large a number.");
+				throw BitcoinExchange::Error("Too large a number.");
 
 			ssize_t curr = binarySearchRate(dateStr);
 
 			log(dateStr + " => " + trimTrailingZeros(std::to_string(value)) + 
 				" = " + trimTrailingZeros(std::to_string(dbDataRates[curr] * value)), SUCCESS);
 		}
-		catch (const BitcoinExchange::ExchangeError& e)
+		catch (const BitcoinExchange::Error& e)
 		{
 			log(e.getMessage(), ERROR);
 		}
 	}
 }
 
+void BitcoinExchange::run()
+{
+	parseStream(this->dbStream, ",");
+	log("Parsed dbStream", INFO);
+	convert(this->inputStream, " | ");
+}
+
 std::tuple<std::string, std::string> BitcoinExchange::splitStrToTuple(std::string str, std::string delimiter)
 {
 	size_t delimiterPos = str.find(delimiter);
 	if (delimiterPos == std::string::npos || delimiterPos == 0 || delimiterPos == str.length() - 1)
-		throw BitcoinExchange::ExchangeError("Bad input => " + str);
+		throw BitcoinExchange::Error("Bad input => " + str);
 
 	return {str.substr(0, str.find(delimiter)), str.substr(str.find(delimiter) + delimiter.length())};
 }
@@ -173,7 +179,7 @@ time_t BitcoinExchange::convertToEpoch(const std::string& dateString)
 	std::istringstream ss(dateString);
 	ss >> std::get_time(&tm, "%Y-%m-%d");
 	if (ss.fail()) {
-		throw BitcoinExchange::ExchangeError("Failed to parse date: " + dateString);
+		throw BitcoinExchange::Error("Failed to parse date: " + dateString);
 	}
 
 	// Set the time to midnight
@@ -184,7 +190,7 @@ time_t BitcoinExchange::convertToEpoch(const std::string& dateString)
 
 	time_t timeSinceEpoch = std::mktime(&tm);
 	if (timeSinceEpoch == -1) {
-		throw BitcoinExchange::ExchangeError("Failed to convert date to time_t: " + dateString);
+		throw BitcoinExchange::Error("Failed to convert date to time_t: " + dateString);
 	}
 
 	return timeSinceEpoch;
@@ -227,14 +233,14 @@ void BitcoinExchange::log(std::string message, LogType type)
 	std::cout << message << RESET << std::endl;
 }
 
-/* ExchangeError */
+/* Error */
 
-std::string BitcoinExchange::ExchangeError::getMessage() const
+std::string BitcoinExchange::Error::getMessage() const
 {
 	return this->message;
 }
 
-BitcoinExchange::ExchangeError::ExchangeError(const std::string& message)
+BitcoinExchange::Error::Error(const std::string& message)
 {
 	this->message = message;
 }

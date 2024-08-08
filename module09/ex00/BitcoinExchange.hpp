@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 02:01:26 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 03:13:11 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ class BitcoinExchange
 		std::ifstream							inputStream;
 
 		void									loadFile(std::ifstream& stream, std::string dataFilename);
-		std::tuple<std::string, std::string>	splitStrToTuple(std::string str, std::string delimiter);
-		time_t									convertToEpoch(const std::string& dateString);
 		void									parseStream(std::ifstream& stream, std::string delimiter);
 		ssize_t									binarySearchRate(std::string dateStr);
 		void									convert(std::ifstream& stream, std::string delimiter);
+		std::tuple<std::string, std::string>	splitStrToTuple(std::string str, std::string delimiter);
+		time_t									convertToEpoch(const std::string& dateString);
 		std::string								trimTrailingZeros(std::string floatStr);
 
 	public:
@@ -65,16 +65,17 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 
-		class ExchangeError : public std::exception
+		class Error : public std::exception
 		{
 			private:
 				std::string message;
 
 			public:
-				ExchangeError(const std::string& message);
+				Error(const std::string& message);
 				std::string getMessage() const;
 		};
 
+		void									run();
 		static void								log(std::string message, LogType type = DEFAULT);
 
 };

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:09:47 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 01:59:07 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/08 03:12:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int main(int argc, const char *argv[])
 		}
 
 		BitcoinExchange exchange(argv[1]);
+		exchange.run();
 	}
-	catch (BitcoinExchange::ExchangeError& e)
+	catch (BitcoinExchange::Error& e)
 	{
 		BitcoinExchange::log(e.getMessage(), ERROR);
 		return EXIT_FAILURE;
