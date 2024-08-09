@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:45:55 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/09 18:53:48 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ RPN::RPN(const char* expression) : expression(expression), result(0.0),
 
 RPN::RPN(const RPN& other)
 {
+	log("RPN copy constructor called", INFO);
 	this->expression = other.expression;
 	this->currNumbers = other.currNumbers;
 	this->result = other.result;
 	this->operandsCount = other.operandsCount;
 	this->operatorsCount = other.operandsCount;
-	log("RPN copy constructor called", INFO);
 }
 
 RPN& RPN::operator=(const RPN& other)
