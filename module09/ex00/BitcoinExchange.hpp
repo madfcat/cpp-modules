@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 03:13:11 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/11 15:49:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
+#include <regex>
 
 // Text color macros
 #define			TEXT_GREEN "\033[32m"
@@ -46,10 +47,13 @@ class BitcoinExchange
 		std::ifstream							dbStream;
 		std::deque<time_t>						dbDataDates;
 		std::deque<float>						dbDataRates;
+		static const std::regex					dbPattern;
 		std::string								inputFilename;
 		std::ifstream							inputStream;
+		static const std::regex					inputPattern;
 
 		void									loadFile(std::ifstream& stream, std::string dataFilename);
+		bool									matchPattern(std::string str, std::regex pattern);
 		void									parseStream(std::ifstream& stream, std::string delimiter);
 		ssize_t									binarySearchRate(std::string dateStr);
 		void									convert(std::ifstream& stream, std::string delimiter);

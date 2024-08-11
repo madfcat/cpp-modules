@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:35:28 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/11 16:02:57 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /* Orthodox Canonical Form */
 
 const std::string BitcoinExchange::dbFilename = "data.csv";
+const std::regex BitcoinExchange::dbPattern(R"(\d{4}-\d{2}-\d{2},\d+(\.\d+)?\r?)");
+const std::regex BitcoinExchange::inputPattern(R"(\d{4}-\d{2}-\d{2} \| -?\d+(\.\d+)?\r?)");
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -71,6 +73,12 @@ void BitcoinExchange::loadFile(std::ifstream& stream, std::string dbFilename)
 		throw Error("File can not be opened: " + dbFilename);
 }
 
+
+bool BitcoinExchange::matchPattern(std::string str, std::regex pattern)
+{
+	return regex_match(str, pattern);
+}
+
 void BitcoinExchange::parseStream(std::ifstream& stream, std::string delimiter)
 {
 	std::string line;
@@ -84,8 +92,10 @@ void BitcoinExchange::parseStream(std::ifstream& stream, std::string delimiter)
 		try
 		{
 			auto [dateStr, valueStr] = splitStrToTuple(line, delimiter);
+			if (!matchPattern(line, dbPattern))
+				throw BitcoinExchange::Error("Not a valid line => " + line);
 			if ((value = std::stof(valueStr)) < 0)
-				throw BitcoinExchange::Error("Not a positive number.");
+				throw BitcoinExchange::Error("Not a positive number => " + valueStr);
 			epochDate = convertToEpoch(dateStr);
 			this->dbDataDates.push_back(epochDate);
 			this->dbDataRates.push_back(value);
@@ -106,7 +116,7 @@ ssize_t BitcoinExchange::binarySearchRate(std::string dateStr)
 	time_t epochDate = convertToEpoch(dateStr);
 
 	if (end == -1)
-		throw BitcoinExchange::Error("No matching rate for the date: " + dateStr);
+		throw BitcoinExchange::Error("No matching rate for the date => " + dateStr);
 
 	ssize_t curr = start + (end - start) / 2;
 	while (start != curr)
@@ -125,7 +135,7 @@ ssize_t BitcoinExchange::binarySearchRate(std::string dateStr)
 		curr = start + (end - start) / 2;
 	}
 	if (curr == 0 && epochDate < dbDataDates[curr])
-		throw BitcoinExchange::Error("No matching rate for the date: " + dateStr);
+		throw BitcoinExchange::Error("No matching rate for the date => " + dateStr);
 	return curr;
 }
 
@@ -140,10 +150,12 @@ void BitcoinExchange::convert(std::ifstream& stream, std::string delimiter)
 		try
 		{
 			auto [dateStr, valueStr] = splitStrToTuple(line, delimiter);
+			if (!matchPattern(line, inputPattern))
+				throw BitcoinExchange::Error("Not a valid line => " + line);
 			if ((value = std::stof(valueStr)) < 0)
-				throw BitcoinExchange::Error("Not a positive number.");
+				throw BitcoinExchange::Error("Not a positive number => " + valueStr);
 			if (value > 1000)
-				throw BitcoinExchange::Error("Too large a number.");
+				throw BitcoinExchange::Error("Too large a number => " + valueStr);
 
 			ssize_t curr = binarySearchRate(dateStr);
 
