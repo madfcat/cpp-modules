@@ -6,15 +6,34 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/20 19:11:41 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:32:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iostream>
+#include <random>
+#include <cstdlib>     /* srand, rand */
+#include <ctime>       /* time */
+
+int random1()
+{
+	std::random_device rd;
+	std::mt19937 mt(rd());
+	std::uniform_int_distribution<int> dist(INT_MIN, INT_MAX);
+
+	return dist(mt);
+}
+
+int random2()
+{
+	return std::rand() % INT_MAX;
+}
 
 int main()
 {
+	std::cout << std::endl;
+	std::cout << "=== PDF Test ===" << std::endl;
 	{
 		Span sp = Span(5);
 
@@ -29,6 +48,27 @@ int main()
 	}
 
 	std::cout << std::endl;
+	std::cout << "=== Tests with 10000 random elements ===" << std::endl;
+	{
+		std::srand(std::time(nullptr));
+		unsigned int vectorSize= 1000000;
+		Span sp = Span(vectorSize);
+
+		// std::cout << "start" << std::endl;
+		for (unsigned int i = 0; i < vectorSize; i++)
+		{
+			int number = random1();
+			// int number = random2();
+			// std::cout << number << std::endl;
+			sp.addNumber(number);
+		}
+		// std::cout << "end" << std::endl;
+		
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+	}
+
+	std::cout << std::endl;
 	std::cout << "=== Tests with 10000 elements ===" << std::endl;
 	{
 		unsigned int vectorSize= 100000;
@@ -37,8 +77,8 @@ int main()
 		for (unsigned int i = 0; i < vectorSize; i++)
 			sp.addNumber(i);
 		
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 	}
 
 	std::cout << std::endl;
@@ -65,7 +105,7 @@ int main()
 	}
 
 	std::cout << std::endl;
-	std::cout << "=== Tests assignemnt operator ===" << std::endl;
+	std::cout << "=== Tests assignment operator ===" << std::endl;
 	{
 		unsigned int vectorSize= 10;
 		Span sp1 = Span(vectorSize);
@@ -79,7 +119,7 @@ int main()
 		std::cout << "Longest span for sp1: " << sp1.longestSpan() << std::endl;
 		std::cout << "Longest span for sp2: " << sp2.longestSpan() << std::endl;
 
-		std::cout << "Now let's ad 100 to sp1 and 200 to sp2" << std::endl;
+		std::cout << "Now let's add 100 to sp1 and 200 to sp2" << std::endl;
 		sp1.addNumber(100);
 		sp2.addNumber(200);
 		std::cout << "Shortest span for sp1: " << sp1.shortestSpan() << std::endl;
