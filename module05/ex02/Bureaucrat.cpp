@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/23 16:12:01 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Bureaucrat::Bureaucrat()
 {
-	std::cout << this->name << ": Bureaucrat default costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name), grade(grade)
 {
-	std::cout << this->name << ": Bureaucrat costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat constructor called" << std::endl;
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	if (grade < 1)
@@ -28,7 +28,7 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name), 
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
 {
-	std::cout << this->name << ": Bureaucrat copy costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat copy constructor called" << std::endl;
 	this->name = other.getName();
 	this->grade = other.getGrade();
 }
@@ -51,7 +51,7 @@ Bureaucrat::~Bureaucrat()
 
 void Bureaucrat::incrementGrade()
 {
-	if (this->grade == this->HighestGrade)
+	if (this->grade == getHighestGrade())
 	{
 		std::cout << "Highest grade can not be incremented" << std::endl;
 		throw Bureaucrat::GradeTooHighException();
@@ -61,7 +61,7 @@ void Bureaucrat::incrementGrade()
 }
 void Bureaucrat::decrementGrade()
 {
-	if (this->grade == this->LowestGrade)
+	if (this->grade == getLowestGrade())
 	{
 		std::cout << "Lowest grade can not be decremented" << std::endl;
 		throw Bureaucrat::GradeTooLowException();
@@ -104,6 +104,16 @@ const std::string Bureaucrat::getName() const
 unsigned int Bureaucrat::getGrade() const
 {
 	return this->grade;
+}
+
+unsigned int Bureaucrat::getHighestGrade() const
+{
+	return this->HighestGrade;
+}
+
+unsigned int Bureaucrat::getLowestGrade() const
+{
+	return this->LowestGrade;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const noexcept

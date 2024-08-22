@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:06:52 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/04 22:45:45 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:57:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,8 @@ Form*	Intern::makeForm(std::string formName, std::string formTarget)
 		std::cout << "Intern creates " + formName << std::endl;
 		return f(formTarget).release();
 	}
-	else
-	{
-		return nullptr;
-	}
+	std::cout << formName << " does not exist" << std::endl;
+	return nullptr;
 }
 
 FactoryFunction Intern::getFunction(std::string formTarget)

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/25 16:51:47 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:07:36 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ class Bureaucrat
 
 		const std::string	getName() const;
 		unsigned int		getGrade() const;
+		unsigned int		getHighestGrade() const;
+		unsigned int		getLowestGrade() const;
 
 	private:
 		class GradeTooHighException : public std::exception

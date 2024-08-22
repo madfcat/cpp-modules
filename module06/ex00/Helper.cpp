@@ -6,14 +6,14 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 23:52:10 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 23:58:29 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Helper.hpp"
 
 
-bool Helper::isValidPointNummber(std::string &str, bool isFloat)
+bool Helper::isValidPointNumber(std::string &str, bool isFloat)
 {
 	std::size_t found1 = str.find(".");
 	std::size_t found2 = found1 != std::string::npos ? str.find(".", found1 + 1) : std::string::npos;
@@ -47,10 +47,10 @@ std::string Helper::detectType(std::string str)
 			return "unknown";
 
 		/* Detect float */
-		if (Helper::isValidPointNummber(str))
+		if (Helper::isValidPointNumber(str))
 			return "float";
 
-		if (Helper::isValidPointNummber(str, false))
+		if (Helper::isValidPointNumber(str, false))
 			return "double";
 		
 		/* Detect int */
@@ -118,7 +118,7 @@ void Helper::printOutput(const T &value, std::string type, std::string str)
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
 	}
-	/* flaot, double */
+	/* float, double */
 	int precision = 1; 
 	if (type == "float")
 			precision = str.size() - str.find(".") - 2;

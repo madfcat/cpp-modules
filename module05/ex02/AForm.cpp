@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/25 16:52:08 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 AForm::AForm()
 {
-	std::cout << this->name << ": AForm default costructor called" << std::endl;
+	std::cout << this->name << ": AForm default constructor called" << std::endl;
 }
 
-AForm::AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
-    : name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
+AForm::AForm(std::string name, bool isSigned, unsigned int gradeToSign, unsigned int gradeToExecute)
+	: name(name), isSigned(isSigned), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
 {
-    std::cout << this->name << ": AForm constructor called" << std::endl;
-    if (gradeToSign > 150 || gradeToToExecute > 150)
-        throw AForm::GradeTooLowException();
-    if (gradeToSign < 1 || gradeToToExecute < 1)
-        throw AForm::GradeTooHighException();
+	std::cout << this->name << ": AForm constructor called" << std::endl;
+	if (gradeToSign > 150 || gradeToToExecute > 150)
+		throw AForm::GradeTooLowException();
+	if (gradeToSign < 1 || gradeToToExecute < 1)
+		throw AForm::GradeTooHighException();
 }
 
 AForm::AForm(const AForm& other): name(other.getName()), isSigned(other.getIsSigned()), gradeToSign(other.getGradeToSign()), gradeToToExecute(other.getGradeToExecute())
 {
-	std::cout << this->name << ": AForm copy costructor called" << std::endl;
+	std::cout << this->name << ": AForm copy constructor called" << std::endl;
 
 }
 

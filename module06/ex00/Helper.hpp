@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 13:45:30 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:19 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Helper
 	public:
 		static std::string	detectType(std::string str);
 		static std::string	convert_char(char c);
-		static bool 		isValidPointNummber(std::string &str, bool isFloat = true);
+		static bool 		isValidPointNumber(std::string &str, bool isFloat = true);
 		template <typename T>
 		static void 		printOutput(const T &value, std::string type = "unset", std::string str = "unset");
 };

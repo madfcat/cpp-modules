@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/20 18:48:19 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 Form::Form()
 {
-	std::cout << this->name << ": Form default costructor called" << std::endl;
+	std::cout << this->name << ": Form default constructor called" << std::endl;
 }
 
 Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
-    : name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
+	: name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
 {
-    std::cout << this->name << ": Form constructor called" << std::endl;
-    if (gradeToSign > 150 || gradeToToExecute > 150)
-        throw Form::GradeTooLowException();
-    if (gradeToSign < 1 || gradeToToExecute < 1)
-        throw Form::GradeTooHighException();
+	std::cout << this->name << ": Form constructor called" << std::endl;
+	if (gradeToSign > 150 || gradeToToExecute > 150)
+		throw Form::GradeTooLowException();
+	if (gradeToSign < 1 || gradeToToExecute < 1)
+		throw Form::GradeTooHighException();
 }
 
 Form::Form(const Form& other): name(other.getName()), isSigned(other.getIsSigned()), gradeToSign(other.getGradeToSign()), gradeToToExecute(other.getGradeToExecute())
 {
-	std::cout << this->name << ": Form copy costructor called" << std::endl;
+	std::cout << this->name << ": Form copy constructor called" << std::endl;
 
 }
 

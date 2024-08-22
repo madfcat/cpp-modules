@@ -6,31 +6,35 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:31 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/30 18:50:10 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:51:27 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45)
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", false, 72, 45), target(target)
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other.getName(), other.getIsSigned(), other.getGradeToSign(), other.getGradeToExecute())
 {
+	this->target = other.target;
 	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
 const RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
 	std::cout << "RobotomyRequestForm assignment operator called" << std::endl;
-	(void)other;
+	if (this != &other)
+	{
+		this->target = other.target;
+	}
 	return (*this);
 }
 
@@ -42,8 +46,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 int	RobotomyRequestForm::executeAction() const
 {
 	std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_int_distribution<int> dist(0, 1);
+	std::mt19937 mt(rd());
+	std::uniform_int_distribution<int> dist(0, 1);
 		
 	if (dist(mt) % 2 == 0)
 		std::cout << "🤖 " + this->target + " has been robotomized successfully ✅" << std::endl;

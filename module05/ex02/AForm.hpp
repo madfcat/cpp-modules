@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:02 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/25 17:01:39 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:52:22 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class AForm
 	
 	public:
 		AForm();
-		AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute);
+		AForm(std::string name, bool isSigned, unsigned int gradeToSign, unsigned int gradeToExecute);
 		AForm(const AForm& other);
 		const AForm& operator=(const AForm& other);
 		virtual ~AForm();
