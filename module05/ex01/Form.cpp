@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 14:08:37 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Form::Form()
 {
-	std::cout << this->name << ": Form default costructor called" << std::endl;
+	std::cout << this->name << ": Form default constructor called" << std::endl;
 }
 
 Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
@@ -29,7 +29,7 @@ Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExecu
 
 Form::Form(const Form& other): name(other.getName()), isSigned(other.getIsSigned()), gradeToSign(other.getGradeToSign()), gradeToToExecute(other.getGradeToExecute())
 {
-	std::cout << this->name << ": Form copy costructor called" << std::endl;
+	std::cout << this->name << ": Form copy constructor called" << std::endl;
 
 }
 

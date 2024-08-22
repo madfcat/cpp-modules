@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 14:07:08 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Bureaucrat::Bureaucrat()
 {
-	std::cout << this->name << ": Bureaucrat default costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name), grade(grade)
 {
-	std::cout << this->name << ": Bureaucrat costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat constructor called" << std::endl;
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	if (grade < 1)
@@ -28,7 +28,7 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): name(name), 
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
 {
-	std::cout << this->name << ": Bureaucrat copy costructor called" << std::endl;
+	std::cout << this->name << ": Bureaucrat copy constructor called" << std::endl;
 	this->name = other.getName();
 	this->grade = other.getGrade();
 }

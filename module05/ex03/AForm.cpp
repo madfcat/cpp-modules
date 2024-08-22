@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 18:51:58 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AForm::AForm()
 {
-	std::cout << this->name << ": AForm default costructor called" << std::endl;
+	std::cout << this->name << ": AForm default constructor called" << std::endl;
 }
 
 AForm::AForm(std::string name, bool isSigned, unsigned int gradeToSign, unsigned int gradeToExecute)
@@ -29,7 +29,7 @@ AForm::AForm(std::string name, bool isSigned, unsigned int gradeToSign, unsigned
 
 AForm::AForm(const AForm& other): name(other.getName()), isSigned(other.getIsSigned()), gradeToSign(other.getGradeToSign()), gradeToToExecute(other.getGradeToExecute())
 {
-	std::cout << this->name << ": AForm copy costructor called" << std::endl;
+	std::cout << this->name << ": AForm copy constructor called" << std::endl;
 
 }
 
