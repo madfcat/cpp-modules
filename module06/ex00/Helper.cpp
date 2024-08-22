@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:51:42 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 23:52:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 bool Helper::isValidPointNummber(std::string &str, bool isFloat)
 {
-	std::size_t found1= str.find(".");
-	std::size_t found2= str.find(".", found1 + 1);
-	std::size_t foundF= str.find("f");
+	std::size_t found1 = str.find(".");
+	std::size_t found2 = found1 != std::string::npos ? str.find(".", found1 + 1) : std::string::npos;
+	std::size_t foundF = str.find("f");
 
 	for (char& c : str)
 	{
-		if (!(std::isdigit(c) || (isFloat && c == 'f') || c == '.') || (c == '-' && c != str[0]))
+		if (!(std::isdigit(c) || (isFloat && c == 'f') || c == '.') && !(c == '-' && c == str[0]))
 			return false;
 	}
 	if (found1 != std::string::npos && found2 == std::string::npos && (foundF == str.size() - 1 || !isFloat))
