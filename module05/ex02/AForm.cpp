@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 20:21:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 14:14:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:51:53 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ AForm::AForm()
 	std::cout << this->name << ": AForm default costructor called" << std::endl;
 }
 
-AForm::AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute)
-	: name(name), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
+AForm::AForm(std::string name, bool isSigned, unsigned int gradeToSign, unsigned int gradeToExecute)
+	: name(name), isSigned(isSigned), gradeToSign(gradeToSign), gradeToToExecute(gradeToExecute)
 {
 	std::cout << this->name << ": AForm constructor called" << std::endl;
 	if (gradeToSign > 150 || gradeToToExecute > 150)

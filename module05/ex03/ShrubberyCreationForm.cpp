@@ -6,31 +6,35 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 17:31:37 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/30 19:04:51 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:50:05 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", false, 145, 137)
 {
 	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", false, 145, 137), target(target)
 {
 	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other.getName(), other.getGradeToSign(), other.getGradeToExecute())
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other.getName(), other.getIsSigned(), other.getGradeToSign(), other.getGradeToExecute())
 {
+	this->target = other.target;
 	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
 const ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
 	std::cout << "ShrubberyCreationForm assignment operator called" << std::endl;
-	(void)other;
+	if (this != &other)
+	{
+		this->target = other.target;
+	}
 	return (*this);
 }
 
