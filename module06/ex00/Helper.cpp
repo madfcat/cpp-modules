@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 20:53:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:51:42 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:03:20 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void Helper::printOutput(const T &value, std::string type, std::string str)
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
 	}
-	/* flaot, double */
+	/* float, double */
 	int precision = 1; 
 	if (type == "float")
 			precision = str.size() - str.find(".") - 2;
