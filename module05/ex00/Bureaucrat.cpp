@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/05/12 20:49:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:05:19 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,19 @@ unsigned int Bureaucrat::getGrade() const
 	return this->grade;
 }
 
+unsigned int Bureaucrat::getHighestGrade() const
+{
+	return this->HighestGrade;
+}
+
+unsigned int Bureaucrat::getLowestGrade() const
+{
+	return this->LowestGrade;
+}
+
 void Bureaucrat::incrementGrade()
 {
-	if (this->grade == this->HighestGrade)
+	if (this->grade == getHighestGrade())
 	{
 		std::cout << "Highest grade can not be incremented" << std::endl;
 		throw Bureaucrat::GradeTooHighException();
@@ -71,7 +81,7 @@ void Bureaucrat::incrementGrade()
 }
 void Bureaucrat::decrementGrade()
 {
-	if (this->grade == this->LowestGrade)
+	if (this->grade == getLowestGrade())
 	{
 		std::cout << "Lowest grade can not be decremented" << std::endl;
 		throw Bureaucrat::GradeTooLowException();

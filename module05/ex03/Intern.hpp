@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:07:03 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/04 22:33:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:29:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "ShrubberyCreationForm.hpp"
 # include <iostream>
 # include <string>
+# include <memory>
 
 using Form = AForm;
 using FactoryFunction = std::unique_ptr<Form>(*)(std::string target);
