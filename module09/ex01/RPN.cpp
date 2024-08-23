@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/09 18:53:48 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:00:20 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ RPN::~RPN()
 
 bool RPN::checkOperand(std::string token)
 {
-	return (this->allowedOperands.find(token) != std::string::npos);
+	return (this->allowedOperands.find(token) != std::string::npos && token.size() == 1);
 }
 
 bool RPN::checkOperator(std::string token)
 {
-	return (this->allowedOperators.find(token) != std::string::npos);
+	return (this->allowedOperators.find(token) != std::string::npos && token.size() == 1);
 }
 
 void RPN::checkToken(std::string token)
