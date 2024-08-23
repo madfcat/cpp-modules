@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 16:42:06 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/22 15:33:39 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/23 10:02:10 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,24 @@ void identify(Base& p)
 {
 	try
 	{
-		if (dynamic_cast<A*>(&p))
-			std::cout << "Type: A" << std::endl;
-		else if (dynamic_cast<B*>(&p))
-			std::cout << "Type: B" << std::endl;
-		else if (dynamic_cast<C*>(&p))
-			std::cout << "Type: C" << std::endl;
-		else
-			std::cout << "Type: not identified" << std::endl;
+		(void)dynamic_cast<A&>(p);
+		std::cout << "Type: A" << std::endl;
+		return;
 	}
-	catch (std::exception& e)
+	catch (std::exception& e) {}
+	try
 	{
-		std::cout << "Casting failed" << std::endl;
+		(void)dynamic_cast<B&>(p);
+		std::cout << "Type: B" << std::endl;
+		return;
 	}
+	catch (std::exception& e) {}
+	try
+	{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "Type: C" << std::endl;
+		return;
+	}
+	catch (std::exception& e) {}
+	std::cout << "Type not identified" << std::endl;
 }
