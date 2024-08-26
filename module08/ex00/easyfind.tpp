@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:26:05 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/17 01:24:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/26 16:02:02 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 template <typename T>
 int easyfind(T container, int value)
 {
-	for (int num : container)
-	{
-		if (num == value)
-			return num;
-	}
+	typename T::iterator it = find(container.begin(), container.end(), value);
+	if (it != container.end())
+		return *it;
 	throw std::runtime_error("Value not found");
 }
