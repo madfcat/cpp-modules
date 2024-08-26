@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:44:46 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/06/16 23:50:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:40:47 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ template <typename T>
 T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= this->arrSize) {
-		throw std::out_of_range("Index out of bounds");
+		throw std::exception();
 	}
 	return this->data[index];
 }
@@ -72,7 +72,7 @@ template <typename T>
 const T& Array<T>::operator[](unsigned int index) const
 {
 	if (index >= this->arrSize) {
-		throw std::out_of_range("Index out of bounds");
+		throw std::exception();
 	}
 	return this->data[index];
 }
