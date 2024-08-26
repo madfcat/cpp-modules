@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:56:11 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/07/31 14:49:36 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:20:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main( void )
 	}
 	std::cout << std::endl;
 	{
-		std::cout << "Testing with int array:" << std::endl;
+		std::cout << "Testing with string array:" << std::endl;
 		const int arrSize = 5;
 		std::string arr[arrSize] = {"sihT", "sekam", "esnes", "won", "):"};
 		iter(arr, arrSize, reverse);
