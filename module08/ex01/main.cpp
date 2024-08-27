@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/13 16:32:04 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/27 22:19:03 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main()
 	}
 
 	std::cout << std::endl;
-	std::cout << "=== Tests with 10000 random elements ===" << std::endl;
+	std::cout << "=== Tests with 1000000 random elements ===" << std::endl;
 	{
 		std::srand(std::time(nullptr));
 		unsigned int vectorSize= 1000000;

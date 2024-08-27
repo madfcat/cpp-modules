@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/13 16:22:39 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/27 22:21:53 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Span::Span() {}
 
-Span::Span(unsigned int N) : numbersRepeat(false)
+Span::Span(unsigned int N)
 {
 	this->data.reserve(N);
 }
@@ -24,8 +24,6 @@ Span::Span(const Span& other)
 	std::cout << "Copy constructor called" << std::endl;
 	this->data.reserve(other.data.capacity());
 	this->data = other.data;
-	this->dataSet = other.dataSet;
-	this->numbersRepeat = other.numbersRepeat;
 }
 
 Span& Span::operator=(const Span& other)
@@ -35,8 +33,6 @@ Span& Span::operator=(const Span& other)
 	{
 		this->data.reserve(other.data.capacity());
 		this->data = other.data;
-		this->dataSet = other.dataSet;
-		this->numbersRepeat = other.numbersRepeat;
 	}
 	return (*this);
 }
@@ -49,11 +45,6 @@ void	Span::addNumber(int num)
 		throw std::exception();
 
 	this->data.push_back(num);
-	if (!this->dataSet.insert(num).second)
-	{
-		std::cout << "This number is repeated: " << num << std::endl;
-		this->numbersRepeat = true;
-	}
 }
 
 void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
@@ -70,20 +61,21 @@ int		Span::shortestSpan()
 	if (this->data.size() < 2)
 		throw std::exception();
 
-	if (this->numbersRepeat)
-		return 0;
+	std::vector<int> dataSorted = data;
+	std::sort(dataSorted.begin(), dataSorted.end());
 
 	int shortestSpan = INT_MAX;
-	int currSpan;
-	std::set<int>::iterator prev = this->dataSet.begin();
-	std::set<int>::iterator it = std::next(prev);
+	int prev = -1;
 
-	for (; it != this->dataSet.end(); ++it, ++prev)
-	{
-		currSpan = std::abs(*it - *prev);
-		if (currSpan < shortestSpan)
-			shortestSpan = currSpan;
-	}
+	std::for_each(dataSorted.begin(), dataSorted.end(), [&](int curr) {
+		if (prev != -1)
+		{
+			int currSpan = std::abs(curr - prev);
+			if (currSpan < shortestSpan)
+				shortestSpan = currSpan;
+		}
+		prev = curr;
+	});
 
 	return shortestSpan;
 }

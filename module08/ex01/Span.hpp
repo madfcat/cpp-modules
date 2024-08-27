@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:45 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/13 15:27:06 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/27 22:20:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ class Span
 {
 	private:
 		std::vector<int>	data;
-		std::set<int>		dataSet;
-		bool				numbersRepeat;
 
 	public:
 		Span();
