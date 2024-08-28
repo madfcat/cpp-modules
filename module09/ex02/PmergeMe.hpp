@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/09 18:51:17 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:54:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ enum LogType
 class PmergeMe
 {
 	private:
-
+		std::vector<int> numVec;
+		std::vector<int> numList;
 
 	public:
 		PmergeMe();
-		PmergeMe(const char* argv[]);
+		PmergeMe(const int argc, const char* argv[]);
 		PmergeMe(const PmergeMe&);
 		PmergeMe& operator=(const PmergeMe&);
 		~PmergeMe();
@@ -61,6 +62,15 @@ class PmergeMe
 				Error(const std::string& message);
 				std::string getMessage() const;
 		};
+
+		template <typename T>
+		void printInfo(T& container)
+		{
+			log("Before: ", INFO);
+			log("After: ", INFO);
+			log("Time to process a range of " << container.size() << "elements with std::[..] : 0.00031 us: ", INFO);
+		}
+
 		void						executeOnList();
 		void						executeOnVector();
 		static void					log(std::string message, LogType type = DEFAULT);

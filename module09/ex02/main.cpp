@@ -6,13 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:21 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/09 18:50:43 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:04:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int main(int argc, char const *argv[])
+int main(const int argc, char const *argv[])
 {
 	try
 	{
@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 			return EXIT_FAILURE;
 		}
 
-		PmergeMe mergeSelection(argv);
+		PmergeMe mergeSelection(argc, argv);
 		mergeSelection.executeOnList();
 		mergeSelection.executeOnVector();
 	}
