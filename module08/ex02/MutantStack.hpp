@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 23:07:16 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/27 18:41:53 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 14:21:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ template <typename T, class Container = std::deque<T>>
 class MutantStack : public std::stack<T, Container>
 {
 	public:
-		using std::stack<T, Container>::stack; // Inherit constructors
+		MutantStack() : std::stack<T>() {}
+		~MutantStack() {}
+		MutantStack(const MutantStack& other) : std::stack<T>(other) {}
+		MutantStack& operator=(const MutantStack& other)
+		{
+			std::stack<T>::operator=(other);
+			return *this;
+		}
 
 		// Type aliases for convenience
 		using iterator = typename Container::iterator;
