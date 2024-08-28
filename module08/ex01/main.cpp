@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/27 22:19:03 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:09:23 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main()
 		{
 			int number = random1();
 			// int number = random2();
-			// std::cout << number << std::endl;
+			std::cout << number << std::endl;
 			sp.addNumber(number);
 		}
 		// std::cout << "end" << std::endl;
@@ -69,7 +69,7 @@ int main()
 	}
 
 	std::cout << std::endl;
-	std::cout << "=== Tests with 10000 elements ===" << std::endl;
+	std::cout << "=== Tests with 100000 elements ===" << std::endl;
 	{
 		unsigned int vectorSize= 100000;
 		Span sp = Span(vectorSize);

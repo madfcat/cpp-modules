@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/27 22:21:53 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:08:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterat
 	this->data.insert(this->data.end(), begin, end);
 }
 
-int		Span::shortestSpan()
+unsigned int		Span::shortestSpan()
 {
 	if (this->data.size() < 2)
 		throw std::exception();
@@ -70,7 +70,7 @@ int		Span::shortestSpan()
 	std::for_each(dataSorted.begin(), dataSorted.end(), [&](int curr) {
 		if (prev != -1)
 		{
-			int currSpan = std::abs(curr - prev);
+			int currSpan = curr - prev;
 			if (currSpan < shortestSpan)
 				shortestSpan = currSpan;
 		}
@@ -80,10 +80,10 @@ int		Span::shortestSpan()
 	return shortestSpan;
 }
 
-int		Span::longestSpan()
+unsigned int		Span::longestSpan()
 {
 	if (this->data.size() < 2)
 		throw std::exception();
 
-	return std::abs(*std::max_element(data.begin(), data.end()) - *std::min_element(data.begin(), data.end()));
+	return *std::max_element(data.begin(), data.end()) - *std::min_element(data.begin(), data.end());
 }
