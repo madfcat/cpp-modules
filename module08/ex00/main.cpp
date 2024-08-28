@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 00:26:08 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/26 15:57:56 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 10:56:15 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int main()
 		try
 		{
 			int resultVec1 = easyfind(vec, 3);
-			std::cout << "Found in vector: " << resultVec1 << std::endl;
+			std::cout << "Found in list: " << resultVec1 << std::endl;
 			int resultVec2 = easyfind(vec, 6);
-			std::cout << "Found in vector: " << resultVec2 << std::endl;
+			std::cout << "Found in list: " << resultVec2 << std::endl;
 		}
 		catch (const std::exception &e)
 		{
