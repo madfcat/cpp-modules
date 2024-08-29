@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/29 11:26:24 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/29 17:28:14 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,46 @@ PmergeMe::~PmergeMe()
 
 /* Methods */
 
-void PmergeMe::execute(ContType type)
+template <typename T>
+void compareSwap(T& arr1, T& arr2, int aInd)
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	if (arr1[aInd] < arr1[aInd - 1])
+	{
+		int temp = arr1[aInd];
+		arr1[aInd] = arr1[aInd - 1];
+		arr1[aInd - 1] = temp;
 
+		if (arr1 != arr2)
+		{
+			// int temp1 = arr2[2 * aInd];
+			// arr2[2 * aInd] = arr2[aInd];
+			// arr2[aInd] = temp1;
+
+			int temp2 = arr2[2 * aInd - 1];
+			arr2[2 * aInd - 1] = arr2[2 * (aInd - 1) - 1];
+			arr2[2 * (aInd - 1) - 1] = temp2;
+		}
+	}
+}
+
+template <typename T>
+T extractMainChain(T& arr)
+{
+	T mainChain;
+	for (size_t i = 1; i < arr.size(); i += 2) {
+		mainChain.push_back(arr[i]);
+	}
+	return mainChain;
+}
+
+template <typename T>
+void PmergeMe::sort(T& arr1, T& arr2)
+{
+	std::cout << "---" << std::endl;
 	// Sorting
 
 	/*
-	1. Divide in all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
+	1. Divide all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
 	these larger numbers using merge insertion recursively
 	The base case is when main chain has only 2 numbers. Return vector with sorted indices.
 	Outer function should apply this order to the numbers and its pairs.
@@ -76,6 +108,31 @@ void PmergeMe::execute(ContType type)
 	
 	
 	*/
+
+	/* Swap pairs to have a1, a2... as largest in pair*/
+
+	for (unsigned long i = 1; i < arr1.size(); i += 2)
+	{
+		compareSwap(arr1, arr2, i);
+	}
+	log("Now swaped: " + createSeq(arr1), INFO);
+	log("Now swaped prev: " + createSeq(arr2), INFO);
+	if (arr1.size() <= 2)
+		return;
+
+	T mainChain = extractMainChain(arr1);
+	log("Main chain: " + createSeq(mainChain), INFO);
+
+	sort(mainChain, arr1);
+
+	// sort()
+}
+
+void PmergeMe::execute(ContType type)
+{
+	auto start = std::chrono::high_resolution_clock::now();
+
+	sort(this->numVec, this->numVec);
 
 
 	// Simulate some work by sleeping for 1 second (1,000,000 microseconds)
@@ -99,10 +156,10 @@ void PmergeMe::run()
 {
 	log("Before: " + createSeq(this->argv), INFO);
 	execute(VECTOR);
-	execute(LIST);
+	// execute(LIST);
 	log("After: " + createSeq(this->numVec), SUCCESS);
-	printTime(this->numList, VECTOR, this->listUsecs);
-	printTime(this->numVec, LIST, this->vecUsecs);
+	printTime(this->numVec, VECTOR, this->listUsecs);
+	// printTime(this->numList, LIST, this->vecUsecs);
 }
 
 void PmergeMe::log(std::string message, LogType type)

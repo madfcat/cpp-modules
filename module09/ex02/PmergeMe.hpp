@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 23:43:08 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:33:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <algorithm>
 
 // Text color macros
 #define			TEXT_GREEN "\033[32m"
@@ -44,11 +45,18 @@ enum LogType
 	SUCCESS
 };
 
-		enum ContType
-		{
-			VECTOR,
-			LIST
-		};
+enum ContType
+{
+	VECTOR,
+	LIST
+};
+
+// template<typename T>
+// struct ArrStruct
+// {
+// 	T indices;
+// 	T values;
+// };
 
 class PmergeMe
 {
@@ -59,6 +67,7 @@ class PmergeMe
 		std::list<int>									numList;
 		long long										listUsecs;
 		static const std::map<ContType, std::string>	containerTypes;
+
 
 	public:
 		PmergeMe();
@@ -98,6 +107,9 @@ class PmergeMe
 			}
 			return oss.str();
 		}
+
+		template <typename T>
+		void						sort(T& arr1, T& arr2);
 
 		void						execute(ContType);
 		void						run();
