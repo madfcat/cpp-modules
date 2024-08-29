@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:21 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 12:04:14 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:58:55 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int main(const int argc, char const *argv[])
 		}
 
 		PmergeMe mergeSelection(argc, argv);
-		mergeSelection.executeOnList();
-		mergeSelection.executeOnVector();
+		mergeSelection.run();
 	}
 	catch (PmergeMe::Error& e)
 	{

@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 12:54:52 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 23:43:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
+#include <map>
+#include <sstream>
+#include <chrono>
+#include <thread>
 
 // Text color macros
 #define			TEXT_GREEN "\033[32m"
@@ -39,12 +44,21 @@ enum LogType
 	SUCCESS
 };
 
+		enum ContType
+		{
+			VECTOR,
+			LIST
+		};
 
 class PmergeMe
 {
 	private:
-		std::vector<int> numVec;
-		std::vector<int> numList;
+		std::vector<std::string>						argv;
+		std::vector<int>								numVec;
+		long long										vecUsecs;
+		std::list<int>									numList;
+		long long										listUsecs;
+		static const std::map<ContType, std::string>	containerTypes;
 
 	public:
 		PmergeMe();
@@ -52,6 +66,7 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe& operator=(const PmergeMe&);
 		~PmergeMe();
+
 
 		class Error : public std::exception
 		{
@@ -64,14 +79,30 @@ class PmergeMe
 		};
 
 		template <typename T>
-		void printInfo(T& container)
+		void printTime(T& container, ContType type, long long usecs) const
 		{
-			log("Before: ", INFO);
-			log("After: ", INFO);
-			log("Time to process a range of " << container.size() << "elements with std::[..] : 0.00031 us: ", INFO);
+			log("Time to process a range of " +
+				std::to_string(container.size()) + " elements with " +
+				"std::" + containerTypes.at(type) + " : " +
+				std::to_string(usecs) + " us: ", INFO);
 		}
 
-		void						executeOnList();
-		void						executeOnVector();
+		template <typename T>
+		std::string createSeq(T& container) const
+		{
+			std::ostringstream oss;
+			for (auto it = container.begin(); it != container.end(); ++it) {
+				if (it != container.begin())
+					oss << " ";
+				oss << *it;
+			}
+			return oss.str();
+		}
+
+		void						execute(ContType);
+		void						run();
 		static void					log(std::string message, LogType type = DEFAULT);
 };
+
+// template void PmergeMe::printInfo(std::vector<int>& container, ContType type, long long usecs) const;
+// template void PmergeMe::printInfo(std::list<int>& container, ContType type, long long usecs) const;

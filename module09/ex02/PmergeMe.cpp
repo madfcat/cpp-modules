@@ -6,11 +6,13 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 13:44:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:26:24 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+const std::map<ContType, std::string> PmergeMe::containerTypes = {{VECTOR, "vector"}, {LIST, "list"}};
 
 PmergeMe::PmergeMe()
 {
@@ -20,12 +22,16 @@ PmergeMe::PmergeMe()
 PmergeMe::PmergeMe(const int argc, const char* argv[])
 {
 	log("PmergeMe constructor called", INFO);
-	for (int i = 0; i < argc; i++)
+	this->argv = std::vector<std::string>(argv + 1, argv + argc);
+	for (int i = 1; i < argc; i++)
 	{
 		int newNum = std::stoi(argv[i]);
+		if (std::find(this->numVec.begin(), this->numVec.end(), newNum) != std::end(this->numVec))
+			throw PmergeMe::Error("This element is not unique: " + std::to_string(newNum));
+		if (newNum <= 0)
+			throw PmergeMe::Error("Not a positive number: " + std::to_string(newNum));
+
 		this->numVec.push_back(newNum);
-		if (this->numVec.back() <= 0)
-			throw PmergeMe::Error("Not a positive number: " + std::to_string(numVec.back()));
 		this->numList.push_back(newNum);
 	}
 }
@@ -54,6 +60,50 @@ PmergeMe::~PmergeMe()
 }
 
 /* Methods */
+
+void PmergeMe::execute(ContType type)
+{
+	auto start = std::chrono::high_resolution_clock::now();
+
+	// Sorting
+
+	/*
+	1. Divide in all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
+	these larger numbers using merge insertion recursively
+	The base case is when main chain has only 2 numbers. Return vector with sorted indices.
+	Outer function should apply this order to the numbers and its pairs.
+	2. 
+	
+	
+	*/
+
+
+	// Simulate some work by sleeping for 1 second (1,000,000 microseconds)
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+
+	auto end = std::chrono::high_resolution_clock::now();
+
+	switch (type)
+	{
+		case VECTOR:
+			this->vecUsecs = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+			break;
+		case LIST:
+			this->listUsecs = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+			break;
+	}
+}
+
+
+void PmergeMe::run()
+{
+	log("Before: " + createSeq(this->argv), INFO);
+	execute(VECTOR);
+	execute(LIST);
+	log("After: " + createSeq(this->numVec), SUCCESS);
+	printTime(this->numList, VECTOR, this->listUsecs);
+	printTime(this->numVec, LIST, this->vecUsecs);
+}
 
 void PmergeMe::log(std::string message, LogType type)
 {

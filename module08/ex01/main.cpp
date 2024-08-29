@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:29 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 15:09:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:30:06 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main()
 		{
 			int number = random1();
 			// int number = random2();
-			std::cout << number << std::endl;
+			// std::cout << i << ". " << number << std::endl;
 			sp.addNumber(number);
 		}
 		// std::cout << "end" << std::endl;

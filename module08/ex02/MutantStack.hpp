@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 23:07:16 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 14:21:52 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:58:07 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <deque>
 #include <stack>
 #include <iterator>
-#include <utility> // For std::forward
 
 template <typename T, class Container = std::deque<T>>
 class MutantStack : public std::stack<T, Container>

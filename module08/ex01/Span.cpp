@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:11:35 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/28 15:08:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:31:12 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,21 @@ unsigned int		Span::shortestSpan()
 	std::sort(dataSorted.begin(), dataSorted.end());
 
 	int shortestSpan = INT_MAX;
-	int prev = -1;
+	int prev = dataSorted[0];
 
-	std::for_each(dataSorted.begin(), dataSorted.end(), [&](int curr) {
-		if (prev != -1)
-		{
-			int currSpan = curr - prev;
-			if (currSpan < shortestSpan)
-				shortestSpan = currSpan;
-		}
+	for (size_t i = 1; i < dataSorted.size(); ++i)
+	{
+		int curr = dataSorted[i];
+		// std::cout << i << ". curr: " << curr << std::endl;
+		int currSpan = curr - prev;
+
+		if (currSpan == 0)
+			return 0;
+		if (currSpan < shortestSpan)
+			shortestSpan = currSpan;
+
 		prev = curr;
-	});
+	}
 
 	return shortestSpan;
 }
