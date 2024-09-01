@@ -6,7 +6,7 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 17:09:19 by vshchuki          #+#    #+#              #
-#    Updated: 2024/08/08 20:53:36 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/09/01 12:19:16 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ FLAGS = -Wall -Wextra -Werror -std=c++17
 NAME = PmergeMe
 
 SRCS = main.cpp PmergeMe.cpp
+# SRCS = main2.cpp
+# SRCS = main3.cpp
 
 OBJ_DIR = objs/
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))

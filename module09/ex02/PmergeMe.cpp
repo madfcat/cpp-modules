@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/29 17:28:14 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/01 23:16:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,79 +61,185 @@ PmergeMe::~PmergeMe()
 
 /* Methods */
 
-template <typename T>
-void compareSwap(T& arr1, T& arr2, int aInd)
-{
-	if (arr1[aInd] < arr1[aInd - 1])
-	{
-		int temp = arr1[aInd];
-		arr1[aInd] = arr1[aInd - 1];
-		arr1[aInd - 1] = temp;
+// template <typename T>
+// void compareSwap(T& arr1, T& arr2, int aInd)
+// {
+// 	if (arr1[aInd] < arr1[aInd - 1])
+// 	{
+// 		int temp = arr1[aInd];
+// 		arr1[aInd] = arr1[aInd - 1];
+// 		arr1[aInd - 1] = temp;
 
-		if (arr1 != arr2)
-		{
-			// int temp1 = arr2[2 * aInd];
-			// arr2[2 * aInd] = arr2[aInd];
-			// arr2[aInd] = temp1;
+// 		if (arr1 != arr2)
+// 		{
+// 			// int temp1 = arr2[2 * aInd];
+// 			// arr2[2 * aInd] = arr2[aInd];
+// 			// arr2[aInd] = temp1;
 
-			int temp2 = arr2[2 * aInd - 1];
-			arr2[2 * aInd - 1] = arr2[2 * (aInd - 1) - 1];
-			arr2[2 * (aInd - 1) - 1] = temp2;
-		}
-	}
-}
+// 			int temp2 = arr2[2 * aInd - 1];
+// 			arr2[2 * aInd - 1] = arr2[2 * (aInd - 1) - 1];
+// 			arr2[2 * (aInd - 1) - 1] = temp2;
+// 		}
+// 	}
+// }
 
-template <typename T>
-T extractMainChain(T& arr)
-{
-	T mainChain;
-	for (size_t i = 1; i < arr.size(); i += 2) {
-		mainChain.push_back(arr[i]);
-	}
-	return mainChain;
-}
+// template <typename T>
+// T extractMainChain(T& arr)
+// {
+// 	T mainChain;
+// 	for (size_t i = 1; i < arr.size(); i += 2) {
+// 		mainChain.push_back(arr[i]);
+// 	}
+// 	return mainChain;
+// }
 
-template <typename T>
-void PmergeMe::sort(T& arr1, T& arr2)
-{
-	std::cout << "---" << std::endl;
-	// Sorting
+// template <typename T>
+// void PmergeMe::sort(T& arr1, T& arr2)
+// {
+// 	std::cout << "---" << std::endl;
 
-	/*
-	1. Divide all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
-	these larger numbers using merge insertion recursively
-	The base case is when main chain has only 2 numbers. Return vector with sorted indices.
-	Outer function should apply this order to the numbers and its pairs.
-	2. 
+
+// 	/* Divide into pairs */
+
+
+
+
+
+// 	// Sorting
+
+// 	/*
+// 	1. Divide all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
+// 	these larger numbers using merge insertion recursively
+// 	The base case is when main chain has only 2 numbers. Return vector with sorted indices.
+// 	Outer function should apply this order to the numbers and its pairs.
+// 	2. 
 	
 	
-	*/
+// 	*/
 
-	/* Swap pairs to have a1, a2... as largest in pair*/
+	
 
+// 	/* Swap pairs to have a1, a2... as largest in pair*/
+
+// 	for (unsigned long i = 1; i < arr1.size(); i += 2)
+// 	{
+// 		compareSwap(arr1, arr2, i);
+// 	}
+// 	log("Now swaped: " + createSeq(arr1), INFO);
+// 	log("Now swaped prev: " + createSeq(arr2), INFO);
+// 	if (arr1.size() <= 2)
+// 		return;
+
+// 	T mainChain = extractMainChain(arr1);
+// 	log("Main chain: " + createSeq(mainChain), INFO);
+
+// 	sort(mainChain, arr1);
+
+// 	// sort()
+// }
+
+std::vector<RecursivePair>	PmergeMe::createInitPairs(std::vector<int>& arr1)
+{
+	std::vector<RecursivePair> split;
 	for (unsigned long i = 1; i < arr1.size(); i += 2)
 	{
-		compareSwap(arr1, arr2, i);
+		split.push_back(RecursivePair(arr1[i], arr1[i - 1]));
 	}
-	log("Now swaped: " + createSeq(arr1), INFO);
-	log("Now swaped prev: " + createSeq(arr2), INFO);
-	if (arr1.size() <= 2)
-		return;
+	// Handle last element
+	if (arr1.size() % 2 == 1)
+	{
+		split.push_back(RecursivePair(EMPTY_PAIR, arr1[arr1.size() - 1]));
+	}
 
-	T mainChain = extractMainChain(arr1);
-	log("Main chain: " + createSeq(mainChain), INFO);
-
-	sort(mainChain, arr1);
-
-	// sort()
+	return split;
 }
+
+// std::vector<RecursivePair>	PmergeMe::createRecPairs(std::vector<RecursivePair>& arr)
+// {
+// 	std::vector<RecursivePair> split;
+// 	for (unsigned long i = 1; i < arr.size(); i += 2)
+// 	{
+// 		std::pair<int, int> pair;
+// 		if (arr[i].isPairIntInt(pair))
+// 		{
+// 			split.push_back(RecursivePair(pair.value, arr[i - 1]));
+// 		}
+// 	}
+// 	// Handle last element
+// 	if (arr.size() % 2 == 1)
+// 	{
+// 		split.push_back(RecursivePair(EMPTY_PAIR, arr[arr.size() - 1]));
+// 	}
+
+// 	return split;
+// }
+
+void PmergeMe::swapInitSplit(std::vector<RecursivePair>& split)
+{
+		for (auto& rp : split)
+		{
+			std::pair<int, int> basePair;
+			if (rp.isPairIntInt(basePair))
+			{
+				auto& basePair = std::get<std::pair<int, int>>(rp.value);
+				if (basePair.second > basePair.first && basePair.first != EMPTY_PAIR)
+				{
+					std::swap(basePair.first, basePair.second);
+				}
+			}
+		}
+}
+
+// void PmergeMe::mergeInsertMainChain(std::vector<RecursivePair>& arr)
+// {
+	
+// 	auto split = splitRecPairs(arr);
+// 	mergeInsertMainChain(split);
+// }
+
+
+void PmergeMe::sortVec(std::vector<int>& arr1)
+{
+	auto split = createInitPairs(arr1);
+	swapInitSplit(split);
+
+	std::pair<int, int> lastPair = {-2, -2};
+
+	if (split.back().isPairIntInt(lastPair) && lastPair.first == -1)
+	{
+		split.pop_back();
+	}
+
+	for (const auto& pair : split) {
+		// std::cout << pair.first << " " << pair.second << std::endl;
+		if (std::holds_alternative<std::pair<int, int>>(pair.value))
+		{
+			const auto& basePair = std::get<std::pair<int, int>>(pair.value);
+			std::cout << "Base Pair: (" << basePair.first << ", " << basePair.second << ")" << std::endl;
+		}
+		else
+		{
+			const auto& recursivePair = std::get<std::shared_ptr<std::pair<int, RecursivePair>>>(pair.value);
+			std::cout << "First: " << recursivePair->first << std::endl;
+			// processRecursivePair(recursivePair->second); // Recursively process the next level
+		}
+	}
+	std::cout << "Last Pair: (" << lastPair.first << ", " << lastPair.second << ")" << std::endl;
+
+	// mergeInsertMainChain(split);
+
+	// push back lastPair
+	// Insertion sort
+}
+
+
 
 void PmergeMe::execute(ContType type)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 
-	sort(this->numVec, this->numVec);
-
+	// sort(this->numVec, this->numVec);
+	sortVec(this->numVec);
 
 	// Simulate some work by sleeping for 1 second (1,000,000 microseconds)
 	std::this_thread::sleep_for(std::chrono::seconds(1));
