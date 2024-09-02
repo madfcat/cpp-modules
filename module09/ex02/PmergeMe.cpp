@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/01 23:16:46 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:08:48 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@ PmergeMe::PmergeMe(const int argc, const char* argv[])
 	for (int i = 1; i < argc; i++)
 	{
 		int newNum = std::stoi(argv[i]);
-		if (std::find(this->numVec.begin(), this->numVec.end(), newNum) != std::end(this->numVec))
+		auto it = std::find_if(this->numVec.begin(), this->numVec.end(), [newNum](const Rec& rec) {
+			return rec.mainChain == newNum;
+		});
+		if (it != this->numVec.end()) {
 			throw PmergeMe::Error("This element is not unique: " + std::to_string(newNum));
+		}
+	
 		if (newNum <= 0)
 			throw PmergeMe::Error("Not a positive number: " + std::to_string(newNum));
 
-		this->numVec.push_back(newNum);
-		this->numList.push_back(newNum);
+		this->numVec.emplace_back(newNum); // construct directly in the vector
+		this->numList.emplace_back(newNum); // construct directly in the list
 	}
 }
 
@@ -61,188 +66,180 @@ PmergeMe::~PmergeMe()
 
 /* Methods */
 
-// template <typename T>
-// void compareSwap(T& arr1, T& arr2, int aInd)
-// {
-// 	if (arr1[aInd] < arr1[aInd - 1])
-// 	{
-// 		int temp = arr1[aInd];
-// 		arr1[aInd] = arr1[aInd - 1];
-// 		arr1[aInd - 1] = temp;
-
-// 		if (arr1 != arr2)
-// 		{
-// 			// int temp1 = arr2[2 * aInd];
-// 			// arr2[2 * aInd] = arr2[aInd];
-// 			// arr2[aInd] = temp1;
-
-// 			int temp2 = arr2[2 * aInd - 1];
-// 			arr2[2 * aInd - 1] = arr2[2 * (aInd - 1) - 1];
-// 			arr2[2 * (aInd - 1) - 1] = temp2;
-// 		}
-// 	}
-// }
-
-// template <typename T>
-// T extractMainChain(T& arr)
-// {
-// 	T mainChain;
-// 	for (size_t i = 1; i < arr.size(); i += 2) {
-// 		mainChain.push_back(arr[i]);
-// 	}
-// 	return mainChain;
-// }
-
-// template <typename T>
-// void PmergeMe::sort(T& arr1, T& arr2)
-// {
-// 	std::cout << "---" << std::endl;
-
-
-// 	/* Divide into pairs */
-
-
-
-
-
-// 	// Sorting
-
-// 	/*
-// 	1. Divide all numbers in pairs and swap them. Find the larger number in pairs. Sort pairs according to 
-// 	these larger numbers using merge insertion recursively
-// 	The base case is when main chain has only 2 numbers. Return vector with sorted indices.
-// 	Outer function should apply this order to the numbers and its pairs.
-// 	2. 
-	
-	
-// 	*/
-
-	
-
-// 	/* Swap pairs to have a1, a2... as largest in pair*/
-
-// 	for (unsigned long i = 1; i < arr1.size(); i += 2)
-// 	{
-// 		compareSwap(arr1, arr2, i);
-// 	}
-// 	log("Now swaped: " + createSeq(arr1), INFO);
-// 	log("Now swaped prev: " + createSeq(arr2), INFO);
-// 	if (arr1.size() <= 2)
-// 		return;
-
-// 	T mainChain = extractMainChain(arr1);
-// 	log("Main chain: " + createSeq(mainChain), INFO);
-
-// 	sort(mainChain, arr1);
-
-// 	// sort()
-// }
-
-std::vector<RecursivePair>	PmergeMe::createInitPairs(std::vector<int>& arr1)
+std::vector<Rec>	PmergeMe::createInitPairs(std::vector<Rec>& arr)
 {
-	std::vector<RecursivePair> split;
-	for (unsigned long i = 1; i < arr1.size(); i += 2)
+	std::vector<Rec> newArr;
+	for (unsigned long i = 1; i < arr.size(); i += 2)
 	{
-		split.push_back(RecursivePair(arr1[i], arr1[i - 1]));
+		newArr.emplace_back(arr[i].mainChain, &arr[i], &arr[i - 1]);
 	}
 	// Handle last element
-	if (arr1.size() % 2 == 1)
+	if (arr.size() % 2 == 1)
 	{
-		split.push_back(RecursivePair(EMPTY_PAIR, arr1[arr1.size() - 1]));
+		newArr.emplace_back(EMPTY, nullptr, &arr[arr.size() - 1]);
 	}
 
-	return split;
+	return newArr;
 }
 
-// std::vector<RecursivePair>	PmergeMe::createRecPairs(std::vector<RecursivePair>& arr)
-// {
-// 	std::vector<RecursivePair> split;
-// 	for (unsigned long i = 1; i < arr.size(); i += 2)
-// 	{
-// 		std::pair<int, int> pair;
-// 		if (arr[i].isPairIntInt(pair))
-// 		{
-// 			split.push_back(RecursivePair(pair.value, arr[i - 1]));
-// 		}
-// 	}
-// 	// Handle last element
-// 	if (arr.size() % 2 == 1)
-// 	{
-// 		split.push_back(RecursivePair(EMPTY_PAIR, arr[arr.size() - 1]));
-// 	}
-
-// 	return split;
-// }
-
-void PmergeMe::swapInitSplit(std::vector<RecursivePair>& split)
+void PmergeMe::swapInit(std::vector<Rec>& arr)
 {
-		for (auto& rp : split)
+	for (unsigned long i = 1; i < arr.size(); i += 2)
+	{
+
+		if (arr[i].mainChain < arr[i - 1].mainChain)
+		{	
+			std::swap(arr[i], arr[i - 1]);
+		}
+	}
+}
+
+unsigned long findBIndex(unsigned long arrSize, unsigned long k)
+{
+	unsigned long t = (std::pow(2, k + 1) + std::pow(-1, k)) / 3 - 1;
+	t = t <= arrSize - 1 ? t : arrSize - 1;
+	return t;
+}
+
+
+std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
+{
+	// Base case: return if less than 4 elements
+	if (arr.size() <= 2)
+	{
+		swapInit(arr);
+		// printArr(arr);
+		return arr;
+	}
+
+	swapInit(arr);
+	auto initSeq = createInitPairs(arr);
+
+	printArr(initSeq);
+
+	Rec leftOut;
+	if (initSeq.back().mainChain == EMPTY)
+	{
+		leftOut = initSeq.back();
+		initSeq.pop_back();
+		printEl(leftOut, "Left Pair");
+	}
+	std::cout << "-------" << std::endl;
+	printArr(initSeq);
+
+	std::cout << "------- Let's start recursion1 -------" << std::endl;
+
+	std::vector<Rec> newArr = sortVec(initSeq);
+
+	/* Insertion sort */
+	std::cout << "------- Before insertion -------" << std::endl;
+	printArr(newArr);
+	std::cout << "---" << std::endl;
+	
+	// Push back lefOut
+	if (leftOut.mainChain == EMPTY)
+	{
+		newArr.push_back(leftOut);
+		std::cout << "!! pushed leftOut: " << newArr.back().mainChain << std::endl;
+	}
+	// printArr(newArr, "Base pair after pushed leftOut");
+
+	if (newArr[0].pair.first == nullptr) // top level
+		return newArr;
+
+
+
+	std::vector<Rec> insertionArr;
+	insertionArr.emplace_back(*newArr[0].pair.second);
+	insertionArr.emplace_back(*newArr[0].pair.first);
+	
+	unsigned long k = 2;
+	unsigned long lastB = findBIndex(newArr.size(), k);
+	unsigned long addAFrom = 1;
+
+	while(42)
+	{
+		// Populate As
+		std::cout << "addAFrom: " << addAFrom << ", lastB: "<< lastB<< std::endl;
+		for (unsigned long i = addAFrom; i <= lastB; i++)
 		{
-			std::pair<int, int> basePair;
-			if (rp.isPairIntInt(basePair))
+			if (newArr[i].mainChain == EMPTY)
+				continue;
+			if (i < newArr.size() && newArr[i].pair.first != nullptr)
+				insertionArr.emplace_back(*newArr[i].pair.first);
+			else
 			{
-				auto& basePair = std::get<std::pair<int, int>>(rp.value);
-				if (basePair.second > basePair.first && basePair.first != EMPTY_PAIR)
+				insertionArr.emplace_back(newArr[i]);
+			}
+			std::cout << "pushed A: " << newArr[i].mainChain << std::endl;
+		}
+		std::cout << "here" << std::endl;
+
+		printArr(insertionArr, "Base Pair populate A");
+
+		std::cout << "----" << std::endl;
+		// Insert Bs
+		std::cout << "-- Now inserting Bs. lastB: " << lastB << ", till addFrom - 1: " << addAFrom - 1 << std::endl;
+		for (unsigned long i = lastB; i != addAFrom - 1; i--)
+		{
+			unsigned long low = 0;
+			unsigned long top = insertionArr.size() - 1;
+			unsigned long mid = 0;
+
+			while (low <= top)
+			{
+				mid = low + (top - low) / 2;  // Correct calculation of mid
+				// std::cout << "i: " << i << ", size: " << newArr.size() << std::endl;
+				// std::cout << "low: " << low << ", top: " << top << std::endl;
+				// std::cout << "mid: " << mid << ", size: " << insertionArr.size() << std::endl;
+				if (newArr[i].pair.second->mainChain < insertionArr[mid].mainChain)
 				{
-					std::swap(basePair.first, basePair.second);
+					if (mid == 0)
+						break;  // Avoid underflow, no valid position to move `top` down
+					top = mid - 1;
+				}
+				else
+				{
+					if (mid >= insertionArr.size() - 1)
+						break;  // Avoid overflow, no valid position to move `low` up
+					low = low == insertionArr.size() - 1 ? low : mid + 1;
 				}
 			}
+
+			// Insert at the correct position
+			insertionArr.insert(insertionArr.begin() + low, Rec(*newArr[i].pair.second));
+			std::cout << "pushed B: " << newArr[i].pair.second->mainChain << std::endl;
 		}
-}
+		std::cout << "--- Stop inserting Bs" << std::endl;
 
-// void PmergeMe::mergeInsertMainChain(std::vector<RecursivePair>& arr)
-// {
-	
-// 	auto split = splitRecPairs(arr);
-// 	mergeInsertMainChain(split);
-// }
+		// if (lastB <= insertionArr.size() - 1)
+		addAFrom = lastB + 1;
+		k++;
+		lastB = findBIndex(newArr.size(), k);
 
-
-void PmergeMe::sortVec(std::vector<int>& arr1)
-{
-	auto split = createInitPairs(arr1);
-	swapInitSplit(split);
-
-	std::pair<int, int> lastPair = {-2, -2};
-
-	if (split.back().isPairIntInt(lastPair) && lastPair.first == -1)
-	{
-		split.pop_back();
-	}
-
-	for (const auto& pair : split) {
-		// std::cout << pair.first << " " << pair.second << std::endl;
-		if (std::holds_alternative<std::pair<int, int>>(pair.value))
+		if (addAFrom > newArr.size() - 1)
 		{
-			const auto& basePair = std::get<std::pair<int, int>>(pair.value);
-			std::cout << "Base Pair: (" << basePair.first << ", " << basePair.second << ")" << std::endl;
+
+			std::cout << "break " << std::endl;
+			break;
 		}
-		else
-		{
-			const auto& recursivePair = std::get<std::shared_ptr<std::pair<int, RecursivePair>>>(pair.value);
-			std::cout << "First: " << recursivePair->first << std::endl;
-			// processRecursivePair(recursivePair->second); // Recursively process the next level
-		}
+		
 	}
-	std::cout << "Last Pair: (" << lastPair.first << ", " << lastPair.second << ")" << std::endl;
-
-	// mergeInsertMainChain(split);
-
-	// push back lastPair
-	// Insertion sort
+	printArr(insertionArr, "Base Pair before return");
+	return insertionArr;
 }
 
 
 
-void PmergeMe::execute(ContType type)
+std::vector<Rec> PmergeMe::execute(ContType type)
 {
 	auto start = std::chrono::high_resolution_clock::now();
 
 	// sort(this->numVec, this->numVec);
-	sortVec(this->numVec);
+	std::vector<Rec> result = sortVec(this->numVec);
 
 	// Simulate some work by sleeping for 1 second (1,000,000 microseconds)
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+	// std::this_thread::sleep_for(std::chrono::seconds(1));
 
 	auto end = std::chrono::high_resolution_clock::now();
 
@@ -255,17 +252,37 @@ void PmergeMe::execute(ContType type)
 			this->listUsecs = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 			break;
 	}
+	return result;
 }
 
 
 void PmergeMe::run()
 {
 	log("Before: " + createSeq(this->argv), INFO);
-	execute(VECTOR);
+	std::vector<Rec> result = execute(VECTOR);
 	// execute(LIST);
-	log("After: " + createSeq(this->numVec), SUCCESS);
-	printTime(this->numVec, VECTOR, this->listUsecs);
-	// printTime(this->numList, LIST, this->vecUsecs);
+	// log(std::string("After: ") + "put smth here lol", SUCCESS);
+	log("After: " + createSeq(result), SUCCESS);
+	printTime(this->numVec, VECTOR, this->vecUsecs);
+	// printTime(this->numList, LIST, this->listUsecs);
+}
+
+void PmergeMe::printArr(std::vector<Rec>& arr, std::string msg)
+{
+	for (auto& el : arr)
+	{
+		printEl(el, msg);
+	}
+}
+
+void PmergeMe::printEl(Rec& el, std::string msg)
+{
+	std::cout << "mainChain: " << el.mainChain
+	<< " | " << msg <<": ("
+	<< (el.pair.first ? std::to_string(el.pair.first->mainChain) : "null")
+	<< ", "
+	<< (el.pair.second ? std::to_string(el.pair.second->mainChain) : "null")
+	<< ")" << std::endl; 
 }
 
 void PmergeMe::log(std::string message, LogType type)
@@ -297,4 +314,10 @@ std::string PmergeMe::Error::getMessage() const
 PmergeMe::Error::Error(const std::string& message)
 {
 	this->message = message;
+}
+
+std::ostream& operator<<(std::ostream& os, const Rec& rec)
+{
+	os << rec.mainChain;
+	return os;
 }
