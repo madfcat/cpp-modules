@@ -6,12 +6,16 @@
 #    By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 17:09:19 by vshchuki          #+#    #+#              #
-#    Updated: 2024/09/02 15:20:40 by vshchuki         ###   ########.fr        #
+#    Updated: 2024/09/02 20:29:48 by vshchuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER = c++
-FLAGS = -Wall -Wextra -Werror -std=c++17 #-fsanitize=address -g 
+FLAGS = -Wall -Wextra -Werror -std=c++17 
+
+ifdef DEBUG_BUILD
+	FLAGS += -DDEBUG_MODE -fsanitize=address -g 
+endif
 
 NAME = PmergeMe
 
