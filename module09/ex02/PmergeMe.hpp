@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/02 15:07:22 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:01:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,19 @@
 #include <map>
 #include <sstream>
 #include <chrono>
-#include <thread> // remove this
+// #include <thread> // remove this
 #include <algorithm>
-#include <variant>
+// #include <variant> // remove this
 #include <memory>
 #include <cmath>
 
-#define EMPTY 0
-#define NOT_INIT -1
+// Rec value macros
+#define 		EMPTY 0
+#define 		NOT_INIT -1
 
 // Text color macros
 #define			TEXT_GREEN "\033[32m"
+#define			TEXT_YELLOW "\033[33m"
 #define			TEXT_BLUE "\033[34m"
 #define			TEXT_WHITE "\033[37m"
 
@@ -48,7 +50,8 @@ enum LogType
 	DEFAULT,
 	ERROR,
 	INFO,
-	SUCCESS
+	SUCCESS,
+	DEBUG
 };
 
 enum ContType
@@ -64,11 +67,12 @@ struct Rec {
 	Rec() : mainChain(NOT_INIT), pair(nullptr, nullptr) {};
 	Rec(int value) : mainChain(value), pair(nullptr, nullptr) {}
 	Rec(int value, Rec* first, Rec* second) : mainChain(value), pair(first, second) {}
-	Rec(const Rec& other) : mainChain(other.mainChain), pair(other.pair.first, other.pair.second) {
-		// std::cout << "Rec copied with mainChain: " << mainChain << std::endl;
-	}
-	Rec& operator=(const Rec& other) {
-		if (this != &other) {  // self-assignment check
+	Rec(const Rec& other) : mainChain(other.mainChain), pair(other.pair.first, other.pair.second) {}
+
+	Rec& operator=(const Rec& other)
+	{
+		if (this != &other)
+		{
 			mainChain = other.mainChain;
 			pair = other.pair;
 		}
@@ -106,36 +110,18 @@ class PmergeMe
 				std::string getMessage() const;
 		};
 
-		template <typename T>
-		void printTime(T& container, ContType type, long long usecs) const
-		{
-			log("Time to process a range of " +
-				std::to_string(container.size()) + " elements with " +
-				"std::" + containerTypes.at(type) + " : " +
-				std::to_string(usecs) + " us: ", INFO);
-		}
-
-		template <typename T>
-		std::string createSeq(T& container) const
-		{
-			std::ostringstream oss;
-			for (auto it = container.begin(); it != container.end(); ++it) {
-				if (it != container.begin())
-					oss << " ";
-				oss << *it;
-			}
-			return oss.str();
-		}
 
 		void						swapInit(std::vector<Rec>& arr);
 		std::vector<Rec>			createInitPairs(std::vector<Rec>& arr);
-		// void						createInitPairs(std::vector<Rec>& arr);
-		
 		std::vector<Rec>			sortVec(std::vector<Rec>& arr);
-		// void						mergeInsertMainChain(std::vector<Rec>& arr);
-
 		std::vector<Rec>			execute(ContType);
 		void						run();
+
+		/* Logging */
+		template <typename T>
+		void						printTime(T& container, ContType type, long long usecs) const;
+		template <typename T>
+		std::string					createSeq(T& container) const;
 		void						printArr(std::vector<Rec>& arr, std::string msg = "Base Pair");
 		void						printEl(Rec& el, std::string msg = "Base Pair");
 		static void					log(std::string message, LogType type = DEFAULT);

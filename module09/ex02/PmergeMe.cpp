@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/02 15:08:48 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:00:33 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void PmergeMe::swapInit(std::vector<Rec>& arr)
 	}
 }
 
-unsigned long findBIndex(unsigned long arrSize, unsigned long k)
+/**
+ * t represents the next b to insert into "main chain"
+ */
+unsigned long findT(unsigned long arrSize, unsigned long k)
 {
 	unsigned long t = (std::pow(2, k + 1) + std::pow(-1, k)) / 3 - 1;
 	t = t <= arrSize - 1 ? t : arrSize - 1;
@@ -104,17 +107,16 @@ unsigned long findBIndex(unsigned long arrSize, unsigned long k)
 
 std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 {
-	// Base case: return if less than 4 elements
+	swapInit(arr);
+
+	/* Base case */
 	if (arr.size() <= 2)
 	{
-		swapInit(arr);
 		// printArr(arr);
 		return arr;
 	}
 
-	swapInit(arr);
 	auto initSeq = createInitPairs(arr);
-
 	printArr(initSeq);
 
 	Rec leftOut;
@@ -124,11 +126,12 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 		initSeq.pop_back();
 		printEl(leftOut, "Left Pair");
 	}
+
 	std::cout << "-------" << std::endl;
 	printArr(initSeq);
-
 	std::cout << "------- Let's start recursion1 -------" << std::endl;
 
+	/* Sort recursively */
 	std::vector<Rec> newArr = sortVec(initSeq);
 
 	/* Insertion sort */
@@ -136,7 +139,7 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 	printArr(newArr);
 	std::cout << "---" << std::endl;
 	
-	// Push back lefOut
+	// Push back leftOut
 	if (leftOut.mainChain == EMPTY)
 	{
 		newArr.push_back(leftOut);
@@ -147,21 +150,19 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 	if (newArr[0].pair.first == nullptr) // top level
 		return newArr;
 
-
-
 	std::vector<Rec> insertionArr;
 	insertionArr.emplace_back(*newArr[0].pair.second);
 	insertionArr.emplace_back(*newArr[0].pair.first);
 	
-	unsigned long k = 2;
-	unsigned long lastB = findBIndex(newArr.size(), k);
-	unsigned long addAFrom = 1;
+	unsigned long k = 2; 
+	unsigned long lastT = findT(newArr.size(), k);
+	unsigned long addAFromIndex = 1;
 
 	while(42)
 	{
-		// Populate As
-		std::cout << "addAFrom: " << addAFrom << ", lastB: "<< lastB<< std::endl;
-		for (unsigned long i = addAFrom; i <= lastB; i++)
+		// Populate a's
+		std::cout << "addAFromIndex: " << addAFromIndex << ", lastT: "<< lastT<< std::endl;
+		for (unsigned long i = addAFromIndex; i <= lastT; i++)
 		{
 			if (newArr[i].mainChain == EMPTY)
 				continue;
@@ -173,14 +174,12 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 			}
 			std::cout << "pushed A: " << newArr[i].mainChain << std::endl;
 		}
-		std::cout << "here" << std::endl;
 
 		printArr(insertionArr, "Base Pair populate A");
 
-		std::cout << "----" << std::endl;
-		// Insert Bs
-		std::cout << "-- Now inserting Bs. lastB: " << lastB << ", till addFrom - 1: " << addAFrom - 1 << std::endl;
-		for (unsigned long i = lastB; i != addAFrom - 1; i--)
+		// Insert b's
+		std::cout << "-- Now inserting Bs. lastT: " << lastT << ", till addAFromIndex - 1: " << addAFromIndex - 1 << std::endl;
+		for (unsigned long i = lastT; i != addAFromIndex - 1; i--)
 		{
 			unsigned long low = 0;
 			unsigned long top = insertionArr.size() - 1;
@@ -188,10 +187,7 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 
 			while (low <= top)
 			{
-				mid = low + (top - low) / 2;  // Correct calculation of mid
-				// std::cout << "i: " << i << ", size: " << newArr.size() << std::endl;
-				// std::cout << "low: " << low << ", top: " << top << std::endl;
-				// std::cout << "mid: " << mid << ", size: " << insertionArr.size() << std::endl;
+				mid = low + (top - low) / 2;
 				if (newArr[i].pair.second->mainChain < insertionArr[mid].mainChain)
 				{
 					if (mid == 0)
@@ -206,24 +202,21 @@ std::vector<Rec> PmergeMe::sortVec(std::vector<Rec>& arr)
 				}
 			}
 
-			// Insert at the correct position
 			insertionArr.insert(insertionArr.begin() + low, Rec(*newArr[i].pair.second));
 			std::cout << "pushed B: " << newArr[i].pair.second->mainChain << std::endl;
 		}
 		std::cout << "--- Stop inserting Bs" << std::endl;
 
-		// if (lastB <= insertionArr.size() - 1)
-		addAFrom = lastB + 1;
+		/* Move */
+		addAFromIndex = lastT + 1;
 		k++;
-		lastB = findBIndex(newArr.size(), k);
+		lastT = findT(newArr.size(), k);
 
-		if (addAFrom > newArr.size() - 1)
+		if (addAFromIndex > newArr.size() - 1)
 		{
-
 			std::cout << "break " << std::endl;
 			break;
 		}
-		
 	}
 	printArr(insertionArr, "Base Pair before return");
 	return insertionArr;
@@ -267,6 +260,30 @@ void PmergeMe::run()
 	// printTime(this->numList, LIST, this->listUsecs);
 }
 
+
+/* Logging */
+
+template <typename T>
+void PmergeMe::printTime(T& container, ContType type, long long usecs) const
+{
+	log("Time to process a range of " +
+		std::to_string(container.size()) + " elements with " +
+		"std::" + containerTypes.at(type) + " : " +
+		std::to_string(usecs) + " us", INFO);
+}
+
+template <typename T>
+std::string PmergeMe::createSeq(T& container) const
+{
+	std::ostringstream oss;
+	for (auto it = container.begin(); it != container.end(); ++it) {
+		if (it != container.begin())
+			oss << " ";
+		oss << *it;
+	}
+	return oss.str();
+}
+
 void PmergeMe::printArr(std::vector<Rec>& arr, std::string msg)
 {
 	for (auto& el : arr)
@@ -298,6 +315,9 @@ void PmergeMe::log(std::string message, LogType type)
 		case SUCCESS:
 			std::cout << "✅ " << TEXT_GREEN ;
 			break;
+		case DEBUG:
+			std::cout << "🕵🏻‍♂️ " << TEXT_YELLOW ;
+			break;
 		case DEFAULT:
 			break;
 	}
@@ -315,6 +335,8 @@ PmergeMe::Error::Error(const std::string& message)
 {
 	this->message = message;
 }
+
+/* Output operator overload */
 
 std::ostream& operator<<(std::ostream& os, const Rec& rec)
 {
