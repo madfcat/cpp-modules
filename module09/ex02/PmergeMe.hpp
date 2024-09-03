@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/02 21:21:16 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:56:04 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,32 @@ class PmergeMe
 				std::string getMessage() const;
 		};
 
+		template <typename T>
+		void						initArr(const int argc, const char* argv[], T& container, long long& usecs);
 
+		/* Vector */
 		void						swapInit(std::vector<PmergeMe::Rec>& arr);
 		std::vector<PmergeMe::Rec>	createInitPairs(std::vector<PmergeMe::Rec>& arr);
 		void						insertAs(unsigned long& lastT, unsigned long& addAFromIndex,
 										std::vector<PmergeMe::Rec>& newArr, std::vector<PmergeMe::Rec>& insertionArr);
 		void						insertBs(unsigned long& lastT, unsigned long& addAFromIndex,
 										std::vector<PmergeMe::Rec>& newArr, std::vector<PmergeMe::Rec>& insertionArr);
+		void						insertSort(std::vector<PmergeMe::Rec>& newArr, std::vector<PmergeMe::Rec>& insertionArr);
 		std::vector<PmergeMe::Rec>	sortVec(std::vector<PmergeMe::Rec>& arr);
-		std::vector<PmergeMe::Rec>	execute(ContType);
+		std::vector<PmergeMe::Rec>	executeVec();
+
+		/* List */
+		void						swapInit(std::list<PmergeMe::Rec>& arr);
+		std::list<PmergeMe::Rec>	createInitPairs(std::list<PmergeMe::Rec>& arr);
+		void						insertAs(unsigned long& lastT, unsigned long& addAFromIndex,
+										std::list<PmergeMe::Rec>& newArr, std::list<PmergeMe::Rec>& insertionArr);
+		void						insertBs(unsigned long& lastT, unsigned long& addAFromIndex,
+										std::list<PmergeMe::Rec>& newArr, std::list<PmergeMe::Rec>& insertionArr);
+		void						insertSort(std::list<PmergeMe::Rec>& newArr, std::list<PmergeMe::Rec>& insertionArr);
+		template <typename T>
+		typename std::list<T>::iterator getElementAtIndex(std::list<T>& lst, size_t index);
+		std::list<PmergeMe::Rec>	sortList(std::list<PmergeMe::Rec>& arr);
+		std::list<PmergeMe::Rec>	executeList();
 		void						run();
 
 		/* Logging */
@@ -123,12 +140,10 @@ class PmergeMe
 		void						printTime(T& container, ContType type, long long usecs) const;
 		template <typename T>
 		std::string					createSeq(T& container) const;
+		void						printArr(std::list<PmergeMe::Rec>& arr, std::string msg = "Base Pair");
 		void						printArr(std::vector<PmergeMe::Rec>& arr, std::string msg = "Base Pair");
 		void						printEl(PmergeMe::Rec& el, std::string msg = "Base Pair");
 		static void					log(std::string message, LogType type = DEFAULT);
 };
 
 std::ostream& operator<<(std::ostream& os, const PmergeMe::Rec& rec);
-
-// template void PmergeMe::printInfo(std::vector<int>& container, ContType type, long long usecs) const;
-// template void PmergeMe::printInfo(std::list<int>& container, ContType type, long long usecs) const;
