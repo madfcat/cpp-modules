@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:48 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/11 16:02:57 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/03 15:03:52 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,12 +248,28 @@ void BitcoinExchange::log(std::string message, LogType type)
 
 /* Error */
 
-std::string BitcoinExchange::Error::getMessage() const
+BitcoinExchange::Error::Error() {};
+
+BitcoinExchange::Error::Error(const Error& other)
 {
-	return this->message;
+	this->message = other.message;
 }
 
 BitcoinExchange::Error::Error(const std::string& message)
 {
 	this->message = message;
+}
+
+BitcoinExchange::Error& BitcoinExchange::Error::operator=(const Error& other)
+{
+	if (this != &other)
+		this->message = other.message;
+	return (*this);
+}
+
+BitcoinExchange::Error::~Error() {};
+
+std::string BitcoinExchange::Error::getMessage() const
+{
+	return this->message;
 }

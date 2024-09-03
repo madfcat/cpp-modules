@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 14:15:51 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/23 09:40:32 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/03 14:58:08 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@ class BitcoinExchange
 				std::string message;
 
 			public:
+				Error();
 				Error(const std::string& message);
+				Error(const Error& other);
+				Error& operator=(const Error& other);
+				~Error();
+
 				std::string getMessage() const;
 		};
 

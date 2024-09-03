@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/08 20:46:15 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/03 15:02:17 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,12 @@ class RPN
 				std::string message;
 
 			public:
+				Error();
 				Error(const std::string& message);
+				Error(const Error& other);
+				Error& operator=(const Error& other);
+				~Error();
+
 				std::string getMessage() const;
 		};
 

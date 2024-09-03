@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/03 14:55:33 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:30:46 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ const std::map<ContType, std::string> PmergeMe::containerTypes = {{VECTOR, "vect
 
 PmergeMe::PmergeMe()
 {
-	log("PmergeMe default constructor called", INFO);
+	log("PmergeMe default constructor called", DEBUG);
 }
 
 template <typename T>
@@ -47,21 +47,21 @@ void PmergeMe::initArr(const int argc, const char* argv[], T& container, long lo
 
 PmergeMe::PmergeMe(const int argc, const char* argv[])
 {
-	log("PmergeMe constructor called", INFO);
+	log("PmergeMe constructor called", DEBUG);
 	initArr(argc, argv, this->numVec, this->vecUsecs);
 	initArr(argc, argv, this->numList, this->listUsecs);
 }
 
 PmergeMe::PmergeMe(const PmergeMe& other)
 {
-	log("PmergeMe copy constructor called", INFO);
+	log("PmergeMe copy constructor called", DEBUG);
 	this->numVec = other.numVec;
 	this->numList = other.numList;
 }
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 {
-	log("PmergeMe assignment operator called", INFO);
+	log("PmergeMe assignment operator called", DEBUG);
 	if (this != &other)
 	{
 		this->numVec = other.numVec;
@@ -72,7 +72,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 
 PmergeMe::~PmergeMe()
 {
-	log("PmergeMe destructor called", INFO);
+	log("PmergeMe destructor called", DEBUG);
 }
 
 /**
@@ -165,6 +165,9 @@ void PmergeMe::insertBs(unsigned long& lastT, unsigned long& addAFromIndex,
 			}
 		}
 
+		// Check if number is bigger than the biggest in arr
+		if (insertionArr[low].mainChain < newArr[i].pair.second->mainChain)
+			low++;
 		insertionArr.insert(insertionArr.begin() + low, Rec(*newArr[i].pair.second));
 		log("pushed B: " + std::to_string(newArr[i].pair.second->mainChain), DEBUG);
 	}
@@ -302,9 +305,8 @@ std::list<PmergeMe::Rec>	PmergeMe::createInitPairs(std::list<PmergeMe::Rec>& arr
 template <typename T>
 typename std::list<T>::iterator PmergeMe::getElementAtIndex(std::list<T>& lst, size_t index)
 {
-	if (index >= lst.size()) {
-		throw std::out_of_range("Index out of bounds");
-	}
+	if (index >= lst.size())
+		throw PmergeMe::Error("Index out of bounds: " + std::to_string(index) + "for size: " + std::to_string(lst.size()));
 
 	auto it = lst.begin();
 	std::advance(it, index);
@@ -372,7 +374,11 @@ void PmergeMe::insertBs(unsigned long& lastT, unsigned long& addAFromIndex,
 			}
 		}
 
-		insertionArr.insert(getElementAtIndex(insertionArr, low), Rec(*getElementAtIndex(newArr, i)->pair.second));
+		// Check if number is bigger than the biggest in arr
+		if (getElementAtIndex(insertionArr, low)->mainChain < getElementAtIndex(newArr, i)->pair.second->mainChain)
+			insertionArr.insert(insertionArr.end(), Rec(*getElementAtIndex(newArr, i)->pair.second));
+		else
+			insertionArr.insert(getElementAtIndex(insertionArr, low), Rec(*getElementAtIndex(newArr, i)->pair.second));
 		log("pushed B: " + std::to_string(getElementAtIndex(newArr, i)->pair.second->mainChain), DEBUG);
 	}
 	log("--- Stop inserting Bs", DEBUG);
@@ -384,7 +390,6 @@ void PmergeMe::insertSort(std::list<PmergeMe::Rec>& newArr, std::list<PmergeMe::
 	insertionArr.emplace_back(*getElementAtIndex(newArr, 0)->pair.second);
 	insertionArr.emplace_back(*getElementAtIndex(newArr, 0)->pair.first);
 
-	
 	unsigned long k = 2; 
 	unsigned long lastT = findT(newArr.size(), k);
 	unsigned long addAFromIndex = 1;
@@ -473,13 +478,33 @@ std::list<PmergeMe::Rec> PmergeMe::executeList()
 	return result;
 }
 
+template<typename T>
+bool PmergeMe::checkSorted(T& container)
+{
+	return std::is_sorted(container.begin(), container.end(),
+		[](const PmergeMe::Rec& a, const PmergeMe::Rec& b) {
+			return a.mainChain < b.mainChain;
+		}
+	);
+}
 
 void PmergeMe::run()
 {
 	log("Before: " + createSeq(this->argv), INFO);
-	std::vector<PmergeMe::Rec> result = executeVec();
-	executeList();
-	log("After: " + createSeq(result), SUCCESS);
+
+	/* List */
+	std::list<PmergeMe::Rec> sortedList = executeList();
+	bool isSortedList = checkSorted(sortedList);
+	log("Is list sorted: " + std::to_string(isSortedList), DEBUG);
+	log("After (list): " + createSeq(sortedList), DEBUG);
+
+	/* Vector */
+	std::vector<PmergeMe::Rec> sortedVec = executeVec();
+	bool isSortedVec = checkSorted(sortedVec);
+	log("Is vector sorted: " + std::to_string(isSortedVec), DEBUG);
+	log("After: " + createSeq(sortedVec), SUCCESS);
+
+	/* Time */
 	printTime(this->numVec, VECTOR, this->vecUsecs);
 	printTime(this->numList, LIST, this->listUsecs);
 }
@@ -590,14 +615,30 @@ PmergeMe::Rec::~Rec() {};
 
 /* Error */
 
-std::string PmergeMe::Error::getMessage() const
+PmergeMe::Error::Error() {};
+
+PmergeMe::Error::Error(const Error& other)
 {
-	return this->message;
+	this->message = other.message;
 }
 
 PmergeMe::Error::Error(const std::string& message)
 {
 	this->message = message;
+}
+
+PmergeMe::Error& PmergeMe::Error::operator=(const Error& other)
+{
+	if (this != &other)
+		this->message = other.message;
+	return (*this);
+}
+
+PmergeMe::Error::~Error() {};
+
+std::string PmergeMe::Error::getMessage() const
+{
+	return this->message;
 }
 
 /* Output operator overload */

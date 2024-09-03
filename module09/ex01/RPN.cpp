@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/08/23 12:00:20 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/03 15:04:31 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,12 +189,28 @@ void RPN::log(std::string message, LogType type)
 
 /* Error */
 
-std::string RPN::Error::getMessage() const
+RPN::Error::Error() {};
+
+RPN::Error::Error(const Error& other)
 {
-	return this->message;
+	this->message = other.message;
 }
 
 RPN::Error::Error(const std::string& message)
 {
 	this->message = message;
+}
+
+RPN::Error& RPN::Error::operator=(const Error& other)
+{
+	if (this != &other)
+		this->message = other.message;
+	return (*this);
+}
+
+RPN::Error::~Error() {};
+
+std::string RPN::Error::getMessage() const
+{
+	return this->message;
 }
