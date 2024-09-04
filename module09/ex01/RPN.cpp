@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/03 15:04:31 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:02:54 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 const std::string RPN::allowedOperands = "1234567890";
 const std::string RPN::allowedOperators = "-+/*";
 
-RPN::RPN() : result(0.0), operandsCount(0), operatorsCount(0)
+RPN::RPN() : operandsCount(0), operatorsCount(0)
 {
 	log("RPN default constructor called", INFO);
 }
 
-RPN::RPN(const char* expression) : expression(expression), result(0.0),
+RPN::RPN(const char* expression) : expression(expression),
 									operandsCount(0), operatorsCount(0)
 {
 	log("RPN constructor called", INFO);
@@ -31,7 +31,6 @@ RPN::RPN(const RPN& other)
 	log("RPN copy constructor called", INFO);
 	this->expression = other.expression;
 	this->currNumbers = other.currNumbers;
-	this->result = other.result;
 	this->operandsCount = other.operandsCount;
 	this->operatorsCount = other.operandsCount;
 }
@@ -43,7 +42,6 @@ RPN& RPN::operator=(const RPN& other)
 	{
 		this->expression = other.expression;
 		this->currNumbers = other.currNumbers;
-		this->result = other.result;
 		this->operandsCount = other.operandsCount;
 		this->operatorsCount = other.operandsCount;
 	}
@@ -77,7 +75,6 @@ bool RPN::checkIsStackReady(std::string token)
 {
 	if (checkOperator(token))
 	{
-		// log(token, INFO);
 		if (this->currNumbers.size() < 2)
 			throw RPN::Error("Expression has wrong tokens order");
 		else
