@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:26 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/04 13:02:54 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:00:21 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 const std::string RPN::allowedOperands = "1234567890";
 const std::string RPN::allowedOperators = "-+/*";
 
-RPN::RPN() : operandsCount(0), operatorsCount(0)
+RPN::RPN()
 {
 	log("RPN default constructor called", INFO);
 }
 
-RPN::RPN(const char* expression) : expression(expression),
-									operandsCount(0), operatorsCount(0)
+RPN::RPN(const char* expression) : expression(expression)
 {
 	log("RPN constructor called", INFO);
 }
@@ -31,8 +30,6 @@ RPN::RPN(const RPN& other)
 	log("RPN copy constructor called", INFO);
 	this->expression = other.expression;
 	this->currNumbers = other.currNumbers;
-	this->operandsCount = other.operandsCount;
-	this->operatorsCount = other.operandsCount;
 }
 
 RPN& RPN::operator=(const RPN& other)
@@ -42,8 +39,6 @@ RPN& RPN::operator=(const RPN& other)
 	{
 		this->expression = other.expression;
 		this->currNumbers = other.currNumbers;
-		this->operandsCount = other.operandsCount;
-		this->operatorsCount = other.operandsCount;
 	}
 	return *this;
 }
@@ -93,6 +88,8 @@ void RPN::applyOperator(float operand1, float operand2, std::string operandToken
 		this->currNumbers.push(operand1 / operand2);
 	else if (operandToken == "*")
 		this->currNumbers.push(operand1 * operand2);
+	else
+		throw RPN::Error("Operator can not be applied");
 }
 
 void RPN::calculate(std::string operandToken)
@@ -121,11 +118,6 @@ void RPN::execute(std::string delimiter)
 		else if (delimiterPos == 0)
 		{
 			str = str.substr(delimiter.length());
-			continue;
-		}
-		else if (delimiterPos == str.length() - 1)
-		{
-			str = str.substr(0, delimiterPos - 1);
 			continue;
 		}
 		else

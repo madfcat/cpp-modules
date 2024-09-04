@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 03:23:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/04 13:00:23 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:44:26 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ class RPN
 
 		std::string					expression;
 		std::stack<float>			currNumbers;
-		// float						result;
-		size_t						operandsCount;
-		size_t						operatorsCount;
 
 	public:
 		RPN();
