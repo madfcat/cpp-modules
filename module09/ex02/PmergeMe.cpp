@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/04 00:30:46 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:46:59 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -574,8 +574,9 @@ void PmergeMe::log(std::string message, LogType type)
 			std::cout << "ℹ️ " << TEXT_BLUE ;
 			break;
 		case ERROR:
-			std::cout << "🚫 " << BG_RED << TEXT_WHITE ;
-			break;
+			std::cerr << "🚫 " << BG_RED << TEXT_WHITE ;
+			std::cerr << message << RESET << std::endl;
+			return ;
 		case SUCCESS:
 			std::cout << "✅ " << TEXT_GREEN ;
 			break;
