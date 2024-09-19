@@ -6,7 +6,7 @@
 /*   By: vshchuki <vshchuki@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:53:23 by vshchuki          #+#    #+#             */
-/*   Updated: 2024/09/04 11:46:59 by vshchuki         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:34:42 by vshchuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,7 +456,6 @@ std::list<PmergeMe::Rec> PmergeMe::sortList(std::list<PmergeMe::Rec>& arr)
 		newArr.push_back(leftOut);
 		log("pushed leftOut: " + std::to_string(newArr.back().mainChain), DEBUG);
 	}
-	// printArr(newArr, "Base pair after pushed leftOut");
 
 	if (getElementAtIndex(newArr, 0)->pair.first == nullptr) // top level
 		return newArr;
